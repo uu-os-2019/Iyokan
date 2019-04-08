@@ -1,4 +1,4 @@
-# [PROJEKT] ([GRUPP])
+# [PROJEKT] ([IYOKAN])
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
 
