@@ -1,75 +1,26 @@
-# Gruppkontrakt ([GRUPP])
+# Gruppkontrakt ([Iyokan])
 
 Projektarbete på kursen Datorsystem med projekt (1DT003)
 våren 2019, Uppsala universitet.
 
-**TODO:** Byt ut [GRUPP] mot namnet på gruppen (se Studentportalen).
-
-**INFO:** Detta dokument är skrivet i
-formatet
-[Markdown](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/).
-
-**INFO:** Det går att redigera, förhandsvisa och spara
-(commit) [sidan](./gruppkontrakt.md) på GitHub direkt i din webbläsare.
-
-## Syfte
-
-Det huvudsakliga syftet med att upprätta ett gruppkontrakt är att alla i gruppen
-ska vara överens om mål och arbetssätt för det fortsatta arbetet.
-
-Utarbetandet av ett gruppkontrakt leder till diskussion och reflektion kring
-frågor som är viktiga för gruppens arbete och trivsel. Vid utformandet av
-gruppkontraktet är det viktigt att alla i gruppen deltar aktivt och att hänsyn
-tas till alla gruppmedlemmars synpunkter och önskemål.
-
-Ett gruppkontrakt ska vara underskrivet av samtliga projektmedlemmar. Följande
-områden kan vara del av vad man kommer överens om i gruppkontraktet:
-
-- Målsättning och förväntningar på gruppdeltagarna.
-- Arbetsformer och arbetsfördelning.
-- Normer i projektgruppen – överenskommelse om goda gruppegenskaper.
-- Hantering av brott mot reglerna i gruppkontraktet.
-- Allmänna förutsättningar.
-
-**TODO:** Nedan ges exempel på rubriker och innehåll. Gruppen skall tillsammans
- utgå från denna mall (ändra, ta bort eller lägga till text och rubriker) för
- att komma fram till ett gruppkontrakt som alla i gruppen är nöjda med.
-
 ## Rutiner
 
-Exempel på innehåll:
+- Sitta och arbeta tillsammans i 4410 i så stor utsträckning som möjligt.
+- Träffas varje veckodag 10:15-15:00 om det inte krockar med annat schemalagt.
+- Vid frånvaro används sunt förnuft vid bedömning av giltig frånvaro.
 
-- Skall gruppen i huvudsak sitta och arbeta tillsammans eller endast träffas för
-  kortare möten?
-- Hur ofta ska gruppen träffas?
-- Hur långa ska mötena vara?
-- När på dagen ska mötena läggas?
-- Vilka godtagbara skäl finns för frånvaro på möten?
+## Kommunikationen och frånvaro
 
-## Kommunikationen i gruppen
-
-Exempel på innehåll:
-
-- Hur ska gruppen kommunicera mellan möten?
-- Hur ska gruppen agera om någon inte kommer på ett möte?
-- Hur ska samordning och rapportering ske inom projektgruppen?
-
-## Frånvaro
-
-Exempel på innehåll:
-
-- Hur och när skall frånvaro meddelas?
-- Hur skall man göra om någon varit frånvarande?
-- Skall frånvaro kompenseras genom annan arbetsinsats eller gäller det bara viss
-  typ av frånvaro?
+- Kommunikation i gruppen sker via Slack.
+- Frånvaro meddelas via Slack i god tid innan möten.
+- Vid upprepade tillfällen av ogiltig frånvaro tas problemet upp i gruppen samt arbetet omfördelas.
+- Samordning och rapportering sker via Slack och på mötena.
 
 ## Roller
 
-Exempel på innehåll:
-
-- Ska varje person i gruppen ha en formell roll?
-- Ska ni växla formella roller vid varje möte?
-- Vilka roller behövs:
+- Olika roller kommer att tilldelas när projektet kommer igång.
+- Vissa roller som t.ex. mötessekretare kommer att växlas mellan personer.
+- Preliminära roller:
   - Projektledare?
   - Sekreterare?
   - Systemarkitekt?
@@ -79,68 +30,42 @@ Exempel på innehåll:
 
 ## Beslutsformer
 
-Exempel på innehåll:
-
-- Hur ska gruppen komma överens om vad som ska göras?
-- Ska majoritetsbeslut gälla eller ska gruppen genom diskussion försöka få alla
-  att vara överens om beslutet?
-- Hur ska ni gör ifall ni är oeniga?
+- Majoritetsbeslut tillämpas.
+- Om gruppen är oense trots utförlig diskussion har personen med det aktuella ansvarsområdet sista ordet.
 
 ## Arbetsinsats
 
-För att undvika en del missförstånd och irritation kan det vara bra att redan
-från början göra klart för varandra vilka olika typer av arbetsinsatser som kan
-förekomma. Exempel på innehåll:
+**Exempel på arbetsinsatser:**
+Programmering, testning, systemdesign, rapportskrivning, kaffehämtning, grafisk design, granska kod osv.
 
-- Exempel på olika former av arbetsinsatser.
-- Vilka krav kan man ställa på varandra?
-- Hur ska arbetet fördelas i gruppen?
-- Hur ska gruppen hantera om någon inte gör sin del av arbetet?
-- Hur mycket arbete ska göras mellan möten?
+- Varje gruppmedlem ska dyka upp på möten och bidra efter förmåga.
+- Arbetet fördelas med hjälp av tasks enligt Scrum.
+- Om en person inte utför sitt arbete tas detta upp på ett möte och personen får förklara situationen.
+- Majoriteten av arbetet förväntas utföras i projektlokalen, men vid behov kan arbete även göras på anna tid och plats.
 
 ## Hantering av brott mot bestämmelserna i gruppkontraktet
 
-**INFO:** Det är viktigt att både kunna ta och ge konstruktiv kritik. För att
-förebygga konflikter är det bättre att säga till direkt om du upplever att någon
-bryter mot överenskommelserna i gruppkontraktet.
-
-**TODO:** Beskriv på vilket sätt upplevda överträdelser mot gruppkontraktet
-skall hanteras. Här bör ni diskutera på vilket sätt kritik skall framföras och
-bemötas.
-
-Skall kritik framföras och bemötas:
-
-- muntligt under det dagliga mötet?
-- skriftligt (mail, sms, annat)?
-- annat sätt?
+- Kritik skall framföras konkret konstruktivt muntligt i ett tidigt skede.
 
 ## Konflikter
 
-Hur skall ni gå tillväga om det uppstår konflikter?
+Konflikter löses med allvarsam dialog. Om en konflikt mellan två personer inte kan lösas, bör den tas upp i gruppen.
 
 ## Utskrift och underskrifter
 
-Kontraktet skall skrivas ut på papper, skrivas under (namnförtydligande och
-signatur av samtliga gruppmedlemmar) och lämnas in till ansvarig lärare på
-kursen. Därefter skall kontraktet hållas uppdaterat som en del av gruppens
-repository på GitHub.
+Detta kontrakt har den 2019-04-08 upprättats av:
 
-Detta kontrakt har den __________________________ upprättats av:
+Förnamn | Efternamn  | . . . . . . . . . . . Underskrift . . . . . . . . . . .
+--------|------------|------------
 
+Anton     | Bergåker |________________________________________________________
 
-**TODO:** I tabellen nedan skall gruppen medlemmar listas sorterade på förnamn.
+Benjamin  | Angeria  |________________________________________________________
 
-Förnamn | Efternamn | . . . . . . . . . . . Underskrift . . . . . . . . . . .
---------|-----------|------------
-Anders  | Andersson |
-Britta  | Björk     |
-Cecila  | Carlsson  |
-Daniel  | Dahlqvist |
-Erik    | Eklund    |
-Fanny   | Forsberg  |
+Erik      | Hellström|________________________________________________________
 
-## Färdigställ
+Gustav    | Börestam |________________________________________________________
 
-- Tag bort avsnittet **Syfte**.
-- Tag bort alla stycken markerade med **TODO** och **INFO**.
-- Tag bort hela detta avsnitt, dvs tag bort avsnittet **Färdigställ**.
+Joakim    | Michalak |________________________________________________________
+
+Oscar     | Englöf   |________________________________________________________
