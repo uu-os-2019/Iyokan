@@ -22,6 +22,7 @@ ankaret `#en-rubrik-med-åäö`.
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | Anton | Bergåker | YYMMDD-XXXX | [AntonBergaker](#AntonBergaker]
+<img src="images/user.png" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | `osen1952`
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
 gruppen sorterade i bokstavsordning.
@@ -49,10 +50,6 @@ När jag inte pluggar gillar jag att jobba på lite olika projekt, ofta olika ty
 
 
 -------------------------------------------------------------------------------------------------------------------------
-
-Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
------------------------------------------|-----------------------------|-----------|--------------|----------------------
-<img src="images/user.png" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | `osen1952`
 
 
 ## Oscar Englöf
