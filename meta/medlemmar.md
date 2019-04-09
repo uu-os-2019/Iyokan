@@ -1,19 +1,6 @@
-# Medlemmar ([GRUPP])
+# Medlemmar ([Iyokan])
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
-
-**TODO:** Byt ut [GRUPP] mot namnet på gruppen (se Studentportalen).
-
-**INFO:** Detta dokument är skrivet i
-formatet
-[Markdown](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/).
-
-**INFO:** Det går att redigera, förhandsvisa och spara
-(commit) [sidan](./gruppkontrakt.md) på GitHub direkt i din webbläsare.
-
-**INFO:** För att lärarna på kursen skall kunna följa och bedöma era
-arbetsinsatser är det viktigt att vi vet vem som är vem vid till exempel
-muntliga presentationer och andra möten.
 
 **TODO:** Tag foton av alla medlemmar i gruppen. Varje foto skall tydligt visa
  personen framifrån från axlarna och uppåt. Spara bilderna i mappen
