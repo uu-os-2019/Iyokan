@@ -54,8 +54,6 @@ Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/user.png" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | `osen1952`
 
-**TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
-gruppen sorterade i bokstavsordning.
 
 ## Oscar Englöf
 
