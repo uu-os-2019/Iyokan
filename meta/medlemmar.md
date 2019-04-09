@@ -21,7 +21,7 @@ ankaret `#en-rubrik-med-åäö`.
 
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
-<img src="images/anton.png" width="180"/> | Anton | Bergåker | YYMMDD-XXXX | [AntonBergaker](#AntonBergaker]
+<img src="images/anton.jpg" width="180"/> | [Anton](#anton-bergåker) | Bergåker | YYMMDD-XXXX | [AntonBergaker](https://github.com/AntonBergaker/)
 <img src="images/user.png" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | `osen1952`
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
