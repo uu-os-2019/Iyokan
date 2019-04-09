@@ -23,7 +23,7 @@ Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | [Anton](#anton-bergåker) | Bergåker | YYMMDD-XXXX | [AntonBergaker](https://github.com/AntonBergaker/)
 <img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
-<img src="images/user.png" width="180"/> | [Benjamin](#benjamin-angeria) | Angeria | 960802-8693 | [angeria](https://github.com/angeria/)
+<img src="images/benjamin.png" width="180"/> | [Benjamin](#benjamin-angeria) | Angeria | 960802-8693 | [angeria](https://github.com/angeria/)
 <img src="images/proff13.png" width="180"/> | [Erik](#Erik-Hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
