@@ -152,6 +152,7 @@ Under projektet tror jag att jag kommer ha lättast att bidra med:
 
 - Analys
 - Design
+- Problemlösning
 - Samarbete
 - Muntlig presentation
 - Användarkrav
