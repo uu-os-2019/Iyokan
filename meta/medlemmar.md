@@ -74,3 +74,33 @@ sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
 
 - planering
 - samarbete i projekt
+
+-------------------------------------------------------------------------------------------------------------------------
+
+## Benjamin Angeria
+
+### Okänd talang
+
+Vid sidan av studierna tycker jag om att träna och spela piano. Läser någon bok då och då.
+
+### Starka sidor
+
+Under projektet tror jag att jag kommer ha lättast att bidra med:
+
+- design
+- problemlösning
+- programmering
+- samarbete
+- ledarskap
+- optimism
+- organisering
+
+### Personlig utveckling
+
+Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
+sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
+
+- specificering av problem
+- problemlösning och algoritmer
+- appdesign
+- databasarkitektur
