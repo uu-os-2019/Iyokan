@@ -48,8 +48,34 @@ När jag inte pluggar gillar jag att jobba på lite olika projekt, ofta olika ty
 - Backend-design och olika metoder
 
 
-## Färdigställ
+-------------------------------------------------------------------------------------------------------------------------
 
-- Tag bort alla stycken markerade med **TODO** och **INFO**.
-- Tag bort avsnittet Anders Andersson.
-- Tag bort hela detta avsnitt, dvs tag bort avsnittet **Färdigställ**.
+Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
+-----------------------------------------|-----------------------------|-----------|--------------|----------------------
+<img src="images/user.png" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | `osen1952`
+
+**TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
+gruppen sorterade i bokstavsordning.
+
+## Oscar Englöf
+
+### Okänd talang
+
+Jag gillar att träna vid sidan om.
+
+### Starka sidor
+
+Under projektet tror jag att jag kommer ha lättast att bidra med:
+
+- analys/design/specifikation
+- problemlösning och algoritmer
+- ledarskap
+- research (söka och sammanställa information)
+
+### Personlig utveckling
+
+Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
+sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
+
+- planering
+- samarbete i projekt
