@@ -25,6 +25,7 @@ Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 <img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
 <img src="images/benjamin.png" width="180"/> | [Benjamin](#benjamin-angeria) | Angeria | 960802-8693 | [angeria](https://github.com/angeria/)
 <img src="images/proff13.png" width="180"/> | [Erik](#Erik-Hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
+<img src="images/user.png" width="180"/> | [Gustav](#gustav-börestam) | Börestam | 930804-8793 | [gustavborestam](https://github.com/gustavborestam/)
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
 gruppen sorterade i bokstavsordning.
@@ -138,3 +139,29 @@ sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
 - Apputveckling
 - Distribuerade system
 
+-------------------------------------------------------------------------------------------------------------------------
+
+## Gustav Börestam
+
+### Okänd talang
+Utanför studierna är jag intresserad av entreprenörskap, löpträning och resor.
+
+
+### Starka sidor
+Under projektet tror jag att jag kommer ha lättast att bidra med:
+
+- Analys
+- Design
+- Samarbete
+- Muntlig presentation
+- Användarkrav
+
+
+### Personlig utveckling
+Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka sidor även ges möjlighet att utveckla följande färdigheter:
+
+- Dokumentation
+- Skapa skalbar kod som är enkel att arbeta med
+- Databaser och gemensamma resurser
+- Research
+- Realtidsuppdateringar
