@@ -21,54 +21,32 @@ ankaret `#en-rubrik-med-åäö`.
 
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
-<img src="images/user.png" width="180"/> | [Anders](#anders-andersson) | Andersson | YYMMDD-XXXX | `anders877`
+<img src="images/anton.png" width="180"/> | Anton | Bergåker | YYMMDD-XXXX | [AntonBergaker](#AntonBergaker]
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
 gruppen sorterade i bokstavsordning.
 
-## Anders Andersson
+## Anton Bergåker
 
 ### Okänd talang
 
-**TODO:** Beskriv kortfattad något du gillar att göra vid sidan av dina studier.
+När jag inte pluggar gillar jag att jobba på lite olika projekt, ofta olika typer av spel och appar. Spelar även för mycket dataspel, t.ex Stellaris och Factorio.
 
 ### Starka sidor
 
-Under projektet tror jag att jag kommer ha lättast att bidra med:
-
-**TODO:** Skapa en lista med kortfattad beskrivning över områden där du tror du
- har lättast att bidra till projektet, till exempel:
-
-- analys/design/specifikation
-- problemlösning och algoritmer
-- skriva kod utifrån färdig specifikation
-- planering
-- samarbete
-- ledarskap
-- research (söka och sammanställa information)
-- dokumentation
-- rapportskrivande
-- muntlig presentation
-- lägg gärna till flera punkter ...
+- Server-client kommunikation
+- Apputveckling
+- Databasdesign
+- Problemlösning
 
 ### Personlig utveckling
 
-Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
-sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
+- Jobba i större grupp
+- Planering
+- iOS
+- Mer kunskap i olika programmeringsspråk
+- Backend-design och olika metoder
 
-**TODO:** Skapa en lista, till exempel:
-
-- analys/design/specifikation
-- problemlösning och algoritmer
-- skriva kod utifrån färdig specifikation
-- planering
-- samarbete
-- ledarskap
-- research (söka och sammanställa information)
-- dokumentation
-- rapportskrivande
-- muntlig presentation
-- lägg gärna till flera punkter ...
 
 ## Färdigställ
 
