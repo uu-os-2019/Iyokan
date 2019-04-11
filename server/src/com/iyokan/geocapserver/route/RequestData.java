@@ -1,6 +1,8 @@
 package com.iyokan.geocapserver.route;
 
 import com.sun.net.httpserver.HttpExchange;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.HashMap;
 
@@ -8,26 +10,22 @@ import java.util.HashMap;
  * This class contains data relevant to a specific route, such as parameters, the attached user etc
  */
 public class RequestData {
-    HashMap<String, String> parameters;
+    private JSONObject json;
 
     public RequestData(HttpExchange exchangeData) {
-        parameters = new HashMap<>();
+        try {
+            JSONTokener tokener = new JSONTokener(exchangeData.getRequestBody());
+            json = new JSONObject(tokener);
+        } catch (Exception ex) {
+            json = null;
+        }
 
-        ///TODO parse parameters
     }
 
-    private void extractParameters(String parameters) {
-        parameters = parameters.substring(parameters.indexOf('?'));
-        String[] keys = parameters.split("=");
+    public JSONObject getJSON() {
+        return json;
     }
 
-    public String getParameter(String parameter) {
-        return parameters.get(parameter);
-    }
-
-    public boolean hasParameter(String parameter) {
-        return parameters.containsKey(parameter);
-    }
 
     /**
      * Gets the user attached to this request

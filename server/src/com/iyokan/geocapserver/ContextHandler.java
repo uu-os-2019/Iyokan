@@ -18,6 +18,7 @@ public class ContextHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
         String response = route.handle(new RequestData(t)).toString();
+        t.getResponseHeaders().add("Content-Type", "application/json");
         t.sendResponseHeaders(200, response.length());
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());

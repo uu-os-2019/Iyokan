@@ -8,7 +8,7 @@ public class RouteTest extends Route {
     public JSONObject handle(RequestData data) {
         JSONObject response = new JSONObject();
         response.put("testy", "testy!");
-
+        response.put("watusent", data.getJSON());
         return response;
     }
 
