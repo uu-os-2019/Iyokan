@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EsH-EB-OUH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Spela View Controller-->
+        <scene sceneID="cn2-ji-4rH">
+            <objects>
+                <viewController id="EsH-EB-OUH" customClass="SpelaViewController" customModule="Geocap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D6s-Ax-QcE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GeoCap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo0-Is-yKf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44.5"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iY7-kw-V5A">
+                                <rect key="frame" x="112" y="288" width="150" height="91"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                <state key="normal" title="Spela">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="spelaButtonTapped:" destination="EsH-EB-OUH" eventType="touchUpInside" id="J2x-BV-usr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="Yo0-Is-yKf" secondAttribute="bottom" constant="223.5" id="5fM-xz-SAW"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="HsM-kO-ifK"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="112" id="Lok-LZ-md3"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="288" id="WLH-Nm-WwN"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="b2e-Ez-588"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="113" id="l0a-6z-mOj"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="top" secondItem="07l-Up-LcE" secondAttribute="top" id="m8l-P7-KHz"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="mqu-O3-aHm"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="oSi-jv-hOD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="07l-Up-LcE"/>
+                    </view>
+                    <connections>
+                        <outlet property="SpelaButton" destination="iY7-kw-V5A" id="0tK-vk-jiU"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="SpelaSegue" id="YAH-5w-pfT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tzw-xQ-5nN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-759.20000000000005" y="120.98950524737631"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Geocap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-Yb-RfM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sM7-df-nHk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GeoCap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-dk-wq2">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="35"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pG-BD-faG">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="35"/>
+                                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Leaderboard">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eFO-dk-wq2" firstAttribute="width" secondItem="9pG-BD-faG" secondAttribute="width" id="5Zh-77-fCp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sM7-df-nHk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="43I-u7-XnR"/>
+                            <constraint firstItem="sM7-df-nHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4hu-W4-lww"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FOJ-Ad-56Y"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Hpa-ju-fWq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sM7-df-nHk" secondAttribute="trailing" id="NZN-J2-Gy1"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VN8-iD-BZo"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aml-7b-Xta"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fmM-6h-Rvh"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="naK-yW-VPG"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oLs-Ee-w17"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yd5-Ea-Hfr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="O8l-Yb-RfM" id="9Wj-n5-7OC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.59999999999999" y="120.98950524737631"/>
+        </scene>
+    </scenes>
+</document>
