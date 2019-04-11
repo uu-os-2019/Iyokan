@@ -19,6 +19,7 @@ public class Server {
             throw new RuntimeException(ex.toString());
         }
 
+        // Create a ContextHandler that will call upon the route when processed
         for (Route r : routes) {
             HttpContext context = server.createContext(r.getUrl());
             context.setHandler(new ContextHandler(r));

@@ -1,11 +1,10 @@
 package com.iyokan.geocapserver.route;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.json.*;
 
 public abstract class Route {
 
-    public JSONObject handle() {
+    public JSONObject handle(RequestData data) {
         throw new RuntimeException("Needs to be implemented in sub class");
     }
 

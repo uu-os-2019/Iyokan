@@ -1,5 +1,6 @@
 package com.iyokan.geocapserver;
 
+import com.iyokan.geocapserver.route.RequestData;
 import com.iyokan.geocapserver.route.Route;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -16,7 +17,7 @@ public class ContextHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange t) throws IOException {
-        String response = route.handle().toString();
+        String response = route.handle(new RequestData(t)).toString();
         t.sendResponseHeaders(200, response.length());
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());

@@ -5,7 +5,7 @@ import org.json.JSONObject;
 public class RouteTest extends Route {
 
     @Override
-    public JSONObject handle() {
+    public JSONObject handle(RequestData data) {
         JSONObject response = new JSONObject();
         response.put("testy", "testy!");
 
