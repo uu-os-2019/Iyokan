@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // User Location Auth
+    // User Location Auth 
     let locationManager = CLLocationManager()
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
