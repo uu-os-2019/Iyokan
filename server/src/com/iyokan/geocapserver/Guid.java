@@ -38,4 +38,26 @@ public abstract class Guid {
     public boolean equals(Guid obj) {
         return Arrays.equals(obj.getBytes(), bytes);
     }
+
+    @Override
+    public String toString() {
+        char[] str = new char[36];
+
+        int index = 0;
+        for (int i = 0; i < 16; i++) {
+            if (i == 4 || i == 6 || i == 8 || i == 10) {
+                str[index++] = '-';
+            }
+
+            byte val = bytes[i];
+
+            byte val1 = (byte)(val >> 4);
+            byte val2 = (byte)(val & 0xF);
+
+            str[index++] = (char)((val1 > 9) ? ('A' + val1 - 10) : ('0' + val1));
+            str[index++] = (char)((val2 > 9) ? ('A' + val2 - 10) : ('0' + val2));
+        }
+
+        return new String(str);
+    }
 }
