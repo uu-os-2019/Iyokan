@@ -202,13 +202,16 @@
 				TargetAttributes = {
 					F04D515D225CD7A500A32DBD = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 					};
 					F04D5171225CD7B400A32DBD = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 						TestTargetID = F04D515D225CD7A500A32DBD;
 					};
 					F04D517C225CD7B500A32DBD = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 						TestTargetID = F04D515D225CD7A500A32DBD;
 					};
 				};
@@ -451,7 +454,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.angeria.Geocap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -469,7 +472,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.angeria.Geocap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -489,7 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscarenglof.GeocapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geocap.app/Geocap";
 			};
@@ -510,7 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscarenglof.GeocapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geocap.app/Geocap";
 			};
@@ -530,7 +533,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscarenglof.GeocapUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Geocap;
 			};
@@ -550,7 +553,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscarenglof.GeocapUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Geocap;
 			};
