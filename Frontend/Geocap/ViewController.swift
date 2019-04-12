@@ -51,6 +51,12 @@ class ViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
+    @IBAction func LeaderboardButton(_ sender: Any) {
+        performSegue(withIdentifier: "LeaderboardSegue", sender: self)
+    }
+    
     let regionRadius: CLLocationDistance = 5000
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,

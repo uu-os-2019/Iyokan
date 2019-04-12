@@ -18,6 +18,7 @@
 		F04D5190225CDF2000A32DBD /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D518F225CDF2000A32DBD /* Pins.swift */; };
 		F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5191225D091300A32DBD /* SpelaViewController.swift */; };
 		F0EB91602260959E003574EC /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB915F2260959E003574EC /* QuizViewController.swift */; };
+		F0EB91622260D973003574EC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91612260D973003574EC /* LeaderboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		F04D518F225CDF2000A32DBD /* Pins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
 		F04D5191225D091300A32DBD /* SpelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpelaViewController.swift; sourceTree = "<group>"; };
 		F0EB915F2260959E003574EC /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		F0EB91612260D973003574EC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				F0401994225F5A3C007B0C75 /* PinsView.swift */,
 				F0EB915F2260959E003574EC /* QuizViewController.swift */,
 				F04D5165225CD7A500A32DBD /* Main.storyboard */,
+				F0EB91612260D973003574EC /* LeaderboardViewController.swift */,
 				F04D5168225CD7B300A32DBD /* Assets.xcassets */,
 				F04D516A225CD7B300A32DBD /* LaunchScreen.storyboard */,
 				F04D516D225CD7B300A32DBD /* Info.plist */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EB91622260D973003574EC /* LeaderboardViewController.swift in Sources */,
 				F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */,
 				F04D5164225CD7A500A32DBD /* ViewController.swift in Sources */,
 				F04D5162225CD7A500A32DBD /* AppDelegate.swift in Sources */,
