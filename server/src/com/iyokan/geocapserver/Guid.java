@@ -23,6 +23,17 @@ public abstract class Guid {
         this.bytes = bytes;
     }
 
+    public Guid(String string) {
+        String s = string.replace("-", "");
+        bytes = new byte[16];
+
+        int len = s.length();
+        for (int i = 0; i < len; i += 2) {
+            bytes[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+    }
+
     public byte[] getBytes() {
         return bytes;
     }
