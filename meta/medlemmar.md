@@ -22,10 +22,10 @@ ankaret `#en-rubrik-med-åäö`.
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | [Anton](#anton-bergåker) | Bergåker | 970225-5952 | [AntonBergaker](https://github.com/AntonBergaker/)
-<img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
 <img src="images/benjamin.png" width="180"/> | [Benjamin](#benjamin-angeria) | Angeria | 960802-8693 | [angeria](https://github.com/angeria/)
-<img src="images/proff13.png" width="180"/> | [Erik](#Erik-Hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
-<img src="images/user.png" width="180"/> | [Gustav](#gustav-börestam) | Börestam | 930804-8793 | [gustavborestam](https://github.com/gustavborestam/)
+<img src="images/proff13.png" width="180"/> | [Erik](#erik-hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
+<img src="images/Gustav.jpg" width="180"/> | [Gustav](#gustav-börestam) | Börestam | 930804-8793 | [gustavborestam](https://github.com/gustavborestam/)
+<img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
 
 **TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
 gruppen sorterade i bokstavsordning.
@@ -51,32 +51,6 @@ När jag inte pluggar gillar jag att jobba på lite olika projekt, ofta olika ty
 - Mer kunskap i olika programmeringsspråk
 - Backend-design och olika metoder
 
-
--------------------------------------------------------------------------------------------------------------------------
-
-
-## Oscar Englöf
-
-### Okänd talang
-
-Jag gillar att träna vid sidan om.
-
-### Starka sidor
-
-Under projektet tror jag att jag kommer ha lättast att bidra med:
-
-- analys/design/specifikation
-- problemlösning och algoritmer
-- ledarskap
-- research (söka och sammanställa information)
-
-### Personlig utveckling
-
-Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
-sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
-
-- planering
-- samarbete i projekt
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -166,3 +140,30 @@ Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka 
 - Databaser och gemensamma resurser
 - Research
 - Realtidsuppdateringar
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+## Oscar Englöf
+
+### Okänd talang
+
+Jag gillar att träna vid sidan om.
+
+### Starka sidor
+
+Under projektet tror jag att jag kommer ha lättast att bidra med:
+
+- analys/design/specifikation
+- problemlösning och algoritmer
+- ledarskap
+- research (söka och sammanställa information)
+
+### Personlig utveckling
+
+Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
+sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
+
+- planering
+- samarbete i projekt
