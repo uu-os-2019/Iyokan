@@ -14,7 +14,7 @@ public abstract class Guid {
 
     /***
      * Creates a guid with the specified bytes
-     * @param bytes
+     * @param bytes bytes to use
      */
     public Guid(byte[] bytes) {
         if (bytes.length != 16) {
@@ -25,6 +25,11 @@ public abstract class Guid {
 
     public byte[] getBytes() {
         return bytes;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(bytes);
     }
 
     @Override

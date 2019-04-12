@@ -3,6 +3,7 @@ package com.iyokan.geocapserver;
 public class User {
     private final UserGuid id;
     private String name;
+    private Position position;
 
     public User(UserGuid id, String name) {
         this.id = id;
@@ -16,5 +17,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }
