@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
         mapView.delegate = self
         
-        mapView.register(ArtworkMarkerView.self,
+        mapView.register(PinsMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
 
 
@@ -66,6 +66,13 @@ class ViewController: UIViewController {
 
 }
 extension ViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "QuizSegue", sender: self)
+
+    }
+
     // 1
     /*
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

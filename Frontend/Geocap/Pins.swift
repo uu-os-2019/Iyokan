@@ -42,4 +42,9 @@ class Pin: NSObject, MKAnnotation {
     var subtitle: String? {
         return locationName
     }
+    var imageName: String? {
+        if discipline == "Sculpture" { return "Statue" }
+        return "Flag"
+    }
+
 }

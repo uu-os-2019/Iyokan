@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class ArtworkMarkerView: MKMarkerAnnotationView {
+class PinsMarkerView: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
             // 1
@@ -19,7 +19,13 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             // 2
             markerTintColor = pin.markerTintColor
-            glyphText = String(pin.discipline.first!)
+            //glyphText = String(pin.discipline.first!)
+            if let imageName = pin.imageName {
+                glyphImage = UIImage(named: imageName)
+            } else {
+                glyphImage = nil
+            }
+
         }
     }
 }
