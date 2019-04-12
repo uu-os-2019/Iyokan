@@ -22,4 +22,8 @@ public class PlayerCollection {
         return users.containsKey(id);
     }
 
+    public void removePlayer(UserGuid id) {
+        users.remove(id);
+    }
+
 }

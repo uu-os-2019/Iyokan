@@ -22,4 +22,12 @@ public class LocationCollection {
     public Location[] getAllLocations() {
         return locations.values().toArray(new Location[0]);
     }
+
+    public Location getLocation(String identifier) {
+        return locations.get(identifier);
+    }
+
+    public void addLocation(Location location) {
+        locations.put(location.identifier, location);
+    }
 }
