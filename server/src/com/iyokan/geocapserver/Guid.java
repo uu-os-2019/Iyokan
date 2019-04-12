@@ -14,7 +14,7 @@ public abstract class Guid {
 
     /***
      * Creates a guid with the specified bytes
-     * @param bytes
+     * @param bytes bytes to use
      */
     public Guid(byte[] bytes) {
         if (bytes.length != 16) {
@@ -23,8 +23,24 @@ public abstract class Guid {
         this.bytes = bytes;
     }
 
+    public Guid(String string) {
+        String s = string.replace("-", "");
+        bytes = new byte[16];
+
+        int len = s.length();
+        for (int i = 0; i < len; i += 2) {
+            bytes[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+    }
+
     public byte[] getBytes() {
         return bytes;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(bytes);
     }
 
     @Override

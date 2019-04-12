@@ -8,9 +8,13 @@ public class Main {
         final int port = 80;
         Highscore hs = new Highscore();
 
+        LocationCollection locations = new LocationCollection();
+        locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
+
         final Route[] routes = new Route[] {
                 new RouteTest(),
                 new RouteHighscore(hs)
+                new RouteLocationGetAll(locations)
         };
 
 
