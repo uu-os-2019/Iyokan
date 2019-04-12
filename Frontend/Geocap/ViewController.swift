@@ -63,6 +63,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // User Location Auth
+    let locationManager = CLLocationManager()
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            self.mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizationStatus()
+    }
 
 }
 extension ViewController: MKMapViewDelegate {
