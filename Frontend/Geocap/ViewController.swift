@@ -53,8 +53,8 @@ class ViewController: UIViewController {
     }
     let regionRadius: CLLocationDistance = 5000
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
-                                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
