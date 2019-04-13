@@ -13,9 +13,6 @@ GitHub använder går det bra att använda HTML istället. Till exempel går det
 använda en `<img src="..." width="180"/>` tag för att sätta bredden på en bild
 till `180` pixlar.
 
-**INFO:** Om ni inte vill bråka med syntaxen för tabeller i Markdown går det bra
- att byta ut hela tabellen mot en HTML-tabell.
-
 **INFO:** För att länka till en rubrik på formen `En rubrik med åäö` använd
 ankaret `#en-rubrik-med-åäö`.
 
