@@ -2,7 +2,7 @@
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
 
-**TODO:** sortera i bokstavsordning.
+**TODO:** sortera tabell och avsnitt i bokstavsordning när alla medlemmar är inlagda.
 
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
