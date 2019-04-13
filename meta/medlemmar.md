@@ -2,20 +2,6 @@
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
 
-**TODO:** Tag foton av alla medlemmar i gruppen. Varje foto skall tydligt visa
- personen framifrån från axlarna och uppåt. Spara bilderna i mappen
- `meta/images/`. Fyll sedan i tabellen nedan. Tabellen skall vara sorterad på
- förnamn. Fältet **Förnamn** skall länka till avsnittet med mer detaljer för
- respektive medlem. I tabellen skall alla bilder ha samma bredd.
-
-**INFO:** För sådant som inte går att uttrycka med den variant av Markdown som
-GitHub använder går det bra att använda HTML istället. Till exempel går det att
-använda en `<img src="..." width="180"/>` tag för att sätta bredden på en bild
-till `180` pixlar.
-
-**INFO:** För att länka till en rubrik på formen `En rubrik med åäö` använd
-ankaret `#en-rubrik-med-åäö`.
-
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | [Anton](#anton-bergåker) | Bergåker | 970225-5952 | [AntonBergaker](https://github.com/AntonBergaker/)
@@ -23,9 +9,6 @@ Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 <img src="images/proff13.png" width="180"/> | [Erik](#erik-hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
 <img src="images/Gustav.jpg" width="180"/> | [Gustav](#gustav-börestam) | Börestam | 930804-8793 | [gustavborestam](https://github.com/gustavborestam/)
 <img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
-
-**TODO:** Utgå från mallen nedan och skapa ett avsnitt för varje medlem i
-gruppen sorterade i bokstavsordning.
 
 ## Anton Bergåker
 
