@@ -18,6 +18,7 @@ class SpelaViewController: UIViewController {
         configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
+        
 
         // Do any additional setup after loading the view.
     }

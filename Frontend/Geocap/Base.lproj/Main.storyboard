@@ -25,8 +25,15 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ange användarnamn" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWt-s6-Ewe">
+                                <rect key="frame" x="97" y="278" width="176" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="0.84212698063380287" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iY7-kw-V5A">
-                                <rect key="frame" x="112" y="288" width="150" height="91"/>
+                                <rect key="frame" x="97" y="348" width="176" height="105"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
@@ -37,26 +44,20 @@
                                     <action selector="spelaButtonTapped:" destination="EsH-EB-OUH" eventType="touchUpInside" id="J2x-BV-usr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ange användarnamn" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWt-s6-Ewe">
-                                <rect key="frame" x="112" y="239" width="150" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gWt-s6-Ewe" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" id="3YD-Eg-34s"/>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="Yo0-Is-yKf" secondAttribute="bottom" constant="223.5" id="5fM-xz-SAW"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="Yo0-Is-yKf" secondAttribute="bottom" constant="283" id="5fM-xz-SAW"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="HsM-kO-ifK"/>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="112" id="Lok-LZ-md3"/>
-                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="288" id="WLH-Nm-WwN"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="97" id="Lok-LZ-md3"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="214" id="WLH-Nm-WwN"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="b2e-Ez-588"/>
-                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="113" id="l0a-6z-mOj"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="102" id="l0a-6z-mOj"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="top" secondItem="07l-Up-LcE" secondAttribute="top" id="m8l-P7-KHz"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="mqu-O3-aHm"/>
                             <constraint firstItem="gWt-s6-Ewe" firstAttribute="leading" secondItem="iY7-kw-V5A" secondAttribute="leading" id="nE0-pU-zoF"/>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="gWt-s6-Ewe" secondAttribute="bottom" constant="19" id="nq4-d4-8MX"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="gWt-s6-Ewe" secondAttribute="bottom" constant="40" id="nq4-d4-8MX"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="oSi-jv-hOD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="07l-Up-LcE"/>
