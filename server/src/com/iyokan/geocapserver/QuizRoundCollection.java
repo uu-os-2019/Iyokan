@@ -18,4 +18,8 @@ public class QuizRoundCollection {
         }
     }
 
+    public QuizRound getQuizRound(int index){
+        return quizRounds.get(index);
+    }
+
 }

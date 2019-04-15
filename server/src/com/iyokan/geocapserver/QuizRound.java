@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class QuizRound {
     private String question;
-    private ArrayList<String> alternatives;
+    private ArrayList<String> alternatives = new ArrayList<String>();
 
 
     public QuizRound(String question, ArrayList<String> alternatives){
@@ -18,7 +18,7 @@ public class QuizRound {
         return question;
     }
 
-    public ArrayList<String> getAlternative(){
+    public ArrayList<String> getAlternatives(){
         return alternatives;
     }
 
@@ -29,8 +29,8 @@ public class QuizRound {
         this.alternatives.add(object2.getString("alt2"));
         this.alternatives.add(object2.getString("alt3"));
         this.alternatives.add(object2.getString("alt4"));
-
     }
 
+    //TODO: boolean CheckAnswer(String){}
 
 }

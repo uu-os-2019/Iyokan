@@ -11,6 +11,11 @@ public class Main {
         LocationCollection locations = new LocationCollection();
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
+        QuizRoundCollection QuizRounds = new QuizRoundCollection();
+        QuizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
+
+        //System.out.println(QuizRounds.getQuizRound(0).getQuestion());
+        //System.out.println(QuizRounds.getQuizRound(0).getAlternatives());
 
         final Route[] routes = new Route[] {
                 new RouteTest(),
