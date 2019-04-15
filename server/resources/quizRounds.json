@@ -1,0 +1,10 @@
+[
+  {
+    "question": "När invigdes domkyrkan?",
+    "alternatives": {"alt1": "1400-talet","alt2": "1500-talet", "alt3": "1300-talet", "alt4": "1600-talet" }
+  },
+  {
+    "question": "Hur hög är domkyrkan?",
+    "alternatives": {"alt1": "119m","alt2": "87m", "alt3": "243m", "alt4": "126m" }
+  }
+]
