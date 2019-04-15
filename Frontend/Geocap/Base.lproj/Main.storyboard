@@ -40,14 +40,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="Yo0-Is-yKf" secondAttribute="bottom" constant="223.5" id="5fM-xz-SAW"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="HsM-kO-ifK"/>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="112" id="Lok-LZ-md3"/>
-                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="288" id="WLH-Nm-WwN"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="Yo0-Is-yKf" secondAttribute="bottom" constant="223.5" id="Xp2-Ew-LI1"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="b2e-Ez-588"/>
-                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="113" id="l0a-6z-mOj"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="112" id="bvW-Ls-SuT"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="113" id="gvz-eB-JoJ"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="top" secondItem="07l-Up-LcE" secondAttribute="top" id="m8l-P7-KHz"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="mqu-O3-aHm"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="288" id="oKi-xI-Ies"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="oSi-jv-hOD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="07l-Up-LcE"/>
@@ -201,6 +201,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YAH-5w-pfT"/>
+        <segue reference="X6b-sa-oxW"/>
     </inferredMetricsTieBreakers>
 </document>
