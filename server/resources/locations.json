@@ -1,8 +1,29 @@
 [
   {
     "identifier": "domkyrkan",
-    "name": "Domkyrkan",
-    "position": {"lat": 59.8581657, "lng": 17.6324993},
-    "owner": null
+    "name": "Uppsala Domkyrka",
+    "description": "Uppsala Domkyrka",
+    "position": {"lat": 59.8581, "lng": 17.634},
+    "owner": null,
+    "type": "church",
+    "radius": 200
+  },
+  {
+    "identifier": "ekeby",
+    "name": "Ekeby",
+    "description": "Ekebyvägen",
+    "position": {"lat": 59.84913, "lng": 17.6097114},
+    "owner": null,
+    "type": "volleyballfield",
+    "radius": 200
+  },
+  {
+    "identifier": "triangeln",
+    "name": "Triangeln",
+    "description": "Gräsmattan i triangeln",
+    "position": {"lat": 59.855115, "lng": 17.61795},
+    "owner": null,
+    "type": "area",
+    "radius": 200
   }
 ]

@@ -25,7 +25,6 @@ public class RouteLocationGetAll extends Route {
         }
 
         response.put("locations", array);
-
         return response;
     }
 
