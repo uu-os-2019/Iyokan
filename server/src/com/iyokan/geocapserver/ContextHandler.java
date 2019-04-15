@@ -17,11 +17,21 @@ public class ContextHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange t) throws IOException {
-        String response = route.handle(new RequestData(t)).toString();
+        String response = "";
+        int code = 200;
+        try {
+            response = route.handle(new RequestData(t)).toString();
+        } catch(Exception ex) {
+            System.out.println("Error inside route: " + route);
+            System.out.println(ex);
+            response = "Internal server error";
+            code = 500;
+        }
+        byte[] b = response.getBytes();
         t.getResponseHeaders().add("Content-Type", "application/json");
-        t.sendResponseHeaders(200, response.length());
+        t.sendResponseHeaders(code, b.length);
         OutputStream os = t.getResponseBody();
-        os.write(response.getBytes());
+        os.write(b);
         os.close();
     }
 }

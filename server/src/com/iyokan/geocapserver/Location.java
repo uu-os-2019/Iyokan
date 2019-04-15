@@ -6,17 +6,19 @@ public class Location {
     private Position position;
     public final String identifier;
     private String name;
+    private String description;
     private double radius;
     private UserGuid owner;
     private LocationType type;
 
-    public Location(Position position, String identifier, String name, UserGuid owner, double radius, LocationType type) {
+    public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius, LocationType type) {
         this.position = position;
         this.name = name;
         this.owner = owner;
         this.identifier = identifier;
         this.radius = radius;
         this.type = type;
+        this.description = description;
     }
 
     public Location(JSONObject object) {
@@ -30,15 +32,18 @@ public class Location {
         this.radius = object.getDouble("radius");
         this.type = LocationType.fromString( object.getString("type") );
         this.position = new Position(object.getJSONObject("position"));
+        this.description = object.getString("description");
     }
 
     public JSONObject getJson() {
         JSONObject json = new JSONObject();
         json.put("identifier", identifier);
         json.put("name", name);
+        json.put("description", description);
         json.put("type", type.getName());
         json.put("owner", owner == null ? null : owner.toString());
         json.put("position", position.getJson());
+        json.put("radius", radius);
         return json;
     }
 
