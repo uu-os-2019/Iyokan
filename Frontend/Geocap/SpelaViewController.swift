@@ -11,13 +11,37 @@ import UIKit
 class SpelaViewController: UIViewController {
 
     @IBOutlet weak var SpelaButton: UIButton!
+    @IBOutlet weak var NameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        
+        SpelaButton.alpha = 0.0
+        NameField.alpha = 0.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
+                self.NameField.alpha = 1.0
+        }, completion:nil)
+        
+        UIView.animate(withDuration: 2, animations: {
+            self.SpelaButton.alpha = 1.0
+            self.SpelaButton.center.y -= 60
+        }, completion:nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,8 +50,30 @@ class SpelaViewController: UIViewController {
     }
     
     @IBAction func spelaButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "SpelaSegue", sender: self)
-            }
+        let NameText = NameField.text
+        
+        if NameText!.isEmpty {
+            let myAlert = UIAlertController(title:"Alert",message:"Du måste skriva in ett användarnamn!",preferredStyle:UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title:"Okej",style:UIAlertActionStyle.cancel,handler: nil)
+            
+            myAlert.addAction(okAction)
+            
+            self.present(myAlert, animated:true,completion:nil)
+            
+            return
+        }
+        else {
+            
+            //Skicka användarnamn//
+            
+            performSegue(withIdentifier: "SpelaSegue", sender: self)
+        }
+    }
+    
+    private func configureTextFields(){
+        NameField.delegate = self
+    }
 
     /*
     // MARK: - Navigation
@@ -39,4 +85,11 @@ class SpelaViewController: UIViewController {
     }
     */
 
+}
+
+extension SpelaViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
