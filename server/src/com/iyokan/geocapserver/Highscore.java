@@ -40,20 +40,3 @@ public class Highscore {
         return crunchifyResult;
     }
 }
-
-
-class ValueComparator implements Comparator<UserGuid> {
-
-    Map<UserGuid, Integer> base;
-    public ValueComparator(Map<UserGuid, Integer> base) {
-        this.base = base;
-    }
-
-    public int compare(UserGuid a, UserGuid b) {
-        if (base.get(a) >= base.get(b)) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
-}
