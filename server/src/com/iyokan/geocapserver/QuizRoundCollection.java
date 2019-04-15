@@ -18,6 +18,7 @@ public class QuizRoundCollection {
         }
     }
 
+    // Lägg till exception handling
     public QuizRound getQuizRound(int index){
         return quizRounds.get(index);
     }

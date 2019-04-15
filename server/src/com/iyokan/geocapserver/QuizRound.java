@@ -31,6 +31,14 @@ public class QuizRound {
         this.alternatives.add(object2.getString("alt4"));
     }
 
-    //TODO: boolean CheckAnswer(String){}
+    public boolean CheckAnswer(String playerAnswer){
+        if (playerAnswer.equalsIgnoreCase(alternatives.get(0))){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 
 }

@@ -14,8 +14,15 @@ public class Main {
         QuizRoundCollection QuizRounds = new QuizRoundCollection();
         QuizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-        //System.out.println(QuizRounds.getQuizRound(0).getQuestion());
-        //System.out.println(QuizRounds.getQuizRound(0).getAlternatives());
+
+        /*
+        QuizRound QR = QuizRounds.getQuizRound(0);
+        int svarInd = 0;
+
+        System.out.println(QR.getQuestion());
+        System.out.println(QR.getAlternatives());
+        System.out.println(QR.CheckAnswer(QR.getAlternatives().get(svarInd)));
+         */
 
         final Route[] routes = new Route[] {
                 new RouteTest(),
