@@ -9,6 +9,11 @@ public class RouteTest extends Route {
         JSONObject response = new JSONObject();
         response.put("testy", "testy!");
         response.put("watusent", data.getJSON());
+
+        if (data.hasUser()) {
+            response.put("you are", data.getUser().getJson());
+        }
+
         return response;
     }
 

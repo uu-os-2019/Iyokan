@@ -65,13 +65,10 @@ public abstract class Guid {
                 str[index++] = '-';
             }
 
-            byte val = bytes[i];
+            String tmp = java.lang.String.format("%02x", bytes[i]);
 
-            byte val1 = (byte)(val >> 4);
-            byte val2 = (byte)(val & 0xF);
-
-            str[index++] = (char)((val1 > 9) ? ('A' + val1 - 10) : ('0' + val1));
-            str[index++] = (char)((val2 > 9) ? ('A' + val2 - 10) : ('0' + val2));
+            str[index++] = tmp.charAt(0);
+            str[index++] = tmp.charAt(1);
         }
 
         return new String(str);

@@ -11,7 +11,7 @@ public class Server {
 
     private HttpServer server;
 
-    public Server(int port, Route[] routes) {
+    public Server(int port, Route[] routes, SessionVault vault) {
 
         try {
             server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -22,7 +22,7 @@ public class Server {
         // Create a ContextHandler that will call upon the route when processed
         for (Route r : routes) {
             HttpContext context = server.createContext(r.getUrl());
-            context.setHandler(new ContextHandler(r));
+            context.setHandler(new ContextHandler(r, vault));
         }
     }
 
