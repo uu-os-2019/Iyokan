@@ -11,9 +11,11 @@ import UIKit
 class SpelaViewController: UIViewController {
 
     @IBOutlet weak var SpelaButton: UIButton!
+    @IBOutlet weak var NameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
 
@@ -26,8 +28,30 @@ class SpelaViewController: UIViewController {
     }
     
     @IBAction func spelaButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "SpelaSegue", sender: self)
-            }
+        let NameText = NameField.text
+        
+        if NameText!.isEmpty {
+            let myAlert = UIAlertController(title:"Alert",message:"Du måste skriva in ett användarnamn!",preferredStyle:UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title:"Okej",style:UIAlertActionStyle.cancel,handler: nil)
+            
+            myAlert.addAction(okAction)
+            
+            self.present(myAlert, animated:true,completion:nil)
+            
+            return
+        }
+        else {
+            
+            //Skicka användarnamn//
+            
+            performSegue(withIdentifier: "SpelaSegue", sender: self)
+        }
+    }
+    
+    private func configureTextFields(){
+        NameField.delegate = self
+    }
 
     /*
     // MARK: - Navigation
@@ -39,4 +63,11 @@ class SpelaViewController: UIViewController {
     }
     */
 
+}
+
+extension SpelaViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
