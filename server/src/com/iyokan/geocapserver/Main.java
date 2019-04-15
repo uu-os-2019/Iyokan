@@ -21,7 +21,6 @@ public class Main {
         Server server = new Server(port, routes);
 
         server.start();
-        System.out.println(hs.getHighscore(3));
 
     }
 }
