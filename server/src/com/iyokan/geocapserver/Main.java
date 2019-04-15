@@ -13,7 +13,7 @@ public class Main {
 
         final Route[] routes = new Route[] {
                 new RouteTest(),
-                new RouteHighscore(hs)
+                new RouteHighscore(hs),
                 new RouteLocationGetAll(locations)
         };
 

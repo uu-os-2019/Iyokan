@@ -31,8 +31,8 @@ public class Highscore {
         List<UserGuid> tops = tc.getTops(amount);*/
         SortedMap<Integer, UserGuid> myMap = new TreeMap<Integer, UserGuid>();
 
-        myMap.put(30, new UserGuid());
-        myMap.put(30, new UserGuid());
+        myMap.put(30, new UserGuid("0000000000000001"));
+        myMap.put(30, new UserGuid("0000000000000002"));
 
         TreeMap<Integer, UserGuid> myNewMap = myMap.entrySet().stream()
                 .limit(amount)
