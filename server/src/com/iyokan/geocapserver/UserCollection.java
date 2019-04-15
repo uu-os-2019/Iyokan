@@ -2,27 +2,27 @@ package com.iyokan.geocapserver;
 
 import java.util.HashMap;
 
-public class PlayerCollection {
+public class UserCollection {
     private HashMap<UserGuid, User> users;
 
 
-    public PlayerCollection() {
+    public UserCollection() {
         users = new HashMap<>();
     }
 
-    public void addPlayer(User user) {
+    public void addUser(User user) {
         users.put(user.getID(), user);
     }
 
-    public User getPlayer(UserGuid id) {
+    public User getUser(UserGuid id) {
         return users.get(id);
     }
 
-    public boolean hasPlayer(UserGuid id) {
+    public boolean hasUser(UserGuid id) {
         return users.containsKey(id);
     }
 
-    public void removePlayer(UserGuid id) {
+    public void removeUser(UserGuid id) {
         users.remove(id);
     }
 
