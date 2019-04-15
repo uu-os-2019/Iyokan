@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Highscore {
     private HashMap<UserGuid, Integer> highscore;
@@ -21,25 +22,21 @@ public class Highscore {
         }
     }
 
-    public TreeMap<Integer, UserGuid> getHighscore(int amount) {
-        /*TopsCollection<UserGuid> tc = new TopsCollection<>();
-        tc.add(12, new UserGuid());
-        tc.add(1, new UserGuid());
-        tc.add(7, new UserGuid());
-        tc.add(4, new UserGuid());
+    public Map<UserGuid, Integer> getHighscore(int amount) {
+        Map<UserGuid, Integer> value = crunchifySortByValue(this.highscore, amount);
 
-        List<UserGuid> tops = tc.getTops(amount);*/
-        SortedMap<Integer, UserGuid> myMap = new TreeMap<Integer, UserGuid>();
+        return value;
+    }
 
-        myMap.put(30, new UserGuid("0000000000000001"));
-        myMap.put(30, new UserGuid("0000000000000002"));
+    public static <K, V extends Comparable<? super V>> Map<K, V> crunchifySortByValue(Map<K, V> crunchifyMap, int amount) {
 
-        TreeMap<Integer, UserGuid> myNewMap = myMap.entrySet().stream()
-                .limit(amount)
-                .collect(TreeMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), Map::putAll);
+        Map<K, V> crunchifyResult = new LinkedHashMap<>();
+        Stream<Map.Entry<K, V>> sequentialStream = crunchifyMap.entrySet().stream();
 
-        return myNewMap;
+        // comparingByValue() returns a comparator that compares Map.Entry in natural order on value.
+        Comparator<Map.Entry<UserGuid, Integer>> cmp = Map.Entry.comparingByValue();
 
-
+        sequentialStream.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(amount).forEachOrdered(c -> crunchifyResult.put(c.getKey(), c.getValue()));
+        return crunchifyResult;
     }
 }
