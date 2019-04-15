@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set initial location in Honolulu
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
@@ -24,39 +23,18 @@ class ViewController: UIViewController {
         
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        let server = Server()
+        let locations = server.getLocations()
 
-
-        var pins = [Pin]()
-        
-        // show pins on map
-        let pin1 = Pin(title: "Uppsala domkyrka",
-                              locationName: "Uppsala domkyrka",
-                              discipline: "Kyrka",
-                              coordinate: CLLocationCoordinate2D(latitude: 59.8581, longitude: 17.634))
-        pins.append(pin1)
-        mapView.addAnnotation(pin1)
-        
-        let pin2 = Pin(title: "Ekeby",
-                       locationName: "Ekebyvägen",
-                       discipline: "Volleybollplan",
-                       coordinate: CLLocationCoordinate2D(latitude: 59.8491389, longitude: 17.6097114))
-        pins.append(pin2)
-        mapView.addAnnotation(pin2)
-        
-        let pin3 = Pin(title: "Triangeln",
-                       locationName: "Gräsmattan i triangeln",
-                       discipline: "Område",
-                       coordinate: CLLocationCoordinate2D(latitude: 59.855115 , longitude: 17.61795))
-        pins.append(pin3)
-        mapView.addAnnotation(pin3)
-        
-        // draw pin circles
         var overlayCircles = [MKCircle]()
-        for pin in pins {
-            let circle = MKCircle(center: pin.coordinate, radius: 200)
-            overlayCircles.append(circle)
-            _ = mapView(mapView, rendererFor: circle)
-        }
+        for location in locations {
+                let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
+                mapView.addAnnotation(Pin(title: location.identifier, locationName: location.identifier, discipline: "Område", coordinate: coordinate))
+                let circle = MKCircle(center: coordinate, radius: 200)
+                overlayCircles.append(circle)
+                _ = mapView(mapView, rendererFor: circle)
+            }
         mapView.addOverlays(overlayCircles)
     }
     
