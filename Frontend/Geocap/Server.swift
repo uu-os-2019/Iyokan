@@ -24,7 +24,6 @@ struct Position: Codable {
     let lng, lat: Double
 }
 
-
 class Server {
     
     private let url: String
@@ -37,32 +36,22 @@ class Server {
     }
     
     func getLocations() -> [Location] {
-        var locations: jsonLocations!
+        var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
         
         // Asynchronous function
         URLSession.shared.dataTask(with: urlObject) {(data, response, error) in
-        
             do {
-                locations = try JSONDecoder().decode(jsonLocations.self, from: data!)
-                print(locations.type)
-                for location in locations.locations {
-                    print(location.identifier)
-                    print(location.name)
-                    print("Lat: " + String(location.position.lat))
-                    print("Long: " + String(location.position.lng))
-                    semaphore.signal()
-                }
-                
+                locationsJSON = try JSONDecoder().decode(jsonLocations.self, from: data!)
+                semaphore.signal()
             } catch {
                 print("error in retrieving JSON locations")
             }
-            
-            }.resume()
+        }.resume()
         
         //TODO: Future optimisation could be to not have to wait for the server to fetch
         //      and let the map load meanwhile
         semaphore.wait()
-        return locations!.locations
+        return locationsJSON.locations
     }
 }
