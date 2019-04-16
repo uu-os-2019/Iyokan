@@ -18,7 +18,7 @@ class SpelaViewController: UIViewController {
         configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
-        
+        SpelaButton.center.y = 276
 
         // Do any additional setup after loading the view.
     }
@@ -33,13 +33,13 @@ class SpelaViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: 2, delay: 0.0, options: [], animations: {
                 self.NameField.alpha = 1.0
         }, completion:nil)
         
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 3, delay: 0.0, options: [], animations: {
             self.SpelaButton.alpha = 1.0
-            self.SpelaButton.center.y -= 60
+            
         }, completion:nil)
         
     }
@@ -86,6 +86,7 @@ class SpelaViewController: UIViewController {
     */
 
 }
+
 
 extension SpelaViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
