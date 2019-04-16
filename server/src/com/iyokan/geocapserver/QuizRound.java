@@ -1,5 +1,6 @@
 package com.iyokan.geocapserver;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 public class QuizRound {
     private String question;
     private ArrayList<String> alternatives = new ArrayList<String>();
-
 
     public QuizRound(String question, ArrayList<String> alternatives){
         this.question = question;
@@ -24,14 +24,13 @@ public class QuizRound {
 
     public QuizRound(JSONObject object){
         this.question  = object.getString("question");
-        JSONObject object2 = object.getJSONObject("alternatives");
-        this.alternatives.add(object2.getString("alt1"));
-        this.alternatives.add(object2.getString("alt2"));
-        this.alternatives.add(object2.getString("alt3"));
-        this.alternatives.add(object2.getString("alt4"));
+        JSONArray array = object.getJSONArray("alternatives");
+        for(int i = 0; i < array.length(); i++) {
+            this.alternatives.add(array.get(i).toString());
+        }
     }
 
-    public boolean CheckAnswer(String playerAnswer){
+    public boolean checkAnswer(String playerAnswer){
         if (playerAnswer.equalsIgnoreCase(alternatives.get(0))){
             return true;
         }

@@ -11,23 +11,16 @@ public class Main {
         LocationCollection locations = new LocationCollection();
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
-        QuizRoundCollection QuizRounds = new QuizRoundCollection();
-        QuizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
+        QuizRoundCollection quizRounds = new QuizRoundCollection();
+        quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
 
-        /*
-        QuizRound QR = QuizRounds.getQuizRound(0);
-        int svarInd = 0;
-
-        System.out.println(QR.getQuestion());
-        System.out.println(QR.getAlternatives());
-        System.out.println(QR.CheckAnswer(QR.getAlternatives().get(svarInd)));
-         */
 
         final Route[] routes = new Route[] {
                 new RouteTest(),
                 new RouteHighscore(hs),
-                new RouteLocationGetAll(locations)
+                new RouteLocationGetAll(locations),
+                new RouteQuizStart(quizRounds)
         };
 
 

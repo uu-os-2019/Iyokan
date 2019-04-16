@@ -17,6 +17,7 @@ public class QuizRoundCollection {
             quizRounds.add(quizRound);
         }
     }
+    public QuizRound[] getAllQuizRounds() {return quizRounds.toArray(new QuizRound[0]);}
 
     // Lägg till exception handling
     public QuizRound getQuizRound(int index){
