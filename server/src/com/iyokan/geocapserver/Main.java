@@ -20,7 +20,8 @@ public class Main {
                 new RouteTest(),
                 new RouteHighscore(hs),
                 new RouteLocationGetAll(locations),
-                new RouteQuizStart(quizRounds)
+                new RouteQuizStart(quizRounds),
+                new RouteQuizAnswer(quizRounds)
         };
 
 

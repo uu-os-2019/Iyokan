@@ -7,5 +7,14 @@
   {
     "question": "Hur hög är domkyrkan?",
     "alternatives": ["119m", "87m", "243m", "126m" ]
+  },
+  {
+    "question": "När grundades Uppsala universitet?",
+    "alternatives": ["1477", "1743","1871", "1152" ]
+
+  },
+  {
+    "question": "Hur många bor i Uppsala kommun",
+    "alternatives": ["225 000", "150 000", "310 000", "565 000" ]
   }
 ]
