@@ -27,11 +27,11 @@ class Pin: NSObject, MKAnnotation {
     // markerTintColor for disciplines: Sculpture, Plaque, Mural, Monument, other
     var markerTintColor: UIColor  {
         switch discipline {
-        case "Kyrka":
+        case "area":
             return .red
-        case "Volleybollplan":
+        case "volleyballfield":
             return .cyan
-        case "Område":
+        case "church":
             return .blue
         default:
             return .green

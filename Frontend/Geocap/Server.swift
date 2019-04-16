@@ -14,13 +14,16 @@ struct jsonLocations: Codable {
 }
 
 struct Location: Codable {
-    let identifier, name: String
+    let identifier, name, description: String
     let position: Position
+    let type: String
+    let radius: Int
 }
 
 struct Position: Codable {
     let lng, lat: Double
 }
+
 
 class Server {
     
@@ -28,7 +31,8 @@ class Server {
     private let urlObject: URL
     
     init() {
-        url = "http://130.243.213.150/location/get-all"
+        // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
+        url = "http://130.243.215.200/location/get-all"
         urlObject = URL(string: url)!
     }
     
