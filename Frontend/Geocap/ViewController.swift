@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import CoreLocation
 
 class ViewController: UIViewController {
 
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         var overlayCircles = [MKCircle]()
         for location in locations {
                 let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-                mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate))
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate, radius: CLLocationDistance(location.radius)))
             
             let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
                 overlayCircles.append(circle)
@@ -80,6 +80,18 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        performSegue(withIdentifier: "QuizSegue", sender: self)
+        
+        let annotationLocation = CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)
+        let userLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
+        let distance = annotationLocation.distance(from: userLocation)
+        
+        let pin = view.annotation as! Pin
+        if (distance <= pin.radius) {
+            performSegue(withIdentifier: "QuizSegue", sender: self)
+        } else {
+            let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
 }
