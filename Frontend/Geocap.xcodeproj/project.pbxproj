@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036D66242265FDCD009D6FC6 /* globepic.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D66232265FDCC009D6FC6 /* globepic.png */; };
 		43F82CAE22647E2A0043EBAA /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F82CAD22647E2A0043EBAA /* Server.swift */; };
 		F0401995225F5A3C007B0C75 /* PinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0401994225F5A3C007B0C75 /* PinsView.swift */; };
 		F04D5162225CD7A500A32DBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5161225CD7A500A32DBD /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		036D66232265FDCC009D6FC6 /* globepic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globepic.png; sourceTree = "<group>"; };
 		43F82CAD22647E2A0043EBAA /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		F0401994225F5A3C007B0C75 /* PinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsView.swift; sourceTree = "<group>"; };
 		F04D515E225CD7A500A32DBD /* Geocap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geocap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				F04D5168225CD7B300A32DBD /* Assets.xcassets */,
 				F04D516A225CD7B300A32DBD /* LaunchScreen.storyboard */,
 				F04D516D225CD7B300A32DBD /* Info.plist */,
+				036D66232265FDCC009D6FC6 /* globepic.png */,
 			);
 			path = Geocap;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036D66242265FDCD009D6FC6 /* globepic.png in Resources */,
 				F04D516C225CD7B300A32DBD /* LaunchScreen.storyboard in Resources */,
 				F04D5169225CD7B300A32DBD /* Assets.xcassets in Resources */,
 				F04D5167225CD7A500A32DBD /* Main.storyboard in Resources */,
@@ -471,13 +475,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 934788YR3T;
+				DEVELOPMENT_TEAM = DZGJ9SPL88;
 				INFOPLIST_FILE = Geocap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angeria.Geocap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erik.Geocap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -489,13 +493,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 934788YR3T;
+				DEVELOPMENT_TEAM = DZGJ9SPL88;
 				INFOPLIST_FILE = Geocap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angeria.Geocap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erik.Geocap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
