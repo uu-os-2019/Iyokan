@@ -59,7 +59,10 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
     }
-
+    @IBAction func LeaderboardButton(_ sender: Any) {
+        performSegue(withIdentifier: "LeaderboardSegue", sender: self)
+    }
+    
 }
 extension ViewController: MKMapViewDelegate {
     
@@ -71,6 +74,13 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "QuizSegue", sender: self)
+    }
+
+    
     
     // 1
     /*
