@@ -16,7 +16,10 @@ class LeaderboardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func TillbakaButtonLeaderboard(_ sender: Any) {
+        performSegue(withIdentifier: "LeaderboardToMapSegue", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
