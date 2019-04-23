@@ -78,9 +78,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-Yb-RfM">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-Yb-RfM">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sM7-df-nHk">
                                 <rect key="frame" x="0.0" y="20" width="375" height="36"/>
@@ -111,9 +110,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="20J-Qx-riS"/>
                             <constraint firstItem="sM7-df-nHk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="43I-u7-XnR"/>
                             <constraint firstItem="sM7-df-nHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4hu-W4-lww"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sM7-df-nHk" secondAttribute="trailing" id="NZN-J2-Gy1"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bny-ZE-6BE"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fyS-BI-xkt"/>
+                            <constraint firstItem="O8l-Yb-RfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pyg-Wh-imt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
