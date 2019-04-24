@@ -24,7 +24,7 @@ public class Main {
                 new RouteHighscore(hs),
                 new RouteLocationGetAll(locations),
                 new RouteRegister(users, sessions),
-                new RouteQuizStart(quizRounds),
+                new RouteQuizStart(quizRounds, locations),
                 new RouteQuizAnswer(quizRounds)
         };
 
