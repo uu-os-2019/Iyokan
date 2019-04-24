@@ -14,6 +14,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    var server = Server()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +28,6 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        let server = Server()
         let locations = server.getLocations()
 
         // generate locations on the map

@@ -8,15 +8,28 @@
 
 import UIKit
 
-class QuizPageViewController: UIViewController {
+class QuizPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
 
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func TillbakaButtonQuiz(_ sender: Any) {
+    
+    @IBAction func QuizToMap(_ sender: Any) {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
     }
     
