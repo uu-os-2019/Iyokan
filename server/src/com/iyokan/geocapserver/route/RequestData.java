@@ -11,10 +11,13 @@ import java.util.HashMap;
  */
 public class RequestData {
     private JSONObject json;
+    private String getRequest;
 
     public RequestData(HttpExchange exchangeData) {
+
         try {
             JSONTokener tokener = new JSONTokener(exchangeData.getRequestBody());
+            this.getRequest = exchangeData.getRequestURI().getQuery();
             json = new JSONObject(tokener);
         } catch (Exception ex) {
             json = null;
@@ -32,5 +35,9 @@ public class RequestData {
      */
     public void getUser() {
         /// TODO returns a user
+    }
+
+    public String getRequest(){
+        return getRequest;
     }
 }
