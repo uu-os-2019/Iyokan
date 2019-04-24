@@ -21,10 +21,19 @@ public class RouteRegister extends Route {
     public JSONObject handle(RequestData data) {
         JSONObject json = data.getJSON();
 
-        String username = json.getString("username");
+        if (json == null) {
+
+        }
+
 
         JSONObject obj = new JSONObject();
         obj.put("type", "register");
+
+        String username = "";
+
+        if (json != null) {
+            username = json.getString("username");
+        }
 
         if (username.isEmpty()) {
             obj.put("success", false);
