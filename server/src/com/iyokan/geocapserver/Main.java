@@ -11,21 +11,24 @@ public class Main {
         LocationCollection locations = new LocationCollection();
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
+        UserCollection users = new UserCollection();
+
+        SessionVault sessions = new SessionVault();
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
 
 
-        final Route[] routes = new Route[] {
+        final Route[] routes = new Route[]{
                 new RouteTest(),
                 new RouteHighscore(hs),
                 new RouteLocationGetAll(locations),
+                new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds),
                 new RouteQuizAnswer(quizRounds)
         };
 
-
-        Server server = new Server(port, routes);
+        Server server = new Server(port, routes, sessions);
 
         server.start();
 
