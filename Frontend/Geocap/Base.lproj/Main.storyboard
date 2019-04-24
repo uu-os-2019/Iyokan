@@ -50,10 +50,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="top" secondItem="07l-Up-LcE" secondAttribute="top" id="0Ig-ve-vKz"/>
-                            <constraint firstItem="iY7-kw-V5A" firstAttribute="centerX" secondItem="Yo0-Is-yKf" secondAttribute="centerX" id="BW6-7w-gO9"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" constant="102.5" id="AHH-ZC-qXE"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="218" id="CE3-r3-J7C"/>
                             <constraint firstItem="iY7-kw-V5A" firstAttribute="trailing" secondItem="gWt-s6-Ewe" secondAttribute="trailing" id="Dsz-uY-xcX"/>
                             <constraint firstItem="iY7-kw-V5A" firstAttribute="leading" secondItem="gWt-s6-Ewe" secondAttribute="leading" id="Pi6-GC-Hon"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="RBm-CS-jkJ"/>
+                            <constraint firstItem="07l-Up-LcE" firstAttribute="trailing" secondItem="iY7-kw-V5A" secondAttribute="trailing" constant="102.5" id="VQy-I8-xQA"/>
+                            <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="gWt-s6-Ewe" secondAttribute="bottom" constant="25" id="WiU-lW-ZBs"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="leading" secondItem="07l-Up-LcE" secondAttribute="leading" id="XJg-iw-nsM"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="aDJ-oc-Wsp"/>
+                            <constraint firstItem="Yo0-Is-yKf" firstAttribute="top" secondItem="07l-Up-LcE" secondAttribute="top" id="leF-uP-Rnv"/>
                             <constraint firstItem="Yo0-Is-yKf" firstAttribute="trailing" secondItem="07l-Up-LcE" secondAttribute="trailing" id="nYN-Yx-jbG"/>
                             <constraint firstItem="iY7-kw-V5A" firstAttribute="top" secondItem="gWt-s6-Ewe" secondAttribute="bottom" constant="25" id="pBU-VO-nUB"/>
                             <constraint firstItem="07l-Up-LcE" firstAttribute="bottom" secondItem="iY7-kw-V5A" secondAttribute="bottom" constant="218" id="qPF-ZS-wYa"/>
