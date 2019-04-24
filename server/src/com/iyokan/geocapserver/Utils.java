@@ -16,4 +16,13 @@ public class Utils {
     public static UserGuid generateUserGuid() {
         return new UserGuid(generateBytes(16));
     }
+
+    public static <T> boolean arrayContains(T[] array, T value) {
+        for (T val : array) {
+            if (value.equals(val)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
