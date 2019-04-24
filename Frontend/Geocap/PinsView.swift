@@ -24,7 +24,6 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             
             let button = UIButton(type: .system)
             button.setTitle("Ta över", for: .normal)
-            button.s
             button.tintColor = .white
             button.backgroundColor = .red
             
