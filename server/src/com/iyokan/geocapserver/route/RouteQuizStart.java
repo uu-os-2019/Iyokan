@@ -30,6 +30,7 @@ public class RouteQuizStart extends Route {
                 success = true;
             } else {
                 success = false;
+                response.put("reason", "Couldn't find location");
             }
         }
 
