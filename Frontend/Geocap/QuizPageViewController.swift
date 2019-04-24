@@ -8,7 +8,8 @@
 
 import UIKit
 
-class QuizPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class QuizPageViewController: UIViewController, UITableViewDelegate/*, UITableViewDataSource*/ {
+    /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         <#code#>
     }
@@ -16,6 +17,7 @@ class QuizPageViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         <#code#>
     }
+ */
     
 
     @IBOutlet weak var tableview: UITableView!
@@ -28,10 +30,10 @@ class QuizPageViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
     }
     
-    
     @IBAction func QuizToMap(_ sender: Any) {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
     }
+    
     
     /*
     // MARK: - Navigation
