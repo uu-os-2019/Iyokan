@@ -17,10 +17,14 @@ public class QuizSession {
         }
 
         public void end() {
-            timeStarted = System.currentTimeMillis();
+            answered = true;
+            timeEnded = System.currentTimeMillis();
         }
 
         public long getDuration() {
+            if (answered == false) {
+                throw new RuntimeException("Can't get duration before question has ended");
+            }
             return timeEnded - timeStarted;
         }
     }
@@ -60,14 +64,14 @@ public class QuizSession {
         // If correct answer increase the score
         if (instance.quiz.checkAnswer(answer)) {
             correct = true;
-            long normalizedTime = instance.getDuration() / 10000;
+            double normalizedTime = instance.getDuration() / 10000D;
             score += 1000 - normalizedTime * 500 ;
         }
 
         // Increments the question we're at
         questionIndex ++;
 
-        // Starts the next question
+        // Starts the next question if it's available
         if (isDone() == false) {
             rounds[questionIndex].start();
         }
