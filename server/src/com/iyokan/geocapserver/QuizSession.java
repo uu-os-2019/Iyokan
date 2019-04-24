@@ -46,6 +46,7 @@ public class QuizSession {
 
         score = 0;
         questionIndex = 0;
+        rounds[0].start();
     }
 
     public QuizRound getQuestion() {

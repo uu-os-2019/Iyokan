@@ -2,6 +2,7 @@ package com.iyokan.geocapserver.route;
 
 import com.iyokan.geocapserver.QuizRound;
 import com.iyokan.geocapserver.QuizRoundCollection;
+import com.iyokan.geocapserver.QuizSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,28 +21,23 @@ public class RouteQuizAnswer extends Route {
         JSONObject json = data.getJSON();
 
         JSONObject response = new JSONObject();
+        boolean success = true;
 
         response.put("type", "quiz_answer");
         String request = data.getRequest();
 
-        String question = json.getString("question");
         String answer = json.getString("answer");
 
-        //Hittar rätt quizRound i collections och kontrollerar spelar svaret och sätter bool i JSON
-        QuizRound[] quizRounds = quizRoundCollection.getAllQuizRounds();
-        QuizRound QR = null;
-        for(QuizRound quizRound: quizRounds){
-            if(quizRound.getQuestion().equals(question)){
-                QR = quizRound;
-                break;
-            }
-        }
-        if (QR != null){
-            boolean correct = QR.checkAnswer(answer);
-            response.put("correct", correct);
+        QuizSession quizSession = data.getUser().getQuizSession();
+        response.put("type", "quiz_answer");
+        response.put("success", success);
+        response.put("correct", quizSession.answer(answer));
+        response.put("points", quizSession.getScore());
+
+        if(quizSession.isDone() == false) {
+            response.put("new_question", quizSession.getQuestion().getQuestion());
         } else {
-            System.out.println("Error: question does not exist");
-            response.put("correct", false);
+            response.put("new_question", JSONObject.NULL);
         }
 
         return response;
