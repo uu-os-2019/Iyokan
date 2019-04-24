@@ -8,11 +8,12 @@
 
 import UIKit
 import MapKit
-
+import CoreLocation
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +28,13 @@ class ViewController: UIViewController {
         let server = Server()
         let locations = server.getLocations()
 
+        // generate locations on the map
         var overlayCircles = [MKCircle]()
         for location in locations {
                 let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-                mapView.addAnnotation(Pin(title: location.identifier, locationName: location.identifier, discipline: "Område", coordinate: coordinate))
-                let circle = MKCircle(center: coordinate, radius: 200)
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate, radius: CLLocationDistance(location.radius)))
+            
+            let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
                 overlayCircles.append(circle)
                 _ = mapView(mapView, rendererFor: circle)
             }
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    // User Location Auth 
+    // User Location Auth.
     let locationManager = CLLocationManager()
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -59,7 +62,10 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
     }
-
+    @IBAction func LeaderboardButton(_ sender: Any) {
+        performSegue(withIdentifier: "LeaderboardSegue", sender: self)
+    }
+    
 }
 extension ViewController: MKMapViewDelegate {
     
@@ -71,30 +77,21 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
-    
-    // 1
-    /*
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        // 2
-        guard let annotation = annotation as? Pin   else { return nil }
-        // 3
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        // 4
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        
+        let annotationLocation = CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)
+        let userLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
+        let distance = annotationLocation.distance(from: userLocation)
+        
+        let pin = view.annotation as! Pin
+        if (distance <= pin.radius) {
+            performSegue(withIdentifier: "QuizSegue", sender: self)
         } else {
-            // 5
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
-        return view
     }
- */
 }
-
-

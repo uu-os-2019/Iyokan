@@ -14,12 +14,14 @@ class Pin: NSObject, MKAnnotation {
     let locationName: String
     let discipline: String
     let coordinate: CLLocationCoordinate2D
+    let radius: CLLocationDistance
     
-    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
         self.title = title
         self.locationName = locationName
         self.discipline = discipline
         self.coordinate = coordinate
+        self.radius = radius
         
         super.init()
     }
@@ -27,18 +29,17 @@ class Pin: NSObject, MKAnnotation {
     // markerTintColor for disciplines: Sculpture, Plaque, Mural, Monument, other
     var markerTintColor: UIColor  {
         switch discipline {
-        case "Kyrka":
+        case "area":
             return .red
-        case "Volleybollplan":
+        case "volleyballfield":
             return .cyan
-        case "Område":
+        case "church":
             return .blue
         default:
             return .green
         }
     }
 
-    
     var subtitle: String? {
         return locationName
     }

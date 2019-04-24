@@ -14,8 +14,10 @@ struct jsonLocations: Codable {
 }
 
 struct Location: Codable {
-    let identifier, name: String
+    let identifier, name, description: String
     let position: Position
+    let type: String
+    let radius: Int
 }
 
 struct Position: Codable {
@@ -28,37 +30,28 @@ class Server {
     private let urlObject: URL
     
     init() {
-        url = "http://130.243.213.150/location/get-all"
+        // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
+        url = "http://130.243.215.200/location/get-all"
         urlObject = URL(string: url)!
     }
     
     func getLocations() -> [Location] {
-        var locations: jsonLocations!
+        var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
         
         // Asynchronous function
         URLSession.shared.dataTask(with: urlObject) {(data, response, error) in
-        
             do {
-                locations = try JSONDecoder().decode(jsonLocations.self, from: data!)
-                print(locations.type)
-                for location in locations.locations {
-                    print(location.identifier)
-                    print(location.name)
-                    print("Lat: " + String(location.position.lat))
-                    print("Long: " + String(location.position.lng))
-                    semaphore.signal()
-                }
-                
+                locationsJSON = try JSONDecoder().decode(jsonLocations.self, from: data!)
+                semaphore.signal()
             } catch {
                 print("error in retrieving JSON locations")
             }
-            
-            }.resume()
+        }.resume()
         
         //TODO: Future optimisation could be to not have to wait for the server to fetch
         //      and let the map load meanwhile
         semaphore.wait()
-        return locations!.locations
+        return locationsJSON.locations
     }
 }

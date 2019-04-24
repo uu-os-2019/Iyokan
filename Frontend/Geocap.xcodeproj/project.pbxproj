@@ -19,6 +19,8 @@
 		F04D5182225CD7B500A32DBD /* GeocapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5181225CD7B500A32DBD /* GeocapUITests.swift */; };
 		F04D5190225CDF2000A32DBD /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D518F225CDF2000A32DBD /* Pins.swift */; };
 		F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5191225D091300A32DBD /* SpelaViewController.swift */; };
+		F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91632265D43A003574EC /* QuizPageViewController.swift */; };
+		F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91652265D62A003574EC /* LeaderboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		F04D5183225CD7B500A32DBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F04D518F225CDF2000A32DBD /* Pins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
 		F04D5191225D091300A32DBD /* SpelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpelaViewController.swift; sourceTree = "<group>"; };
+		F0EB91632265D43A003574EC /* QuizPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageViewController.swift; sourceTree = "<group>"; };
+		F0EB91652265D62A003574EC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 				F04D518F225CDF2000A32DBD /* Pins.swift */,
 				F0401994225F5A3C007B0C75 /* PinsView.swift */,
 				F04D5165225CD7A500A32DBD /* Main.storyboard */,
+				F0EB91652265D62A003574EC /* LeaderboardViewController.swift */,
+				F0EB91632265D43A003574EC /* QuizPageViewController.swift */,
 				F04D5168225CD7B300A32DBD /* Assets.xcassets */,
 				F04D516A225CD7B300A32DBD /* LaunchScreen.storyboard */,
 				F04D516D225CD7B300A32DBD /* Info.plist */,
@@ -294,6 +300,8 @@
 				F04D5190225CDF2000A32DBD /* Pins.swift in Sources */,
 				43F82CAE22647E2A0043EBAA /* Server.swift in Sources */,
 				F0401995225F5A3C007B0C75 /* PinsView.swift in Sources */,
+				F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */,
+				F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
