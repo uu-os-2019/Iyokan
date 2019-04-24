@@ -33,11 +33,11 @@ class SpelaViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 2, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
                 self.NameField.alpha = 1.0
         }, completion:nil)
         
-        UIView.animate(withDuration: 3, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
             self.SpelaButton.alpha = 1.0
             
         }, completion:nil)
