@@ -1,5 +1,7 @@
 package com.iyokan.geocapserver;
 
+import org.json.JSONObject;
+
 public class User {
     private final UserGuid id;
     private String name;
@@ -13,6 +15,14 @@ public class User {
 
     public UserGuid getID() {
         return id;
+    }
+
+    public JSONObject getJson() {
+        JSONObject obj = new JSONObject();
+        obj.put("id", id.toString());
+        obj.put("name", name);
+
+        return obj;
     }
 
     public String getName() {

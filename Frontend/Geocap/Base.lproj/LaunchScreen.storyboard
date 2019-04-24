@@ -18,26 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globepic.png" translatesAutoresizingMaskIntoConstraints="NO" id="e2a-4u-GH8">
-                                <rect key="frame" x="119" y="186" width="139" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="9hA-eD-SP1"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GeoCap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wj6-cB-yV3">
                                 <rect key="frame" x="74" y="333" width="228" height="73"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="61"/>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.84271777849740936" green="0.11938341041527596" blue="0.0011914756705586702" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GeoCapIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="e2a-4u-GH8">
+                                <rect key="frame" x="99" y="177" width="176" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="9hA-eD-SP1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wj6-cB-yV3" firstAttribute="top" secondItem="e2a-4u-GH8" secondAttribute="bottom" constant="41" id="7k9-CA-7Jc"/>
-                            <constraint firstItem="e2a-4u-GH8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="166" id="fgB-rd-LRc"/>
-                            <constraint firstItem="wj6-cB-yV3" firstAttribute="centerX" secondItem="e2a-4u-GH8" secondAttribute="centerX" id="jSa-Pv-You"/>
+                            <constraint firstItem="wj6-cB-yV3" firstAttribute="top" secondItem="e2a-4u-GH8" secondAttribute="bottom" constant="26" id="7k9-CA-7Jc"/>
+                            <constraint firstItem="e2a-4u-GH8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="157" id="fgB-rd-LRc"/>
+                            <constraint firstItem="wj6-cB-yV3" firstAttribute="centerX" secondItem="e2a-4u-GH8" secondAttribute="centerX" constant="1" id="jSa-Pv-You"/>
                             <constraint firstItem="wj6-cB-yV3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lJu-oW-wtL"/>
-                            <constraint firstItem="e2a-4u-GH8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="mok-Qb-gEW"/>
+                            <constraint firstItem="e2a-4u-GH8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="mok-Qb-gEW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -48,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="globepic.png" width="512" height="512"/>
+        <image name="GeoCapIcon.png" width="800" height="600"/>
     </resources>
 </document>
