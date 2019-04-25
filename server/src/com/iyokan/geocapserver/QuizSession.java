@@ -72,8 +72,9 @@ public class QuizSession {
         // If correct answer increase the score
         if (instance.quiz.checkAnswer(answer)) {
             correct = true;
-            double normalizedTime = Utils.clamp(instance.getDuration() / 10000D, 0, 1);
-            score += 1000 - normalizedTime * 500 ;
+            // Removed because time shouldn't tie into score
+            //double normalizedTime = Utils.clamp(instance.getDuration() / 10000D, 0, 1);
+            score += 1000;
         }
 
         // Increments the question we're at
