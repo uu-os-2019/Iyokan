@@ -21,7 +21,7 @@ public class Main {
 
         final Route[] routes = new Route[]{
                 new RouteTest(),
-                new RouteHighscore(hs),
+                new RouteHighscore(hs, users),
                 new RouteLocationGetAll(locations),
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),

@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver.route;
 
 import com.iyokan.geocapserver.Highscore;
+import com.iyokan.geocapserver.UserCollection;
 import com.iyokan.geocapserver.UserGuid;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,8 +11,10 @@ import java.util.Map;
 
 public class RouteHighscore extends Route {
     Highscore highscore;
+    UserCollection users;
 
-    public RouteHighscore(Highscore highscore) {
+    public RouteHighscore(Highscore highscore, UserCollection users) {
+        this.users = users;
         this.highscore = highscore;
     }
 
@@ -23,7 +26,8 @@ public class RouteHighscore extends Route {
 
         for (Map.Entry<UserGuid, Integer> entry : hashHighscore.entrySet()) {
             JSONObject response2 = new JSONObject();
-            response2.put("guid", entry.getKey().toString());
+            String name = users.getUser(entry.getKey()).getName();
+            response2.put("name", name);
             response2.put("points", entry.getValue());
             array.put(response2);
         }

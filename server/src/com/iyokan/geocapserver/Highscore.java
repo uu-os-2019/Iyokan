@@ -11,12 +11,7 @@ public class Highscore {
     }
 
     public void updateHighscore(UserGuid guid, Integer score) {
-        int temp_score = 0;
-        if(highscore.get(guid) != null) {
-            temp_score = highscore.get(guid);
-        }
-
-        this.highscore.put(guid, score + temp_score);
+        this.highscore.put(guid, score);
     }
 
     public Integer getUserHighscore(UserGuid guid) {
