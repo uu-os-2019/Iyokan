@@ -25,10 +25,11 @@ public class RouteQuizStart extends Route {
         JSONArray array = new JSONArray();
 
         if(json != null) {
-            String location = json.getString("location");
-            if(locationCollection.getLocation(location) != null) {
+            String locationID = json.getString("location");
+            Location location = locationCollection.getLocation(locationID);
+            if(location != null) {
                 success = true;
-                QuizSession quizSession = new QuizSession(quizRoundCollection, locationCollection.getLocation(location), data.getUser().getID());
+                QuizSession quizSession = new QuizSession(quizRoundCollection, location);
                 data.getUser().setQuizSession(quizSession);
 
                 QuizRound quizRound = quizSession.getQuestion();

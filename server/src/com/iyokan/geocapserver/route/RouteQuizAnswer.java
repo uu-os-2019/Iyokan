@@ -1,15 +1,10 @@
 package com.iyokan.geocapserver.route;
 
-import com.iyokan.geocapserver.QuizRound;
-import com.iyokan.geocapserver.QuizRoundCollection;
-import com.iyokan.geocapserver.QuizSession;
+import com.iyokan.geocapserver.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RouteQuizAnswer extends Route {
     QuizRoundCollection quizRoundCollection;
@@ -26,27 +21,44 @@ public class RouteQuizAnswer extends Route {
         response.put("type", "quiz_answer");
         String request = data.getRequest();
 
-        String answer = json.getString("answer");
+        User me = data.getUser();
 
-        QuizSession quizSession = data.getUser().getQuizSession();
         response.put("type", "quiz_answer");
-        response.put("success", success);
+        if (me == null) {
+            response.put("success", false);
+            response.put("reason", "no user");
+
+            return response;
+        }
+
+        String answer = json.getString("answer");
+        QuizSession quizSession = me.getQuizSession();
+
+        if (quizSession == null) {
+            response.put("success", false);
+            response.put("reason", "no active quiz");
+
+            return response;
+        }
+
+        response.put("success", true);
         response.put("correct", quizSession.answer(answer));
-        response.put("points", quizSession.getScore());
+
+        int score = quizSession.getScore();
+        response.put("points", score);
 
         if(quizSession.isDone() == false) {
             response.put("new_question", quizSession.getQuestion().getQuestion());
             response.put("new_alternatives", quizSession.getQuestion().getAlternatives());
         } else {
             response.put("new_question", JSONObject.NULL);
-            if(!quizSession.getLocation().hasOwner()) {
+            response.put("new_alternatives", JSONObject.NULL);
+            Location location = quizSession.getLocation();
+
+            if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", "true");
-                quizSession.getLocation().setScore(quizSession.getScore());
-                quizSession.getLocation().setOwner(quizSession.getUser());
-            } else if(quizSession.getLocation().getScore() < quizSession.getScore()) {
-                response.put("successful_takeover", "true");
-                quizSession.getLocation().setScore(quizSession.getScore());
-                quizSession.getLocation().setOwner(quizSession.getUser());
+                quizSession.getLocation().setOwner(me.getID(), score);
+
             } else {
                 response.put("successful_takeover", "false");
             }

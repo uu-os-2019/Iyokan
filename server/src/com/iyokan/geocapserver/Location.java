@@ -53,8 +53,9 @@ public class Location {
         this.score = score;
     }
 
-    public void setOwner(UserGuid owner) {
+    public void setOwner(UserGuid owner, int newScore) {
         this.owner = owner;
+        this.score = newScore;
     }
 
     public int getScore() {
