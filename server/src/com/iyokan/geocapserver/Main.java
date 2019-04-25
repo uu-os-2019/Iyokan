@@ -17,6 +17,8 @@ public class Main {
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
+        // Put a temporary token in the vault
+        sessions.insert("OsthyvelOsthyvelOsthyvelOsthyvel", new User(Utils.generateUserGuid(), "Testa fiesta"));
 
 
         final Route[] routes = new Route[]{

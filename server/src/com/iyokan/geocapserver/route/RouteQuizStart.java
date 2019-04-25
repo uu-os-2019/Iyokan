@@ -19,30 +19,39 @@ public class RouteQuizStart extends Route {
     public JSONObject handle(RequestData data) {
         JSONObject response = new JSONObject();
         JSONObject json = data.getJSON();
-        boolean success = false;
 
         response.put("type", "quiz_start");
-        JSONArray array = new JSONArray();
 
-        if(json != null) {
-            String locationID = json.getString("location");
-            Location location = locationCollection.getLocation(locationID);
-            if(location != null) {
-                success = true;
-                QuizSession quizSession = new QuizSession(quizRoundCollection, location);
-                data.getUser().setQuizSession(quizSession);
-
-                QuizRound quizRound = quizSession.getQuestion();
-
-                response.put("question", quizRound.getQuestion());
-                response.put("alternatives", quizRound.getAlternatives());
-            } else {
-                success = false;
-                response.put("reason", "Couldn't find location");
-            }
+        if (data.getUser() == null) {
+            response.put("success", false);
+            response.put("reason", "no user for token");
+            return response;
         }
 
-        response.put("success", success);
+        if (json == null) {
+            response.put("success", false);
+            response.put("reason", "Couldn't find location");
+            return response;
+        }
+
+        String locationID = json.getString("location");
+        Location location = locationCollection.getLocation(locationID);
+
+        if (location == null) {
+            response.put("reason", "Couldn't find location");
+        }
+
+
+
+        QuizSession quizSession = new QuizSession(quizRoundCollection, location);
+        data.getUser().setQuizSession(quizSession);
+
+        QuizRound quizRound = quizSession.getQuestion();
+
+        response.put("success", true);
+        response.put("question", quizRound.getQuestion());
+        response.put("alternatives", quizRound.getAlternatives());
+
 
         return response;
     }
