@@ -31,34 +31,18 @@ struct Quiz: Codable {
     let type: String
 }
 
-struct QuizAnswer: Codable {
-    let newAlternatives: [String]
-    let correct, success: Bool
-    let type: String
-    let points: Int
-    let newQuestion: String
-    
-    enum CodingKeys: String, CodingKey {
-        case newAlternatives = "new_alternatives"
-        case correct, success, type, points
-        case newQuestion = "new_question"
-    }
-}
-
-
-
 class Server {
     
-    private let url: String
-    private let urlObject: URL
+    
     
     init() {
         // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
-        url = "http://130.243.233.148/location/get-all"
-        urlObject = URL(string: url)!
+       
     }
     
     func getLocations() -> [Location] {
+        let url = "http://localhost/location/get-all"
+        let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
         
@@ -78,5 +62,41 @@ class Server {
         return locationsJSON.locations
     }
     
-    func getQuiz() ->
+    func getQuiz() -> Quiz? {
+        var quiz: Quiz!
+        let url = URL(string: "http://localhost/quiz/start")!
+        var request = URLRequest(url: url)
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let location = ["location": "domkyrkan"]
+        
+        let json = try? JSONSerialization.data(withJSONObject: location, options: [])
+        request.httpBody = json
+            
+       
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                quiz = try JSONDecoder().decode(Quiz.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz")
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+        if(!quiz.success) {
+            print("Invalid user")
+            return nil
+        }
+        print(quiz)
+        return quiz
+    }
 }
