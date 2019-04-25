@@ -43,7 +43,7 @@ public class Location {
         json.put("name", name);
         json.put("description", description);
         json.put("type", type.getName());
-        json.put("owner", owner == null ? null : owner.toString());
+        json.put("owner", owner == null ? JSONObject.NULL : owner.toString());
         json.put("position", position.getJson());
         json.put("radius", radius);
         return json;
