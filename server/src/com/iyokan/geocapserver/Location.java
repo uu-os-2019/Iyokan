@@ -10,6 +10,7 @@ public class Location {
     private double radius;
     private UserGuid owner;
     private LocationType type;
+    private int score;
 
     public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius, LocationType type) {
         this.position = position;
@@ -19,6 +20,7 @@ public class Location {
         this.radius = radius;
         this.type = type;
         this.description = description;
+        this.score = 0;
     }
 
     public Location(JSONObject object) {
@@ -45,6 +47,18 @@ public class Location {
         json.put("position", position.getJson());
         json.put("radius", radius);
         return json;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setOwner(UserGuid owner) {
+        this.owner = owner;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public Position getPosition() {

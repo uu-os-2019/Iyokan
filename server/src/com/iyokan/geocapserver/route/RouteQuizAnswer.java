@@ -36,13 +36,25 @@ public class RouteQuizAnswer extends Route {
 
         if(quizSession.isDone() == false) {
             response.put("new_question", quizSession.getQuestion().getQuestion());
+            response.put("new_alternatives", quizSession.getQuestion().getAlternatives());
         } else {
             response.put("new_question", JSONObject.NULL);
+            if(!quizSession.getLocation().hasOwner()) {
+                response.put("successful_takeover", "true");
+                quizSession.getLocation().setScore(quizSession.getScore());
+                quizSession.getLocation().setOwner(quizSession.getUser());
+            } else if(quizSession.getLocation().getScore() < quizSession.getScore()) {
+                response.put("successful_takeover", "true");
+                quizSession.getLocation().setScore(quizSession.getScore());
+                quizSession.getLocation().setOwner(quizSession.getUser());
+            } else {
+                response.put("successful_takeover", "false");
+            }
         }
 
         return response;
     }
 
     @Override
-    public String getUrl() { return "/quiz/get-answer";}
+    public String getUrl() { return "/quiz/answer";}
 }

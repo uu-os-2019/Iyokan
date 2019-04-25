@@ -28,7 +28,7 @@ public class RouteQuizStart extends Route {
             String location = json.getString("location");
             if(locationCollection.getLocation(location) != null) {
                 success = true;
-                QuizSession quizSession = new QuizSession(quizRoundCollection);
+                QuizSession quizSession = new QuizSession(quizRoundCollection, locationCollection.getLocation(location), data.getUser().getID());
                 data.getUser().setQuizSession(quizSession);
 
                 QuizRound quizRound = quizSession.getQuestion();
@@ -47,5 +47,5 @@ public class RouteQuizStart extends Route {
     }
 
     @Override
-    public String getUrl(){ return "/quiz/get-round";}
+    public String getUrl(){ return "/quiz/start";}
 }

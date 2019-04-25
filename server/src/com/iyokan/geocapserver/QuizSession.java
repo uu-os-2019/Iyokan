@@ -34,9 +34,13 @@ public class QuizSession {
     private QuizInstance[] rounds;
     private int score;
     private int questionIndex;
+    private Location location;
+    private UserGuid user;
 
-    public QuizSession(QuizRoundCollection collection) {
+    public QuizSession(QuizRoundCollection collection, Location location, UserGuid user) {
         rounds = new QuizInstance[quizQuestionCount];
+        this.location = location;
+        this.user = user;
 
         QuizRound[] quizzes = collection.getRandomQuizRounds(quizQuestionCount);
 
@@ -47,6 +51,14 @@ public class QuizSession {
         score = 0;
         questionIndex = 0;
         rounds[0].start();
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public UserGuid getUser() {
+        return user;
     }
 
     public QuizRound getQuestion() {
