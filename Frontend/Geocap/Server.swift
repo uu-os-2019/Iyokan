@@ -24,6 +24,29 @@ struct Position: Codable {
     let lng, lat: Double
 }
 
+struct Quiz: Codable {
+    let question: String
+    let success: Bool
+    let alternatives: [String]
+    let type: String
+}
+
+struct QuizAnswer: Codable {
+    let newAlternatives: [String]
+    let correct, success: Bool
+    let type: String
+    let points: Int
+    let newQuestion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case newAlternatives = "new_alternatives"
+        case correct, success, type, points
+        case newQuestion = "new_question"
+    }
+}
+
+
+
 class Server {
     
     private let url: String
@@ -54,4 +77,6 @@ class Server {
         semaphore.wait()
         return locationsJSON.locations
     }
+    
+    func getQuiz() ->
 }
