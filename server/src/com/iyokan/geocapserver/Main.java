@@ -25,7 +25,7 @@ public class Main {
                 new RouteLocationGetAll(locations),
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),
-                new RouteQuizAnswer(quizRounds)
+                new RouteQuizAnswer(quizRounds, hs)
         };
 
         Server server = new Server(port, routes, sessions);

@@ -8,8 +8,12 @@ import java.util.*;
 
 public class RouteQuizAnswer extends Route {
     QuizRoundCollection quizRoundCollection;
+    Highscore hs;
 
-    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection){this.quizRoundCollection = quizRoundCollection;}
+    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, Highscore hs){
+        this.quizRoundCollection = quizRoundCollection;
+        this.hs = hs;
+    }
 
 
     public JSONObject handle(RequestData data) {
@@ -56,11 +60,12 @@ public class RouteQuizAnswer extends Route {
             Location location = quizSession.getLocation();
 
             if(location.hasOwner() == false || location.getScore() <= score) {
-                response.put("successful_takeover", "true");
+                response.put("successful_takeover", true);
+                hs.updateHighscore(me.getID(), score);
                 quizSession.getLocation().setOwner(me.getID(), score);
 
             } else {
-                response.put("successful_takeover", "false");
+                response.put("successful_takeover", false);
             }
         }
 
