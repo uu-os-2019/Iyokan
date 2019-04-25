@@ -34,9 +34,11 @@ public class QuizSession {
     private QuizInstance[] rounds;
     private int score;
     private int questionIndex;
+    private Location location;
 
-    public QuizSession(QuizRoundCollection collection) {
+    public QuizSession(QuizRoundCollection collection, Location location) {
         rounds = new QuizInstance[quizQuestionCount];
+        this.location = location;
 
         QuizRound[] quizzes = collection.getRandomQuizRounds(quizQuestionCount);
 
@@ -46,7 +48,13 @@ public class QuizSession {
 
         score = 0;
         questionIndex = 0;
+        rounds[0].start();
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
 
     public QuizRound getQuestion() {
         return rounds[questionIndex].quiz;
@@ -64,8 +72,9 @@ public class QuizSession {
         // If correct answer increase the score
         if (instance.quiz.checkAnswer(answer)) {
             correct = true;
-            double normalizedTime = instance.getDuration() / 10000D;
-            score += 1000 - normalizedTime * 500 ;
+            // Removed because time shouldn't tie into score
+            //double normalizedTime = Utils.clamp(instance.getDuration() / 10000D, 0, 1);
+            score += 1000;
         }
 
         // Increments the question we're at
