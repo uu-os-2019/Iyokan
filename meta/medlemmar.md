@@ -2,8 +2,6 @@
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
 
-**TODO:** sortera tabell och avsnitt i bokstavsordning när alla medlemmar är inlagda.
-
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | [Anton](#anton-bergåker) | Bergåker | 970225-5952 | [AntonBergaker](https://github.com/AntonBergaker/)
