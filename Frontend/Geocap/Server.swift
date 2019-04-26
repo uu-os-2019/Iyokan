@@ -31,7 +31,7 @@ class Server {
     
     init() {
         // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
-        url = "http://130.243.233.148/location/get-all"
+        url = "http://localhost/location/get-all"
         urlObject = URL(string: url)!
     }
     
