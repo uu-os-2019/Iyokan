@@ -2,6 +2,8 @@ package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.route.*;
 
+import javax.xml.crypto.Data;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,6 +18,8 @@ public class Main {
         SessionVault sessions = new SessionVault();
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
+
+        Database database = new Database();
 
         var testa = new User(Utils.generateUserGuid(), "Testa fiesta");
         // Put a temporary token in the vault
