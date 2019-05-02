@@ -274,7 +274,7 @@
                                     <action selector="LeaderboardToMap:" destination="JAb-Cx-39D" eventType="touchUpInside" id="hyQ-OA-4bn"/>
                                     <action selector="TillbakaButton:" destination="JAb-Cx-39D" eventType="touchUpInside" id="VFw-8k-coE"/>
                                     <action selector="TillbakaToLeaderboard:" destination="JAb-Cx-39D" eventType="touchUpInside" id="3La-dE-0Mi"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="Sqj-Ij-cYG"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="Sqj-Ij-cYG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Namn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9u-21-Jhx">
