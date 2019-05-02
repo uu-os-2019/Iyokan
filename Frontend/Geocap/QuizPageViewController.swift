@@ -9,16 +9,80 @@
 import UIKit
 
 class QuizPageViewController: UIViewController {
+   
+    
 
+
+    @IBOutlet weak var question: UILabel!
+    
+    @IBOutlet weak var alternative1: UIButton!
+    
+    @IBOutlet weak var alternative2: UIButton!
+    
+    @IBOutlet weak var alternative3: UIButton!
+    
+    @IBOutlet weak var alternative4: UIButton!
+    
+    
+    let quiz = server.getQuiz()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.question.text = quiz?.question
+        
+        self.alternative1.setTitle(quiz?.alternatives[0], for: .normal)
+        
+        self.alternative2.setTitle(quiz?.alternatives[1], for: .normal)
+        
+        self.alternative3.setTitle(quiz?.alternatives[2], for: .normal)
+        
+        self.alternative4.setTitle(quiz?.alternatives[3], for: .normal)
+        
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func TillbakaButtonQuiz(_ sender: Any) {
+    
+    @IBAction func alternative1(_ sender: Any) {
+        let answer = quiz?.alternatives[0]
+        let correct = server.sendQuizAnswer(answer: answer!)
+        if(correct) {
+            self.alternative1.backgroundColor = UIColor.green
+        }
+    }
+    
+    @IBAction func alternative2(_ sender: Any) {
+        let answer = quiz?.alternatives[1]
+        let correct = server.sendQuizAnswer(answer: answer!)
+        if(correct) {
+            self.alternative1.backgroundColor = UIColor.green
+        }
+        
+    }
+    @IBAction func alternative3(_ sender: Any) {
+        let answer = quiz?.alternatives[2]
+        let correct = server.sendQuizAnswer(answer: answer!)
+        if(correct) {
+            self.alternative1.backgroundColor = UIColor.green
+        }
+    }
+    
+    @IBAction func alternative4(_ sender: Any) {
+        let answer = quiz?.alternatives[3]
+        let correct = server.sendQuizAnswer(answer: answer!)
+        if(correct) {
+            self.alternative1.backgroundColor = UIColor.green
+        }
+    }
+    
+    
+ 
+    
+    @IBAction func QuizToMap(_ sender: Any) {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
     }
+    
     
     /*
     // MARK: - Navigation

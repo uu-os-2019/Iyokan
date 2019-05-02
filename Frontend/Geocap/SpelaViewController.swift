@@ -18,30 +18,8 @@ class SpelaViewController: UIViewController {
         configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
-        SpelaButton.center.y = 276
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool){
-        super.viewWillAppear(animated)
-        
-        SpelaButton.alpha = 0.0
-        NameField.alpha = 0.0
-    }
-    
-    override func viewDidAppear(_ animated: Bool){
-        super.viewDidAppear(animated)
-        
-        UIView.animate(withDuration: 2, delay: 0.0, options: [], animations: {
-                self.NameField.alpha = 1.0
-        }, completion:nil)
-        
-        UIView.animate(withDuration: 3, delay: 0.0, options: [], animations: {
-            self.SpelaButton.alpha = 1.0
-            
-        }, completion:nil)
-        
     }
 
     override func didReceiveMemoryWarning() {

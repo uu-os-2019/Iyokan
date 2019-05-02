@@ -10,12 +10,17 @@ import UIKit
 import MapKit
 import CoreLocation
 
+var server = Server()
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
@@ -25,7 +30,6 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        let server = Server()
         let locations = server.getLocations()
 
         // generate locations on the map
@@ -80,13 +84,14 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
+        let quiz = server.getQuiz()
         
         let annotationLocation = CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)
         let userLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
         let distance = annotationLocation.distance(from: userLocation)
         
         let pin = view.annotation as! Pin
-        if (distance <= pin.radius) {
+        if (distance >= pin.radius) {
             performSegue(withIdentifier: "QuizSegue", sender: self)
         } else {
             let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
