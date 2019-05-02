@@ -110,7 +110,7 @@ class Server {
         var quizAnswer: QuizAnswer!
         let url = URL(string: "http://localhost/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue(answer, forHTTPHeaderField: "Authorization")
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
