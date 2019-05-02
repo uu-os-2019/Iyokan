@@ -31,6 +31,14 @@ struct Quiz: Codable {
     let type: String
 }
 
+struct QuizAnswer: Codable {
+    let newAlternatives: [String]
+    let correct, success: Bool
+    let type: String
+    let points: Int
+    let newQuestion: String
+
+}
 class Server {
     
     
@@ -72,8 +80,6 @@ class Server {
         
         let json = try? JSONSerialization.data(withJSONObject: location, options: [])
         request.httpBody = json
-            
-       
         
         
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -99,4 +105,41 @@ class Server {
         print(quiz)
         return quiz
     }
+    
+    func sendQuizAnswer(answer: String) -> Bool {
+        var quizAnswer: QuizAnswer!
+        let url = URL(string: "http://localhost/quiz/answer")!
+        var request = URLRequest(url: url)
+        request.addValue(answer, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let answer = ["answer": answer]
+        
+        let json = try? JSONSerialization.data(withJSONObject: answer, options: [])
+        request.httpBody = json
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                quizAnswer = try JSONDecoder().decode(QuizAnswer.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz answer")
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+        if(!quizAnswer.success) {
+            print("Invalid user")
+            return false
+        }
+        print(quizAnswer)
+        return quizAnswer.correct
+    }
+    
 }

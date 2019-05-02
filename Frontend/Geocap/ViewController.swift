@@ -10,12 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
+var server = Server()
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    
-    var server = Server()
     
     
     override func viewDidLoad() {
@@ -91,7 +91,7 @@ extension ViewController: MKMapViewDelegate {
         let distance = annotationLocation.distance(from: userLocation)
         
         let pin = view.annotation as! Pin
-        if (distance <= pin.radius) {
+        if (distance >= pin.radius) {
             performSegue(withIdentifier: "QuizSegue", sender: self)
         } else {
             let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
