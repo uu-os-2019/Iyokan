@@ -53,15 +53,15 @@ class QuizPageViewController: UIViewController {
     }
     
     @IBAction func alternative2(_ sender: Any) {
-        let answer = quiz?.alternatives[0]
-        //let correct = server.sendQuizAnswer(answer: answer!)
+        let answer = quiz?.alternatives[1]
+        let correct = server.sendQuizAnswer(answer: answer!)
         if(correct) {
             self.alternative1.backgroundColor = UIColor.green
         }
         
     }
     @IBAction func alternative3(_ sender: Any) {
-        let answer = quiz?.alternatives[0]
+        let answer = quiz?.alternatives[2]
         let correct = server.sendQuizAnswer(answer: answer!)
         if(correct) {
             self.alternative1.backgroundColor = UIColor.green
@@ -69,7 +69,7 @@ class QuizPageViewController: UIViewController {
     }
     
     @IBAction func alternative4(_ sender: Any) {
-        let answer = quiz?.alternatives[0]
+        let answer = quiz?.alternatives[3]
         let correct = server.sendQuizAnswer(answer: answer!)
         if(correct) {
             self.alternative1.backgroundColor = UIColor.green
