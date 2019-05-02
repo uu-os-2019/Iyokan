@@ -21,8 +21,8 @@ class QuizSessionTest {
         QuizSession quizSession = new QuizSession(quizRounds, locations.getLocation("domkyrkan"));
 
         assertNotNull(quizSession.getQuestion());
-        assert(locations.getLocation("domkyrkan").equals(quizSession.getLocation()));
-        assert(quizSession.getScore() == 0);
+        assertEquals(locations.getLocation("domkyrkan"), quizSession.getLocation());
+        assertEquals(quizSession.getScore(), 0);
 
         String old_question = quizSession.getQuestion().getQuestion();
         QuizRound[] list_quiz = quizRounds.getAllQuizRounds();
@@ -39,7 +39,7 @@ class QuizSessionTest {
         assertTrue(quizSession.answer(answer_str));
 
         //new question
-        assert(!old_question.equals(quizSession.getQuestion().getQuestion()));
+        assertNotEquals(old_question, quizSession.getQuestion().getQuestion());
         assertFalse(quizSession.isDone());
 
         assertFalse(quizSession.answer(answer_str));
@@ -49,7 +49,7 @@ class QuizSessionTest {
         assertFalse(quizSession.answer(answer_str));
         assertTrue(quizSession.isDone());
 
-        assert(quizSession.getScore() > 0);
+        assertTrue(quizSession.getScore() > 0);
 
 
 

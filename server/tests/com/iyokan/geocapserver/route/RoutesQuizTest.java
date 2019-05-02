@@ -1,7 +1,6 @@
 package com.iyokan.geocapserver;
 
-import com.iyokan.geocapserver.FileReader;
-import com.iyokan.geocapserver.LocationCollection;
+import com.iyokan.geocapserver.*;
 import com.iyokan.geocapserver.route.*;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -34,14 +33,15 @@ class RoutesQuizTest {
 
         // /quiz/start without location
         JSONObject response = route.handle(data);
-        assert(response.get("reason").equals("no user for token"));
+        assertEquals(response.get("reason"), "no user for token");
 
         // /quiz/start with working location
         JSONObject working = new JSONObject();
         working.put("location", "domkyrkan");
         RequestData data2 = new RequestData(working,  testa);
         response = route.handle(data2);
-        assert(response.get("success").equals(true));
+        assertTrue(response.getBoolean("success"));
+
         String question = response.get("question").toString();
         String answer_str = "";
 
@@ -59,16 +59,16 @@ class RoutesQuizTest {
         answer.put("answer", answer_str);
         data = new RequestData(answer, testa);
         response = route_answer.handle(data);
-        assert(response.get("correct").equals(true));
-        assert(!response.get("new_question").equals(JSONObject.NULL));
+        assertTrue(response.getBoolean("correct"));
+        assertNotEquals(response.get("new_question"), JSONObject.NULL);
 
         // quiz/answer with wrong answer
         JSONObject answer2 = new JSONObject();
         answer2.put("answer", "wrong_answer");
         data = new RequestData(answer2, testa);
         response = route_answer.handle(data);
-        assert(response.get("correct").equals(false));
-        assert(!response.get("new_question").equals(JSONObject.NULL));
+        assertFalse(response.getBoolean("correct"));
+        assertNotEquals(response.get("new_question"), JSONObject.NULL);
 
 
         // quiz/answer with wrong answer, no more question
@@ -76,15 +76,15 @@ class RoutesQuizTest {
         answer3.put("answer", "wrong_answer");
         data = new RequestData(answer3, testa);
         response = route_answer.handle(data);
-        assert(response.get("correct").equals(false));
-        assert(response.get("new_question").equals(JSONObject.NULL));
+        assertFalse(response.getBoolean("correct"));
+        assertEquals(response.get("new_question"), JSONObject.NULL);
 
         // quiz/answer with no session
         JSONObject answer4 = new JSONObject();
         answer4.put("answer", "wrong_answer");
         data = new RequestData(answer4, testa);
         response = route_answer.handle(data);
-        assert(response.get("success").equals(false));
+        assertFalse(response.getBoolean("success"));
 
 
 
