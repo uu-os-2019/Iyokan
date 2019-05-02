@@ -2,14 +2,13 @@
 
 Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala universitet.
 
-**TODO:** sortera tabell och avsnitt i bokstavsordning när alla medlemmar är inlagda.
-
 Bild | Förnamn | Efternamn | Personnummer | Användarnamn (GitHub)
 -----------------------------------------|-----------------------------|-----------|--------------|----------------------
 <img src="images/anton.png" width="180"/> | [Anton](#anton-bergåker) | Bergåker | 970225-5952 | [AntonBergaker](https://github.com/AntonBergaker/)
 <img src="images/benjamin.png" width="180"/> | [Benjamin](#benjamin-angeria) | Angeria | 960802-8693 | [angeria](https://github.com/angeria/)
 <img src="images/proff13.png" width="180"/> | [Erik](#erik-hellström) | Hellström | 950919-2978 | [Erkanerk](https://github.com/erkanerk/)
 <img src="images/Gustav.jpg" width="180"/> | [Gustav](#gustav-börestam) | Börestam | 930804-8793 | [gustavborestam](https://github.com/gustavborestam/)
+<img src="images/Odd.jpeg" width="180"/> | [Odd](#odd-jensen) | Jensen | 950505-0378 | [Skygfisk](https://github.com/Skygfisk/)
 <img src="images/IMG_5250.jpg" width="180"/> | [Oscar](#oscar-englöf) | Englöf | 960428-4795 | [ralfkatt](https://github.com/ralfkatt/)
 <img src="images/joakim.png" width="180"/> | [Joakim](#joakim-michalak) | Michalak | 980917-0336 | [joakimmich](https://github.com/joakimmich/)
 
@@ -127,6 +126,31 @@ Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka 
 
 -------------------------------------------------------------------------------------------------------------------------
 
+## Odd Jensen
+
+### Okänd talang
+
+Har erfarenhet av speldesing och analys, 
+
+### Starka sidor
+Under projektet tror jag att jag kommer ha lättast att bidra med:
+
+- C/imperativ programering
+- specificering av problem
+- Nya vinklar på problem
+
+### Personlig utveckling
+
+Under projektet hoppas jag förutom att bli ännu bättre på mina redan starka
+sidor även ges möjlighet att utveckla följande färdigheter, till exempel:
+
+- JAVA/objekorienterad programering
+- server-client programering
+- Databaser
+- arbeta med kod jag inte skrivit själv
+
+
+-------------------------------------------------------------------------------------------------------------------------
 
 ## Oscar Englöf
 

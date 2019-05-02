@@ -46,6 +46,7 @@ class Server {
     init() {
         // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
        
+
     }
     
     func getLocations() -> [Location] {

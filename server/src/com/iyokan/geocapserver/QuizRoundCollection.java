@@ -46,6 +46,7 @@ public class QuizRoundCollection {
             } while (Utils.arrayContains(selectedIndexes, newIndex));
 
             selectedIndexes[i] = newIndex;
+            rounds[i] = quizRounds.get(newIndex);
         }
 
         return rounds;
