@@ -26,6 +26,18 @@ public class User {
         return obj;
     }
 
+    public int getScore(LocationCollection allLocations) {
+        int playerScore = 0;
+        Location[] allLocationArray = allLocations.getAllLocations();
+
+        for (Location i : allLocationArray) {
+            if (i.hasOwner() && this.id.equals(i.getOwner())) {
+                playerScore += i.getScore();
+            }
+        }
+        return playerScore;
+    }
+
     public String getName() {
         return name;
     }
