@@ -25,8 +25,6 @@ class QuizPageViewController: UIViewController {
     
     @IBOutlet weak var nextQuestion: UIButton!
     
-    @IBOutlet weak var succesButton: UIButton!
-    
     let quiz = server.getQuiz()
     
     var quizAnswer: QuizAnswer!
@@ -41,9 +39,6 @@ class QuizPageViewController: UIViewController {
         self.question.text = quiz?.question
         
         self.nextQuestion.isHidden = true
-        
-        self.succesButton.isHidden = true
-        self.succesButton.backgroundColor = UIColor.cyan
         
         self.alternative1.setTitle(quiz?.alternatives[0], for: .normal)
         
@@ -73,7 +68,7 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
                 if(lastQuizAnswer.successfulTakeover) {
-                    self.succesButton.isHidden = false
+                    print("takeover successful")
                 }
             }
             else {
