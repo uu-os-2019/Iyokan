@@ -38,8 +38,29 @@ struct QuizAnswer: Codable {
     let type: String
     let points: Int
     let newQuestion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case newAlternatives = "new_alternatives"
+        case correct, success, type, points
+        case newQuestion = "new_question"
+    }
 
 }
+
+struct LastQuizAnswer: Codable {
+    let correct, success: Bool
+    let type: String
+    let points: Int
+    let newQuestion: String?
+    let successfulTakeover: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case correct, success, type, points
+        case newQuestion = "new_question"
+        case successfulTakeover = "successful_takeover"
+    }
+}
+
 class Server {
     
     init() {
@@ -103,11 +124,11 @@ class Server {
         return quiz
     }
     
-    func sendQuizAnswer(answer: String) -> Bool {
+    func sendQuizAnswer(answer: String) -> QuizAnswer? {
         var quizAnswer: QuizAnswer!
         let url = URL(string: "http://130.243.234.130/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue(answer, forHTTPHeaderField: "Authorization")
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
@@ -133,10 +154,48 @@ class Server {
         semaphore.wait()
         if(!quizAnswer.success) {
             print("Invalid user")
-            return false
+            return nil
         }
+        
         print(quizAnswer)
-        return quizAnswer.correct
+        return quizAnswer
     }
+    func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
+        var lastQuizAnswer: LastQuizAnswer!
+        let url = URL(string: "http://localhost/quiz/answer")!
+        var request = URLRequest(url: url)
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let answer = ["answer": answer]
+        
+        let json = try? JSONSerialization.data(withJSONObject: answer, options: [])
+        request.httpBody = json
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                lastQuizAnswer = try JSONDecoder().decode(LastQuizAnswer.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz answer")
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+        if(!lastQuizAnswer.success) {
+            print("Invalid user")
+            return nil
+        }
+        
+        print(lastQuizAnswer)
+        return lastQuizAnswer
+    }
+    
     
 }
