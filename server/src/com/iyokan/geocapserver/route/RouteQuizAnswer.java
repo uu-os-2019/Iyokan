@@ -60,6 +60,8 @@ public class RouteQuizAnswer extends Route {
             response.put("new_question", JSONObject.NULL);
             response.put("new_alternatives", JSONObject.NULL);
             Location location = quizSession.getLocation();
+            me.setQuizSession(null);
+
 
             if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", true);
