@@ -13,9 +13,11 @@ public class SessionVault {
         users = new HashMap<>();
         this.database = database;
 
-        // Add initial users from database
-        for (DatabaseSessionData session : database.getSessions()) {
-            users.put(session.token, collection.getUser(session.guid));
+        if (database != null) {
+            // Add initial users from database
+            for (DatabaseSessionData session : database.getSessions()) {
+                users.put(session.token, collection.getUser(session.guid));
+            }
         }
     }
 

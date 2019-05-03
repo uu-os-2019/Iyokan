@@ -14,9 +14,11 @@ public class UserCollection {
         users = new HashMap<>();
         this.database = database;
 
-        // Add initial users from database
-        for (DatabaseUserData user : database.getUsers()) {
-            users.put(user.id, new User(user.id, user.name));
+        if (database != null) {
+            // Add initial users from database
+            for (DatabaseUserData user : database.getUsers()) {
+                users.put(user.id, new User(user.id, user.name));
+            }
         }
     }
 

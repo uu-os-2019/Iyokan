@@ -22,14 +22,16 @@ public class LocationCollection {
             locations.put(location.identifier, location);
         }
 
-        // Get the necessary data from the database
-        DatabaseLocationData[] locationsData = database.getLocations();
+        if (database != null) {
+            // Get the necessary data from the database
+            DatabaseLocationData[] locationsData = database.getLocations();
 
-        for (DatabaseLocationData locationData : locationsData) {
-            // Get the saved location
-            Location location = locations.get(locationData.identifier);
-            if (location != null) {
-                location.setOwner(locationData.owner, locationData.score);
+            for (DatabaseLocationData locationData : locationsData) {
+                // Get the saved location
+                Location location = locations.get(locationData.identifier);
+                if (location != null) {
+                    location.setOwner(locationData.owner, locationData.score);
+                }
             }
         }
     }
@@ -47,6 +49,8 @@ public class LocationCollection {
     }
 
     public void updateLocation(Location location) {
-        database.updateLocation(location);
+        if (database != null) {
+            database.updateLocation(location);
+        }
     }
 }
