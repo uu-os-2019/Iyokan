@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         var overlayCircles = [MKCircle]()
         for location in locations {
                 let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate, radius: CLLocationDistance(location.radius)))
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
             
             let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
                 overlayCircles.append(circle)
@@ -84,8 +84,7 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        let quiz = server.getQuiz()
-        
+    
         let annotationLocation = CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)
         let userLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
         let distance = annotationLocation.distance(from: userLocation)
