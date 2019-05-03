@@ -9,16 +9,14 @@ public class Location {
     private String description;
     private double radius;
     private UserGuid owner;
-    private LocationType type;
     private int score;
 
-    public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius, LocationType type) {
+    public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius) {
         this.position = position;
         this.name = name;
         this.owner = owner;
         this.identifier = identifier;
         this.radius = radius;
-        this.type = type;
         this.description = description;
         this.score = 0;
     }
@@ -26,13 +24,7 @@ public class Location {
     public Location(JSONObject object) {
         this.identifier = object.getString("identifier");
         this.name = object.getString("identifier");
-        if (object.isNull("owner")) {
-            this.owner = null;
-        } else {
-            this.owner = new UserGuid(object.getString("owner"));
-        }
         this.radius = object.getDouble("radius");
-        this.type = LocationType.fromString( object.getString("type") );
         this.position = new Position(object.getJSONObject("position"));
         this.description = object.getString("description");
     }
@@ -42,7 +34,6 @@ public class Location {
         json.put("identifier", identifier);
         json.put("name", name);
         json.put("description", description);
-        json.put("type", type.getName());
         json.put("owner", owner == null ? JSONObject.NULL : owner.toString());
         json.put("position", position.getJson());
         json.put("radius", radius);
