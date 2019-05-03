@@ -6,6 +6,7 @@ public class User {
     private final UserGuid id;
     private String name;
     private Position position;
+    private QuizSession quizSession;
 
     public User(UserGuid id, String name) {
         this.id = id;
@@ -35,5 +36,13 @@ public class User {
 
     public Position getPosition() {
         return position;
+    }
+
+    public void setQuizSession(QuizSession quizSession) {
+        this.quizSession = quizSession;
+    }
+
+    public QuizSession getQuizSession() {
+        return quizSession;
     }
 }

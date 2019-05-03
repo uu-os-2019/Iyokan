@@ -30,6 +30,11 @@ public class RequestData {
         this.user = user;
     }
 
+    public RequestData(JSONObject body, User user) {
+        this.json = body;
+        this.user = user;
+    }
+
     public JSONObject getJSON() {
         return json;
     }

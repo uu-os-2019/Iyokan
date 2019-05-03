@@ -14,6 +14,7 @@ struct jsonLocations: Codable {
 }
 
 struct Location: Codable {
+    let owner: String?
     let identifier, name, description: String
     let position: Position
     let type: String
@@ -62,15 +63,12 @@ struct LastQuizAnswer: Codable {
 
 class Server {
     
-    
-    
     init() {
-        // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
-       
+    
     }
     
     func getLocations() -> [Location] {
-        let url = "http://localhost/location/get-all"
+        let url = "http://130.243.234.130/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -93,7 +91,7 @@ class Server {
     
     func getQuiz() -> Quiz? {
         var quiz: Quiz!
-        let url = URL(string: "http://localhost/quiz/start")!
+        let url = URL(string: "http://130.243.234.130/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -123,13 +121,12 @@ class Server {
             print("Invalid user")
             return nil
         }
-        print(quiz)
         return quiz
     }
     
     func sendQuizAnswer(answer: String) -> QuizAnswer? {
         var quizAnswer: QuizAnswer!
-        let url = URL(string: "http://localhost/quiz/answer")!
+        let url = URL(string: "http://130.243.234.130/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"

@@ -17,15 +17,18 @@ public class Main {
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-
+        var testa = new User(Utils.generateUserGuid(), "Testa fiesta");
+        // Put a temporary token in the vault
+        sessions.insert("OsthyvelOsthyvelOsthyvelOsthyvel", testa);
+        users.addUser(testa);
 
         final Route[] routes = new Route[]{
                 new RouteTest(),
-                new RouteHighscore(hs),
+                new RouteHighscore(hs, users),
                 new RouteLocationGetAll(locations),
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),
-                new RouteQuizAnswer(quizRounds)
+                new RouteQuizAnswer(quizRounds, hs)
         };
 
         Server server = new Server(port, routes, sessions);
