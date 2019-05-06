@@ -8,6 +8,8 @@
 
 import UIKit
 
+let geoCap = GeoCap()
+
 class SpelaViewController: UIViewController {
 
     @IBOutlet weak var SpelaButton: UIButton!
@@ -67,7 +69,7 @@ class SpelaViewController: UIViewController {
         }
             
         else {
-            let success = server.register(userName: NameText!)
+            let success = geoCap.server.register(userName: NameText!)
             
             if (success == "success"){
                 performSegue(withIdentifier: "SpelaSegue", sender: self)

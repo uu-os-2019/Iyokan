@@ -74,8 +74,13 @@ struct LastQuizAnswer: Codable {
 
 class Server {
     
-    init() {
+    //TODO: maybe move to future User class
+    var token: String!
     
+    init() {}
+    
+    private func setToken() {
+        token = UserDefaults.standard.string(forKey: "token")
     }
     
     func getLocations() -> [Location] {
@@ -105,7 +110,7 @@ class Server {
         var quiz: Quiz!
         let url = URL(string: "http://13.53.140.24/quiz/start")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let location = ["location": "domkyrkan"]
         
@@ -140,7 +145,7 @@ class Server {
         var quizAnswer: QuizAnswer!
         let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
@@ -175,7 +180,7 @@ class Server {
         var lastQuizAnswer: LastQuizAnswer!
         let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
@@ -242,6 +247,7 @@ class Server {
         UserDefaults.standard.set(register.user!.name, forKey: "username")
         UserDefaults.standard.set(register.user!.id, forKey: "guid")
         UserDefaults.standard.set(register.token, forKey: "token")
+        setToken()
         
         return "success"
     }
