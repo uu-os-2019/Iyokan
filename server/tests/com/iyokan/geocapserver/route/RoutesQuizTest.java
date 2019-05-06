@@ -1,8 +1,9 @@
 package com.iyokan.geocapserver;
 
-import com.iyokan.geocapserver.*;
 import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.route.*;
+import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,10 @@ class RoutesQuizTest {
 
         RequestData data = new RequestData(new JSONObject(), null);
 
-        Database db = new Database();
+        Database db = new DummyDatabase();
 
-        UserCollection users = new UserCollection(null);
-        SessionVault sessions = new SessionVault(null, users);
+        UserCollection users = new UserCollection(db);
+        SessionVault sessions = new SessionVault(db, users);
         Highscore hs = new Highscore();
 
         LocationCollection locations = new LocationCollection(null);

@@ -19,5 +19,12 @@
     "description": "Gräsmattan i triangeln",
     "position": {"lat": 59.855115, "lng": 17.61795},
     "radius": 200
+  },
+  {
+    "identifier": "polacks",
+    "name": "Polacks",
+    "description": "Polacksbacken",
+    "position": {"lat": 59.8409846, "lng": 17.6472565},
+    "radius": 600
   }
 ]
