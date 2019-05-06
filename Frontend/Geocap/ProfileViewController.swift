@@ -13,6 +13,31 @@ class Profile: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let string = UserDefaults.standard.object(forKey: "token")
+        
+        var quiz: Quiz!
+        let url = URL(string: "http://3.14.65.225/quiz/start")!
+        var request = URLRequest(url: url)
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let location = ["location": "domkyrkan"]
+        
+        let json = try? JSONSerialization.data(withJSONObject: location, options: [])
+        request.httpBody = json
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                quiz = try JSONDecoder().decode(Quiz.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz")
+                print(error)
+            }
+            }.resume()
         // Do any additional setup after loading the view.
     }
     

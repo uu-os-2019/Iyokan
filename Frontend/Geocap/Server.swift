@@ -62,8 +62,11 @@ struct LastQuizAnswer: Codable {
 
 class Server {
     
-    init() {
+    let token: String
     
+    init() {
+        token = UserDefaults.standard.object(forKey: "token") as! String
+
     }
     
     func getLocations() -> [Location] {
@@ -93,7 +96,7 @@ class Server {
         var quiz: Quiz!
         let url = URL(string: "http://3.14.65.225/quiz/start")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue("token", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let location = ["location": "domkyrkan"]
         
@@ -128,7 +131,7 @@ class Server {
         var quizAnswer: QuizAnswer!
         let url = URL(string: "http://3.14.65.225/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue("token", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
@@ -163,7 +166,7 @@ class Server {
         var lastQuizAnswer: LastQuizAnswer!
         let url = URL(string: "http://3.14.65.225/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.addValue("token", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
