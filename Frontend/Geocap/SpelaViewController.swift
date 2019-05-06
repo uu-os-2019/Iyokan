@@ -15,13 +15,26 @@ class SpelaViewController: UIViewController {
     @IBOutlet weak var SpelaButton: UIButton!
     @IBOutlet weak var NameField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextFields()
         
         SpelaButton.layer.cornerRadius = 10
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //removes locally saved information
+        //resetDefaults()
+        
+        //if there is a locally saved user, skips this view
+        if (UserDefaults.standard.object(forKey: "token") != nil) {
+            geoCap.server.setToken()
+            performSegue(withIdentifier: "SpelaSegue", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,27 +45,60 @@ class SpelaViewController: UIViewController {
     @IBAction func spelaButtonTapped(_ sender: Any) {
         let NameText = NameField.text
         
+        //You need to enter something in the username field
         if NameText!.isEmpty {
             let myAlert = UIAlertController(title:"Alert",message:"Du måste skriva in ett användarnamn!",preferredStyle:UIAlertControllerStyle.alert)
             
             let okAction = UIAlertAction(title:"Okej",style:UIAlertActionStyle.cancel,handler: nil)
             
             myAlert.addAction(okAction)
-            
             self.present(myAlert, animated:true,completion:nil)
             
             return
         }
+            
+        if NameText!.count > 10 {
+            let myAlert = UIAlertController(title:"Alert",message:"Max 10 bokstäver!",preferredStyle:UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title:"Okej",style:UIAlertActionStyle.cancel,handler: nil)
+            
+            myAlert.addAction(okAction)
+            self.present(myAlert, animated:true,completion:nil)
+            
+            return
+        }
+            
         else {
+            let success = geoCap.server.register(userName: NameText!)
             
-            //Skicka användarnamn//
+            if (success == "success"){
+                performSegue(withIdentifier: "SpelaSegue", sender: self)
+            }
             
-            performSegue(withIdentifier: "SpelaSegue", sender: self)
+            //an alert with information about why your username didnt work
+            else {
+                let myAlert = UIAlertController(title:"Alert",message:success,preferredStyle:UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title:"Okej",style:UIAlertActionStyle.cancel,handler: nil)
+                
+                myAlert.addAction(okAction)
+                
+                self.present(myAlert, animated:true,completion:nil)
+            }
         }
     }
     
     private func configureTextFields(){
         NameField.delegate = self
+    }
+    
+    //removes the locally saved information
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 
     /*
