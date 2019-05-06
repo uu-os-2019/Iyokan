@@ -28,8 +28,10 @@ class Pin: NSObject, MKAnnotation {
     
     //TODO: change accordingly when place ownership implemented
     var markerTintColor: UIColor  {
+        print("\(owner)")
+        
         switch owner {
-        case "yourUsername":
+        case UserDefaults.standard.string(forKey: "guid"):
             return .green
         // owned by no one
         case nil:
