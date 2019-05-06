@@ -33,6 +33,8 @@ class QuizPageViewController: UIViewController {
     
     var counter = 0
     
+    var quizTimeoutIsActive = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         var overlayCircles = [MKCircle]()
         for location in locations {
                 let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, discipline: location.type, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
             
             let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
                 overlayCircles.append(circle)
