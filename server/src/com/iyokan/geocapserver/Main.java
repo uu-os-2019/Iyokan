@@ -1,6 +1,6 @@
 package com.iyokan.geocapserver;
 
-import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.route.*;
 
 public class Main {
@@ -9,7 +9,7 @@ public class Main {
         final int port = 80;
         Highscore hs = new Highscore();
 
-        Database database = new Database();
+        JsonDatabase database = new JsonDatabase("database.json");
 
         LocationCollection locations = new LocationCollection(database);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));

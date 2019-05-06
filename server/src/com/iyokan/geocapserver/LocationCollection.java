@@ -1,10 +1,10 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.database.DatabaseLocationData;
 import org.json.JSONArray;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class LocationCollection {

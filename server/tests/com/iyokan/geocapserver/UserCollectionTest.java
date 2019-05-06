@@ -1,5 +1,6 @@
 package com.iyokan.geocapserver;
 
+import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +9,7 @@ class UserCollectionTest {
 
     @Test
     void addUser() {
-        UserCollection collection = new UserCollection(null);
+        UserCollection collection = new UserCollection(new DummyDatabase());
 
         UserGuid rndGuid = Utils.generateUserGuid();
         collection.addUser(new User(rndGuid, "Kniv-karlsson"));
@@ -19,7 +20,7 @@ class UserCollectionTest {
 
     @Test
     void getUser() {
-        UserCollection collection = new UserCollection(null);
+        UserCollection collection = new UserCollection(new DummyDatabase());
         UserGuid rndGuid = Utils.generateUserGuid();
         User user1 = new User(rndGuid, "Kniv-karlsson");
 
@@ -31,7 +32,7 @@ class UserCollectionTest {
 
     @Test
     void removeUser() {
-        UserCollection collection = new UserCollection(null);
+        UserCollection collection = new UserCollection(new DummyDatabase());
 
         UserGuid rndGuid1 = Utils.generateUserGuid();
         UserGuid rndGuid2 = Utils.generateUserGuid();
