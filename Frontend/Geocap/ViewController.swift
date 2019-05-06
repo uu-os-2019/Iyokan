@@ -20,6 +20,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let overlayPath = "http://a.basemaps.cartocdn.com/dark_all/${z}${x}/${y}.png"
+        let overlay = MKTileOverlay(urlTemplate: overlayPath)
+        overlay.canReplaceMapContent = true
+        self.mapView.add(overlay)
+        
+        
         
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
@@ -80,6 +86,14 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
+    
+    func mapView(mapView: MKMapView, renderForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let tileOverlay = overlay as? MKTileOverlay else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
+        return MKOverlayRenderer(overlay: tileOverlay)
+    }
+    
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
