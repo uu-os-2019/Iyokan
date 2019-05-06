@@ -68,7 +68,9 @@ public class SAConfettiView: UIView {
     }
     
     func imageForType(type: ConfettiType) -> UIImage? {
-        
+        let confetti = UIImage(named: "confetti")
+        return confetti
+        /*
         var fileName: String!
         
         switch type {
@@ -95,6 +97,7 @@ public class SAConfettiView: UIView {
             print(error)
         }
         return nil
+ */
     }
     
     func confettiWithColor(color: UIColor) -> CAEmitterCell {
@@ -111,7 +114,7 @@ public class SAConfettiView: UIView {
         confetti.spinRange = CGFloat(4.0 * intensity)
         confetti.scaleRange = CGFloat(intensity)
         confetti.scaleSpeed = CGFloat(-0.1 * intensity)
-        confetti.contents = imageForType(type: type)!.cgImage
+        confetti.contents = UIImage(named: "confetti")?.cgImage
         return confetti
     }
     

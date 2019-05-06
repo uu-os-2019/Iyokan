@@ -24,7 +24,6 @@ class QuizPageViewController: UIViewController {
     @IBOutlet weak var nextQuestion: UIButton!
     
     
-    var confettiView: SAConfettiView!
     
     let quiz = server.getQuiz()
     
@@ -39,20 +38,7 @@ class QuizPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-        //creating confetti
-        confettiView = SAConfettiView(frame: self.view.bounds)
-        confettiView.colors = [UIColor(red:0.95, green:0.40, blue:0.27, alpha:1.0),
-                               UIColor(red:1.00, green:0.78, blue:0.36, alpha:1.0),
-                               UIColor(red:0.48, green:0.78, blue:0.64, alpha:1.0),
-                               UIColor(red:0.30, green:0.76, blue:0.85, alpha:1.0),
-                               UIColor(red:0.58, green:0.39, blue:0.55, alpha:1.0)]
-        confettiView.intensity = 0.5
-        confettiView.type = .confetti
-        view.addSubview(confettiView)
-        
-        confettiView.startConfetti()
-*/
+
         self.question.text = quiz?.question
         self.nextQuestion.isHidden = true
         
