@@ -55,7 +55,7 @@ public class RouteQuizAnswer extends Route {
 
         if(quizSession.isDone() == false) {
             response.put("new_question", quizSession.getQuestion().getQuestion());
-            response.put("new_alternatives", quizSession.getQuestion().getAlternatives());
+            response.put("new_alternatives", quizSession.getQuestion().getAlternativesRandom());
         } else {
             response.put("new_question", JSONObject.NULL);
             response.put("new_alternatives", JSONObject.NULL);
