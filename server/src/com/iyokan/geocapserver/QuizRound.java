@@ -3,7 +3,9 @@ package com.iyokan.geocapserver;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class QuizRound {
     private String question;
@@ -20,6 +22,12 @@ public class QuizRound {
 
     public ArrayList<String> getAlternatives(){
         return alternatives;
+    }
+
+    public ArrayList<String> getAlternativesRandom() {
+        ArrayList<String> randomOrder = new ArrayList<>(alternatives);
+        Collections.shuffle(randomOrder);
+        return randomOrder;
     }
 
     public QuizRound(JSONObject object){
