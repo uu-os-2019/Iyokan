@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-var server = Server()
+let geoCap = GeoCap()
 
 class ViewController: UIViewController {
 
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        let locations = server.getLocations()
+        let locations = geoCap.server.getLocations()
 
         // generate locations on the map
         var overlayCircles = [MKCircle]()
@@ -81,7 +81,7 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
-
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
     
@@ -90,8 +90,13 @@ extension ViewController: MKMapViewDelegate {
         let distance = annotationLocation.distance(from: userLocation)
         
         let pin = view.annotation as! Pin
-        if (distance >= pin.radius) {
+        //TODO: distance check is inverted atm to simplify testing
+        if distance >= pin.radius, !geoCap.quizModel.quizTimeoutIsActive {
             performSegue(withIdentifier: "QuizSegue", sender: self)
+        } else if geoCap.quizModel.quizTimeoutIsActive {
+            let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okej då...", style: .default, handler: nil))
+            self.present(alert, animated: true)
         } else {
             let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))

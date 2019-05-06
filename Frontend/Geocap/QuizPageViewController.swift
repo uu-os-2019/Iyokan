@@ -25,15 +25,13 @@ class QuizPageViewController: UIViewController {
     
     
     
-    let quiz = server.getQuiz()
+    let quiz = geoCap.server.getQuiz()
     
     var quizAnswer: QuizAnswer!
     
     var lastQuizAnswer: LastQuizAnswer!
     
     var counter = 0
-    
-    var quizTimeoutIsActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +63,11 @@ class QuizPageViewController: UIViewController {
     @IBAction func alternative1(_ sender: Any) {
         if(counter == 0) {
             let answer = quiz?.alternatives[0]
-            quizAnswer = server.sendQuizAnswer(answer: answer!)
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
                 if(lastQuizAnswer.successfulTakeover) {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
@@ -83,7 +81,7 @@ class QuizPageViewController: UIViewController {
                 
             }
             else {
-                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
             }
         }
         
@@ -102,11 +100,11 @@ class QuizPageViewController: UIViewController {
     @IBAction func alternative2(_ sender: Any) {
         if(counter == 0) {
             let answer = quiz?.alternatives[1]
-            quizAnswer = server.sendQuizAnswer(answer: answer!)
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
                 if(lastQuizAnswer.successfulTakeover) {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
@@ -120,7 +118,7 @@ class QuizPageViewController: UIViewController {
                 
             }
             else {
-                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
             }
         }
         
@@ -138,11 +136,11 @@ class QuizPageViewController: UIViewController {
     @IBAction func alternative3(_ sender: Any) {
         if(counter == 0) {
             let answer = quiz?.alternatives[2]
-            quizAnswer = server.sendQuizAnswer(answer: answer!)
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
                 if(lastQuizAnswer.successfulTakeover) {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
@@ -152,11 +150,14 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    
+                    geoCap.quizModel.quizTimeoutIsActive = true
+                    geoCap.quizModel.startQuizTimer()
                 }
                 
             }
             else {
-                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
             }
         }
         
@@ -175,11 +176,11 @@ class QuizPageViewController: UIViewController {
     @IBAction func alternative4(_ sender: Any) {
         if(counter == 0) {
             let answer = quiz?.alternatives[3]
-            quizAnswer = server.sendQuizAnswer(answer: answer!)
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
                 if(lastQuizAnswer.successfulTakeover) {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
@@ -189,11 +190,12 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    
                 }
                 
             }
             else {
-                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
             }
         }
         
