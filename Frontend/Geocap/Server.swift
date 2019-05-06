@@ -39,6 +39,19 @@ struct QuizAnswer: Codable {
     let newQuestion: String
 
 }
+
+struct User: Codable {
+    let id: String
+    let name: String
+}
+struct Register: Codable {
+    let success: Bool
+    let user: User?
+    let token: String?
+    let reason: String?
+}
+
+
 class Server {
     
     
@@ -50,7 +63,7 @@ class Server {
     }
     
     func getLocations() -> [Location] {
-        let url = "http://localhost/location/get-all"
+        let url = "http://3.14.65.225/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -73,7 +86,7 @@ class Server {
     
     func getQuiz() -> Quiz? {
         var quiz: Quiz!
-        let url = URL(string: "http://localhost/quiz/start")!
+        let url = URL(string: "http://3.14.65.225/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -109,7 +122,7 @@ class Server {
     
     func sendQuizAnswer(answer: String) -> Bool {
         var quizAnswer: QuizAnswer!
-        let url = URL(string: "http://localhost/quiz/answer")!
+        let url = URL(string: "http://3.14.65.225/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue(answer, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -141,6 +154,44 @@ class Server {
         }
         print(quizAnswer)
         return quizAnswer.correct
+    }
+    
+    func register(userName: String) -> String {
+        var register: Register!
+        let url = URL(string: "http://3.14.65.225/register")!
+        var request = URLRequest(url: url)
+        request.addValue(userName, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let userName = ["username": userName]
+        
+        let json = try? JSONSerialization.data(withJSONObject: userName, options: [])
+        request.httpBody = json
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                register = try JSONDecoder().decode(Register.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error when registering")
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+        if(!register.success) {
+            return register.reason!
+        }
+        UserDefaults.standard.set(register.user!.name, forKey: "username")
+        UserDefaults.standard.set(register.user!.id, forKey: "guid")
+        UserDefaults.standard.set(register.token, forKey: "token")
+        
+        return "success"
     }
     
 }

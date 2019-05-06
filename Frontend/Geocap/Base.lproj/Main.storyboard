@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EsH-EB-OUH">
-
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -246,15 +242,12 @@
                         <viewLayoutGuide key="safeArea" id="V7U-3V-Zr8"/>
                     </view>
                     <connections>
-
                         <outlet property="alternative1" destination="Ikb-ic-e21" id="tTu-7I-ryJ"/>
                         <outlet property="alternative2" destination="Op7-vn-dRq" id="BqD-eH-LTQ"/>
                         <outlet property="alternative3" destination="Lco-JS-rYp" id="vje-uF-FNd"/>
                         <outlet property="alternative4" destination="7ud-2k-Qgx" id="KtK-MH-Pgy"/>
                         <outlet property="question" destination="9NL-at-r7X" id="xiF-Eg-Hel"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" id="1c3-Ko-O0M"/>
-
-                        
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1b4-NX-wmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,9 +277,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-
                                     <action selector="LeaderboardToMap:" destination="JAb-Cx-39D" eventType="touchUpInside" id="epK-SX-ivr"/>
-
                                 </connections>
                             </button>
                         </subviews>
@@ -367,8 +358,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-
+        <segue reference="IOA-cv-p5Z"/>
         <segue reference="1c3-Ko-O0M"/>
-
     </inferredMetricsTieBreakers>
 </document>
