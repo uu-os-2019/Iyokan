@@ -15,7 +15,7 @@ class QuizSessionTest {
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-        LocationCollection locations = new LocationCollection();
+        LocationCollection locations = new LocationCollection(null);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
         QuizSession quizSession = new QuizSession(quizRounds, locations.getLocation("domkyrkan"));

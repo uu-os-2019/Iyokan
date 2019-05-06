@@ -49,10 +49,6 @@ public class Location {
         return json;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public void setOwner(UserGuid owner, int newScore) {
         this.owner = owner;
         this.score = newScore;
