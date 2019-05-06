@@ -8,6 +8,8 @@
 
 import UIKit
 
+let geoCap = GeoCap()
+
 class SpelaViewController: UIViewController {
 
     @IBOutlet weak var SpelaButton: UIButton!
@@ -31,7 +33,6 @@ class SpelaViewController: UIViewController {
         //if there is a locally saved user, skips this view
         if (UserDefaults.standard.object(forKey: "token") != nil) {
             performSegue(withIdentifier: "SpelaSegue", sender: self)
-            print("HÄR ÄR JAG")
         }
     }
 
@@ -67,7 +68,7 @@ class SpelaViewController: UIViewController {
         }
             
         else {
-            let success = server.register(userName: NameText!)
+            let success = geoCap.server.register(userName: NameText!)
             
             if (success == "success"){
                 performSegue(withIdentifier: "SpelaSegue", sender: self)
