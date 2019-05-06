@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.database.DatabaseUserData;
 
 import java.util.HashMap;
@@ -14,11 +15,9 @@ public class UserCollection {
         users = new HashMap<>();
         this.database = database;
 
-        if (database != null) {
-            // Add initial users from database
-            for (DatabaseUserData user : database.getUsers()) {
-                users.put(user.id, new User(user.id, user.name));
-            }
+        // Add initial users from database
+        for (DatabaseUserData user : database.getUsers()) {
+            users.put(user.id, new User(user.id, user.name));
         }
     }
 

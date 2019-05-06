@@ -3,6 +3,7 @@ package com.iyokan.geocapserver;
 import com.iyokan.geocapserver.route.RequestData;
 import com.iyokan.geocapserver.route.Route;
 import com.iyokan.geocapserver.route.RouteTest;
+import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ class QuizSessionTest {
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-        LocationCollection locations = new LocationCollection(null);
+        LocationCollection locations = new LocationCollection(new DummyDatabase());
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
         QuizSession quizSession = new QuizSession(quizRounds, locations.getLocation("domkyrkan"));

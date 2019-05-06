@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.database.DatabaseSessionData;
 
 import java.util.HashMap;
@@ -13,21 +14,18 @@ public class SessionVault {
         users = new HashMap<>();
         this.database = database;
 
-        if (database != null) {
-            // Add initial users from database
-            for (DatabaseSessionData session : database.getSessions()) {
-                users.put(session.token, collection.getUser(session.guid));
-            }
+        // Add initial users from database
+        for (DatabaseSessionData session : database.getSessions()) {
+            users.put(session.token, collection.getUser(session.guid));
         }
+
     }
 
     public void insert(String token, User user) {
         users.put(token, user);
 
         // Update the database
-        if (database != null) {
-            database.insertSession(token, user.getID());
-        }
+        database.insertSession(token, user.getID());
     }
 
     public User getUser(String token) {

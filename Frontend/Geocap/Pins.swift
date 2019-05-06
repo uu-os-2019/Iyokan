@@ -12,15 +12,13 @@ import MapKit
 class Pin: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
-    let discipline: String
     let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
     let owner: String?
     
-    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: String?) {
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: String?) {
         self.title = title
         self.locationName = locationName
-        self.discipline = discipline
         self.coordinate = coordinate
         self.radius = radius
         self.owner = owner

@@ -17,7 +17,6 @@ struct Location: Codable {
     let owner: String?
     let identifier, name, description: String
     let position: Position
-    let type: String
     let radius: Int
 }
 
@@ -68,6 +67,7 @@ class Server {
     }
     
     func getLocations() -> [Location] {
+      
         let url = "http://localhost/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
@@ -162,7 +162,7 @@ class Server {
     }
     func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
         var lastQuizAnswer: LastQuizAnswer!
-        let url = URL(string: "http://130.243.234.130/quiz/answer")!
+        let url = URL(string: "http://130.243.208.189/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"

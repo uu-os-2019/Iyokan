@@ -4,6 +4,8 @@ import com.iyokan.geocapserver.SessionVault;
 import com.iyokan.geocapserver.User;
 import com.iyokan.geocapserver.UserCollection;
 import com.iyokan.geocapserver.UserGuid;
+import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +15,9 @@ class RouteRegisterTest {
 
     @Test
     void handle() {
-        UserCollection collection = new UserCollection(null);
-        SessionVault vault = new SessionVault(null, null);
+        Database db = new DummyDatabase();
+        UserCollection collection = new UserCollection(db);
+        SessionVault vault = new SessionVault(db, collection);
 
         Route route = new RouteRegister(collection, vault);
 
