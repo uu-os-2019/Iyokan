@@ -68,7 +68,7 @@ class Server {
     
     func getLocations() -> [Location] {
       
-        let url = "http://130.243.208.189/location/get-all"
+        let url = "http://3.14.65.225/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -91,7 +91,7 @@ class Server {
     
     func getQuiz() -> Quiz? {
         var quiz: Quiz!
-        let url = URL(string: "http://130.243.208.189/quiz/start")!
+        let url = URL(string: "http://3.14.65.225/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -126,7 +126,7 @@ class Server {
     
     func sendQuizAnswer(answer: String) -> QuizAnswer? {
         var quizAnswer: QuizAnswer!
-        let url = URL(string: "http://130.243.208.189/quiz/answer")!
+        let url = URL(string: "http://3.14.65.225/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -161,7 +161,7 @@ class Server {
     }
     func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
         var lastQuizAnswer: LastQuizAnswer!
-        let url = URL(string: "http://130.243.208.189/quiz/answer")!
+        let url = URL(string: "http://3.14.65.225/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
