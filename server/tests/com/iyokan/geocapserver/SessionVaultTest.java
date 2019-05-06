@@ -9,7 +9,7 @@ class SessionVaultTest {
     @Test
     void testInsertion() {
 
-        SessionVault vault = new SessionVault();
+        SessionVault vault = new SessionVault(null, null);
 
         UserGuid rndGuid = Utils.generateUserGuid();
 

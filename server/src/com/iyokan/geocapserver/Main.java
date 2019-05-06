@@ -1,5 +1,6 @@
 package com.iyokan.geocapserver;
 
+import com.iyokan.geocapserver.database.Database;
 import com.iyokan.geocapserver.route.*;
 
 public class Main {
@@ -8,19 +9,17 @@ public class Main {
         final int port = 80;
         Highscore hs = new Highscore();
 
-        LocationCollection locations = new LocationCollection();
+        Database database = new Database();
+
+        LocationCollection locations = new LocationCollection(database);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
-        UserCollection users = new UserCollection();
+        UserCollection users = new UserCollection(database);
 
-        SessionVault sessions = new SessionVault();
+        SessionVault sessions = new SessionVault(database, users);
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-        var testa = new User(Utils.generateUserGuid(), "Testa fiesta");
-        // Put a temporary token in the vault
-        sessions.insert("OsthyvelOsthyvelOsthyvelOsthyvel", testa);
-        users.addUser(testa);
 
         final Route[] routes = new Route[]{
                 new RouteTest(),
@@ -28,7 +27,7 @@ public class Main {
                 new RouteLocationGetAll(locations),
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),
-                new RouteQuizAnswer(quizRounds, hs)
+                new RouteQuizAnswer(quizRounds, locations, hs)
         };
 
         Server server = new Server(port, routes, sessions);

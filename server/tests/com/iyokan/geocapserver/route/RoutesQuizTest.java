@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.*;
+import com.iyokan.geocapserver.database.Database;
 import com.iyokan.geocapserver.route.*;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -14,11 +15,13 @@ class RoutesQuizTest {
 
         RequestData data = new RequestData(new JSONObject(), null);
 
-        SessionVault sessions = new SessionVault();
-        UserCollection users = new UserCollection();
+        Database db = new Database();
+
+        UserCollection users = new UserCollection(null);
+        SessionVault sessions = new SessionVault(null, users);
         Highscore hs = new Highscore();
 
-        LocationCollection locations = new LocationCollection();
+        LocationCollection locations = new LocationCollection(null);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
         QuizRoundCollection quizRounds = new QuizRoundCollection();
@@ -29,7 +32,7 @@ class RoutesQuizTest {
         users.addUser(testa);
 
         Route route = new RouteQuizStart(quizRounds, locations);
-        Route route_answer = new RouteQuizAnswer(quizRounds, hs);
+        Route route_answer = new RouteQuizAnswer(quizRounds, locations, hs);
 
         // /quiz/start without location
         JSONObject response = route.handle(data);

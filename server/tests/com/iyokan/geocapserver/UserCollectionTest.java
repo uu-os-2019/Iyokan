@@ -8,7 +8,7 @@ class UserCollectionTest {
 
     @Test
     void addUser() {
-        UserCollection collection = new UserCollection();
+        UserCollection collection = new UserCollection(null);
 
         UserGuid rndGuid = Utils.generateUserGuid();
         collection.addUser(new User(rndGuid, "Kniv-karlsson"));
@@ -19,7 +19,7 @@ class UserCollectionTest {
 
     @Test
     void getUser() {
-        UserCollection collection = new UserCollection();
+        UserCollection collection = new UserCollection(null);
         UserGuid rndGuid = Utils.generateUserGuid();
         User user1 = new User(rndGuid, "Kniv-karlsson");
 
@@ -31,7 +31,7 @@ class UserCollectionTest {
 
     @Test
     void removeUser() {
-        UserCollection collection = new UserCollection();
+        UserCollection collection = new UserCollection(null);
 
         UserGuid rndGuid1 = Utils.generateUserGuid();
         UserGuid rndGuid2 = Utils.generateUserGuid();

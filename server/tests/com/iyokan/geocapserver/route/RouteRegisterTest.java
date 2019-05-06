@@ -13,8 +13,8 @@ class RouteRegisterTest {
 
     @Test
     void handle() {
-        UserCollection collection = new UserCollection();
-        SessionVault vault = new SessionVault();
+        UserCollection collection = new UserCollection(null);
+        SessionVault vault = new SessionVault(null, null);
 
         Route route = new RouteRegister(collection, vault);
 
