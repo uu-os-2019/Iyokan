@@ -12,31 +12,31 @@ import MapKit
 class Pin: NSObject, MKAnnotation {
     let title: String?
     let locationName: String
-    let discipline: String
     let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
+    let owner: String?
     
-    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: String?) {
         self.title = title
         self.locationName = locationName
-        self.discipline = discipline
         self.coordinate = coordinate
         self.radius = radius
+        self.owner = owner
         
         super.init()
     }
     
-    // markerTintColor for disciplines: Sculpture, Plaque, Mural, Monument, other
+    //TODO: change accordingly when place ownership implemented
     var markerTintColor: UIColor  {
-        switch discipline {
-        case "area":
-            return .red
-        case "volleyballfield":
-            return .cyan
-        case "church":
-            return .blue
-        default:
+        switch owner {
+        case "yourUsername":
             return .green
+        // owned by no one
+        case nil:
+            return .white
+        // owned by other user
+        default:
+            return .red
         }
     }
 

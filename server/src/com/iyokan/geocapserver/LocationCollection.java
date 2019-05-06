@@ -1,14 +1,18 @@
 package com.iyokan.geocapserver;
 
+import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.database.JsonDatabase;
+import com.iyokan.geocapserver.database.DatabaseLocationData;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
 public class LocationCollection {
+    private Database database;
     private HashMap<String, Location> locations;
 
-    public LocationCollection() {
+    public LocationCollection(Database database) {
+        this.database = database;
         locations = new HashMap<>();
     }
 
@@ -16,6 +20,19 @@ public class LocationCollection {
         for (int i=0; i < array.length(); i++) {
             Location location = new Location(array.getJSONObject(i));
             locations.put(location.identifier, location);
+        }
+
+        if (database != null) {
+            // Get the necessary data from the database
+            DatabaseLocationData[] locationsData = database.getLocations();
+
+            for (DatabaseLocationData locationData : locationsData) {
+                // Get the saved location
+                Location location = locations.get(locationData.identifier);
+                if (location != null) {
+                    location.setOwner(locationData.owner, locationData.score);
+                }
+            }
         }
     }
 
@@ -29,5 +46,11 @@ public class LocationCollection {
 
     public void addLocation(Location location) {
         locations.put(location.identifier, location);
+    }
+
+    public void updateLocation(Location location) {
+        if (database != null) {
+            database.updateLocation(location);
+        }
     }
 }

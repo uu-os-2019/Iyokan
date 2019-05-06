@@ -96,3 +96,5 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/swift,xcode
+server/database.json
+server/testdatabase.json

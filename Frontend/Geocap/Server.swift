@@ -14,9 +14,9 @@ struct jsonLocations: Codable {
 }
 
 struct Location: Codable {
+    let owner: String?
     let identifier, name, description: String
     let position: Position
-    let type: String
     let radius: Int
 }
 
@@ -37,8 +37,15 @@ struct QuizAnswer: Codable {
     let type: String
     let points: Int
     let newQuestion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case newAlternatives = "new_alternatives"
+        case correct, success, type, points
+        case newQuestion = "new_question"
+    }
 
 }
+
 
 struct User: Codable {
     let id: String
@@ -50,20 +57,30 @@ struct Register: Codable {
     let token: String?
     let reason: String?
 }
-
+    
+struct LastQuizAnswer: Codable {
+    let correct, success: Bool
+    let type: String
+    let points: Int
+    let newQuestion: String?
+    let successfulTakeover: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case correct, success, type, points
+        case newQuestion = "new_question"
+        case successfulTakeover = "successful_takeover"
+    }
+}
 
 class Server {
     
-    
-    
     init() {
-        // host server on your computer and change to your public ip for testing on iPhone, or change to localhost for testing on Mac
-       
-
+    
     }
     
     func getLocations() -> [Location] {
-        let url = "http://3.14.65.225/location/get-all"
+
+        let url = "http://13.53.140.24/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -86,7 +103,7 @@ class Server {
     
     func getQuiz() -> Quiz? {
         var quiz: Quiz!
-        let url = URL(string: "http://3.14.65.225/quiz/start")!
+        let url = URL(string: "http://13.53.140.24/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -116,15 +133,14 @@ class Server {
             print("Invalid user")
             return nil
         }
-        print(quiz)
         return quiz
     }
     
-    func sendQuizAnswer(answer: String) -> Bool {
+    func sendQuizAnswer(answer: String) -> QuizAnswer? {
         var quizAnswer: QuizAnswer!
-        let url = URL(string: "http://3.14.65.225/quiz/answer")!
+        let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
-        request.addValue(answer, forHTTPHeaderField: "Authorization")
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
@@ -150,15 +166,51 @@ class Server {
         semaphore.wait()
         if(!quizAnswer.success) {
             print("Invalid user")
-            return false
+            return nil
         }
-        print(quizAnswer)
-        return quizAnswer.correct
+        
+        return quizAnswer
+    }
+    func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
+        var lastQuizAnswer: LastQuizAnswer!
+        let url = URL(string: "http://13.53.140.24/quiz/answer")!
+        var request = URLRequest(url: url)
+        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        let answer = ["answer": answer]
+        
+        let json = try? JSONSerialization.data(withJSONObject: answer, options: [])
+        request.httpBody = json
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                lastQuizAnswer = try JSONDecoder().decode(LastQuizAnswer.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz answer")
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+        if(!lastQuizAnswer.success) {
+            print("Invalid user")
+            return nil
+        }
+        
+        return lastQuizAnswer
     }
     
+
     func register(userName: String) -> String {
         var register: Register!
-        let url = URL(string: "http://3.14.65.225/register")!
+        let url = URL(string: "http://13.53.140.24/register")!
         var request = URLRequest(url: url)
         request.addValue(userName, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -193,5 +245,5 @@ class Server {
         
         return "success"
     }
-    
+
 }
