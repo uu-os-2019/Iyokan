@@ -8,6 +8,8 @@
 
 import UIKit
 
+let geoCap = GeoCap()
+
 class SpelaViewController: UIViewController {
 
     @IBOutlet weak var SpelaButton: UIButton!

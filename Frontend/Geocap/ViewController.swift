@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-let geoCap = GeoCap()
 
 class ViewController: UIViewController {
 
