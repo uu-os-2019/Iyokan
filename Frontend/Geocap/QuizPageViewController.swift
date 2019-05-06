@@ -10,8 +10,6 @@ import UIKit
 
 class QuizPageViewController: UIViewController {
    
-    
-
 
     @IBOutlet weak var question: UILabel!
     
@@ -25,6 +23,9 @@ class QuizPageViewController: UIViewController {
     
     @IBOutlet weak var nextQuestion: UIButton!
     
+    
+    var confettiView: SAConfettiView!
+    
     let quiz = server.getQuiz()
     
     var quizAnswer: QuizAnswer!
@@ -33,12 +34,28 @@ class QuizPageViewController: UIViewController {
     
     var counter = 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.question.text = quiz?.question
+        /*
+        //creating confetti
+        confettiView = SAConfettiView(frame: self.view.bounds)
+        confettiView.colors = [UIColor(red:0.95, green:0.40, blue:0.27, alpha:1.0),
+                               UIColor(red:1.00, green:0.78, blue:0.36, alpha:1.0),
+                               UIColor(red:0.48, green:0.78, blue:0.64, alpha:1.0),
+                               UIColor(red:0.30, green:0.76, blue:0.85, alpha:1.0),
+                               UIColor(red:0.58, green:0.39, blue:0.55, alpha:1.0)]
+        confettiView.intensity = 0.5
+        confettiView.type = .confetti
+        view.addSubview(confettiView)
         
+        confettiView.startConfetti()
+*/
+        self.question.text = quiz?.question
         self.nextQuestion.isHidden = true
+        
         
         self.alternative1.setTitle(quiz?.alternatives[0], for: .normal)
         
@@ -68,8 +85,16 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
                 if(lastQuizAnswer.successfulTakeover) {
-                    print("takeover successful")
+                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                 }
+                else {
+                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
             }
             else {
                 quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
@@ -94,9 +119,26 @@ class QuizPageViewController: UIViewController {
             quizAnswer = server.sendQuizAnswer(answer: answer!)
         }
         else {
-            quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+            if(counter == 2) {
+                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+                if(lastQuizAnswer.successfulTakeover) {
+                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
+            }
+            else {
+                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+            }
         }
-
+        
+        
         if((quizAnswer?.correct)!) {
             self.alternative2.backgroundColor = UIColor.green
         }
@@ -106,7 +148,6 @@ class QuizPageViewController: UIViewController {
         counter += 1
         self.nextQuestion.isHidden = false
         
-        
     }
     @IBAction func alternative3(_ sender: Any) {
         if(counter == 0) {
@@ -114,8 +155,25 @@ class QuizPageViewController: UIViewController {
             quizAnswer = server.sendQuizAnswer(answer: answer!)
         }
         else {
-            quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+            if(counter == 2) {
+                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+                if(lastQuizAnswer.successfulTakeover) {
+                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
+            }
+            else {
+                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+            }
         }
+        
         
         if((quizAnswer?.correct)!) {
             self.alternative3.backgroundColor = UIColor.green
@@ -126,8 +184,6 @@ class QuizPageViewController: UIViewController {
         counter += 1
         self.nextQuestion.isHidden = false
         
-
-
     }
     
     @IBAction func alternative4(_ sender: Any) {
@@ -136,8 +192,25 @@ class QuizPageViewController: UIViewController {
             quizAnswer = server.sendQuizAnswer(answer: answer!)
         }
         else {
-            quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+            if(counter == 2) {
+                lastQuizAnswer = server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+                if(lastQuizAnswer.successfulTakeover) {
+                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
+            }
+            else {
+                quizAnswer = server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+            }
         }
+        
         
         if((quizAnswer?.correct)!) {
             self.alternative4.backgroundColor = UIColor.green
@@ -146,10 +219,8 @@ class QuizPageViewController: UIViewController {
             self.alternative4.backgroundColor = UIColor.red
         }
         counter += 1
-
         self.nextQuestion.isHidden = false
         
-
     }
     
     func getNewQuestions(quizAnswer: QuizAnswer?) {
