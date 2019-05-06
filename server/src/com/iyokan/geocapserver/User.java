@@ -13,6 +13,11 @@ public class User {
         this.name = name;
     }
 
+    public User(JSONObject json) {
+        this.id = new UserGuid(json.getString("id"));
+        this.name = json.getString("name");
+    }
+
 
     public UserGuid getID() {
         return id;

@@ -50,7 +50,7 @@ public class RouteQuizStart extends Route {
 
         response.put("success", true);
         response.put("question", quizRound.getQuestion());
-        response.put("alternatives", quizRound.getAlternatives());
+        response.put("alternatives", quizRound.getAlternativesRandom());
 
 
         return response;

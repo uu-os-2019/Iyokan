@@ -7,12 +7,14 @@ import org.json.JSONObject;
 import java.util.*;
 
 public class RouteQuizAnswer extends Route {
+    private LocationCollection locationCollection;
     QuizRoundCollection quizRoundCollection;
     Highscore hs;
 
-    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, Highscore hs){
+    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs){
         this.quizRoundCollection = quizRoundCollection;
         this.hs = hs;
+        this.locationCollection = collection;
     }
 
 
@@ -53,16 +55,19 @@ public class RouteQuizAnswer extends Route {
 
         if(quizSession.isDone() == false) {
             response.put("new_question", quizSession.getQuestion().getQuestion());
-            response.put("new_alternatives", quizSession.getQuestion().getAlternatives());
+            response.put("new_alternatives", quizSession.getQuestion().getAlternativesRandom());
         } else {
             response.put("new_question", JSONObject.NULL);
             response.put("new_alternatives", JSONObject.NULL);
             Location location = quizSession.getLocation();
+            me.setQuizSession(null);
+
 
             if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", true);
                 hs.updateHighscore(me.getID(), score);
-                quizSession.getLocation().setOwner(me.getID(), score);
+                location.setOwner(me.getID(), score);
+                locationCollection.updateLocation(location);
 
             } else {
                 response.put("successful_takeover", false);
