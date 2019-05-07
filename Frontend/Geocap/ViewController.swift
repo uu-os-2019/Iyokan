@@ -13,8 +13,40 @@ import CoreLocation
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    var mapRefreshTimer: Timer?
+
+    func startMapRefreshTimer() {
+        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
+            Timer.tolerance = 3
+            self.loadLocations()
+        }
+    }
     
+    func stopMapRefreshTimer() {
+        mapRefreshTimer?.invalidate()
+        mapRefreshTimer = nil
+    }
     
+    func clearMap() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+    }
+    
+    func loadLocations() {
+        clearMap()
+        
+        let locations = geoCap.server.getLocations()
+        var overlayCircles = [MKCircle]()
+        for location in locations {
+            let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
+            
+            let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
+            overlayCircles.append(circle)
+            _ = mapView(mapView, rendererFor: circle)
+        }
+        mapView.addOverlays(overlayCircles)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +59,8 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        let locations = geoCap.server.getLocations()
-
-        // generate locations on the map
-        var overlayCircles = [MKCircle]()
-        for location in locations {
-                let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
-            
-            let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
-                overlayCircles.append(circle)
-                _ = mapView(mapView, rendererFor: circle)
-            }
-        mapView.addOverlays(overlayCircles)
+        loadLocations()
+        startMapRefreshTimer()
     }
     
     let regionRadius: CLLocationDistance = 5000
@@ -65,6 +86,11 @@ class ViewController: UIViewController {
     }
     @IBAction func LeaderboardButton(_ sender: Any) {
         performSegue(withIdentifier: "LeaderboardSegue", sender: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        stopMapRefreshTimer()
     }
     
 }
