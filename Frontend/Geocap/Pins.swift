@@ -14,9 +14,9 @@ class Pin: NSObject, MKAnnotation {
     let locationName: String
     let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
-    let owner: String?
+    let owner: Owner?
     
-    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: String?) {
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: Owner?) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -28,8 +28,11 @@ class Pin: NSObject, MKAnnotation {
     
     //TODO: change accordingly when place ownership implemented
     var markerTintColor: UIColor  {
-        switch owner {
-        case "yourUsername":
+        let userID = UserDefaults.standard.string(forKey: "guid")
+        print("\(owner?.id)")
+        
+        switch owner?.id {
+        case userID:
             return .green
         // owned by no one
         case nil:
