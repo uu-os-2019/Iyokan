@@ -4,6 +4,7 @@ import com.iyokan.geocapserver.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Map;
 
@@ -48,7 +49,7 @@ public class RouteRegister extends Route {
         }
 
         UserGuid guid = Utils.generateUserGuid();
-        User user = new User(guid, username);
+        User user = new User(guid, username, new ArrayList<>());
 
         users.addUser(user);
 

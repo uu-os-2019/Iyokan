@@ -3,6 +3,8 @@ package com.iyokan.geocapserver;
 import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserCollectionTest {
@@ -12,7 +14,7 @@ class UserCollectionTest {
         UserCollection collection = new UserCollection(new DummyDatabase());
 
         UserGuid rndGuid = Utils.generateUserGuid();
-        collection.addUser(new User(rndGuid, "Kniv-karlsson"));
+        collection.addUser(new User(rndGuid, "Kniv-karlsson", new ArrayList<>()));
 
         assertTrue(collection.hasUser(rndGuid));
         assertTrue(collection.hasUser("Kniv-karlsson"));
@@ -22,7 +24,7 @@ class UserCollectionTest {
     void getUser() {
         UserCollection collection = new UserCollection(new DummyDatabase());
         UserGuid rndGuid = Utils.generateUserGuid();
-        User user1 = new User(rndGuid, "Kniv-karlsson");
+        User user1 = new User(rndGuid, "Kniv-karlsson", new ArrayList<>());
 
         collection.addUser(user1);
         User user2 = collection.getUser(rndGuid);
@@ -36,8 +38,8 @@ class UserCollectionTest {
 
         UserGuid rndGuid1 = Utils.generateUserGuid();
         UserGuid rndGuid2 = Utils.generateUserGuid();
-        collection.addUser(new User(rndGuid1, "Pistol-pelle"));
-        collection.addUser(new User(rndGuid2, "Galne-gustaf"));
+        collection.addUser(new User(rndGuid1, "Pistol-pelle", new ArrayList<>()));
+        collection.addUser(new User(rndGuid2, "Galne-gustaf", new ArrayList<>()));
 
         assertTrue(collection.hasUser(rndGuid1));
         assertTrue(collection.hasUser("Pistol-pelle"));

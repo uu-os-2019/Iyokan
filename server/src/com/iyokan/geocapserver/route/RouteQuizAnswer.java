@@ -10,11 +10,13 @@ public class RouteQuizAnswer extends Route {
     private LocationCollection locationCollection;
     QuizRoundCollection quizRoundCollection;
     Highscore hs;
+    UserCollection users;
 
-    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs){
+    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs, UserCollection users){
         this.quizRoundCollection = quizRoundCollection;
         this.hs = hs;
         this.locationCollection = collection;
+        this.users = users;
     }
 
 
@@ -65,9 +67,20 @@ public class RouteQuizAnswer extends Route {
 
             if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", true);
+
+                //rensa user.locationsTaken
+                if(location.hasOwner()) {
+                    User oldOwner = users.getUser(location.getOwner());
+                    oldOwner.removeLocation(location.getId());
+                    users.updateUser(oldOwner);
+                }
+
                 hs.updateHighscore(me.getID(), score);
                 location.setOwner(me.getID(), score);
                 locationCollection.updateLocation(location);
+
+                me.addLocation(location.getId());
+                users.updateUser(me);
 
             } else {
                 response.put("successful_takeover", false);

@@ -23,7 +23,7 @@ public class Location {
 
     public Location(JSONObject object) {
         this.identifier = object.getString("identifier");
-        this.name = object.getString("identifier");
+        this.name = object.getString("name");
         this.radius = object.getDouble("radius");
         this.position = new Position(object.getJSONObject("position"));
         this.description = object.getString("description");
@@ -55,6 +55,10 @@ public class Location {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return identifier;
     }
 
     public boolean hasOwner() {
