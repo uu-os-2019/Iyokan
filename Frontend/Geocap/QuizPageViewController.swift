@@ -24,7 +24,6 @@ class QuizPageViewController: UIViewController {
     @IBOutlet weak var nextQuestion: UIButton!
     
     
-    
     let quiz = geoCap.server.getQuiz()
     
     var quizAnswer: QuizAnswer!

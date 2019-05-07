@@ -76,6 +76,12 @@ struct LastQuizAnswer: Codable {
     }
 }
 
+struct ProfileInfo: Codable {
+    let score: Int
+    let locations: [String]?
+    let type: String
+}
+
 class Server {
     
     //TODO: maybe move to future User class
@@ -91,7 +97,7 @@ class Server {
     
     func getLocations() -> [Location] {
 
-        let url = "http://130.243.234.5/location/get-all"
+        let url = "http://13.53.140.24/location/get-all"
         let urlObject = URL(string: url)!
         var locationsJSON: jsonLocations!
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
@@ -114,7 +120,7 @@ class Server {
     
     func getQuiz() -> Quiz? {
         var quiz: Quiz!
-        let url = URL(string: "http://130.243.234.5/quiz/start")!
+        let url = URL(string: "http://13.53.140.24/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -149,7 +155,7 @@ class Server {
     
     func sendQuizAnswer(answer: String) -> QuizAnswer? {
         var quizAnswer: QuizAnswer!
-        let url = URL(string: "http://130.243.234.5/quiz/answer")!
+        let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -184,7 +190,7 @@ class Server {
     }
     func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
         var lastQuizAnswer: LastQuizAnswer!
-        let url = URL(string: "http://130.243.234.5/quiz/answer")!
+        let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -221,7 +227,7 @@ class Server {
 
     func register(userName: String) -> String {
         var register: Register!
-        let url = URL(string: "http://130.243.234.5/register")!
+        let url = URL(string: "http://13.53.140.24/register")!
         var request = URLRequest(url: url)
         request.addValue(userName, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
@@ -256,6 +262,32 @@ class Server {
         setToken()
         
         return "success"
+    }
+    
+    func getProfileInfo() -> ProfileInfo? {
+        var profileInfo: ProfileInfo!
+        let url = URL(string: "http://13.53.140.24/my-profile")!
+        var request = URLRequest(url: url)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz")
+                print(error)
+            }
+            }.resume()
+        
+        semaphore.wait()
+        
+        return profileInfo
     }
 
 }

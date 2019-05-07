@@ -8,43 +8,61 @@
 
 import UIKit
 
-class Profile: UIViewController {
+class Profile: UIViewController, UITableViewDataSource {
+    
 
     @IBOutlet weak var namn: UILabel!
     @IBOutlet weak var points: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    struct ProfileInfo: Codable {
+        let score: Int
+        let locations: [String]?
+        let type: String
+    }
+    
+    var token: String!
+    var locations: [String]?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
+        
         let username = UserDefaults.standard.string(forKey: "username")
         self.namn.text = username
+        token = UserDefaults.standard.string(forKey: "token")
         
         
-        var quiz: Quiz!
-        let url = URL(string: "http://3.14.65.225/quiz/start")!
-        var request = URLRequest(url: url)
-        request.addValue("OsthyvelOsthyvelOsthyvelOsthyvel", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "POST"
-        let location = ["location": "domkyrkan"]
+        let profileInfo = geoCap.server.getProfileInfo()
+        self.points.text = String(profileInfo!.score)
         
-        let json = try? JSONSerialization.data(withJSONObject: location, options: [])
-        request.httpBody = json
+        locations = profileInfo!.locations!
         
         
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
-            do {
-                quiz = try JSONDecoder().decode(Quiz.self, from: data!)
-                semaphore.signal()
-            } catch {
-                print("error in retrieving quiz")
-                print(error)
-            }
-            }.resume()
         // Do any additional setup after loading the view.
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let rows = locations?.count
+        return rows!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        
+        let text = locations?[indexPath.row]
+        
+        cell.textLabel?.text = text //3.
+        
+        return cell
+    }
+    
     
 
     override func didReceiveMemoryWarning() {
