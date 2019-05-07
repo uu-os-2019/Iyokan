@@ -17,7 +17,7 @@ public class UserCollection {
 
         // Add initial users from database
         for (DatabaseUserData user : database.getUsers()) {
-            users.put(user.id, new User(user.id, user.name));
+            users.put(user.id, new User(user.id, user.name, user.locationsTaken));
         }
     }
 

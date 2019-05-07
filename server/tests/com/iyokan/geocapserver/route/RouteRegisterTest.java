@@ -6,8 +6,11 @@ import com.iyokan.geocapserver.UserCollection;
 import com.iyokan.geocapserver.UserGuid;
 import com.iyokan.geocapserver.database.Database;
 import com.iyokan.geocapserver.testutils.DummyDatabase;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,7 +38,14 @@ class RouteRegisterTest {
         assertTrue(token.length() == 32);
 
         JSONObject userJson = response.getJSONObject("user");
-        User user = new User(new UserGuid(userJson.getString("id")), userJson.getString("name"));
+
+        ArrayList<String> locationsTaken = new ArrayList<>();
+        JSONArray array = userJson.getJSONArray("locationsTaken");
+        for(int i = 0; i < array.length(); i++) {
+            locationsTaken.add(array.get(i).toString());
+        }
+
+        User user = new User(new UserGuid(userJson.getString("id")), userJson.getString("name"), locationsTaken);
 
         // See that the user exists in the vault
         assertNotNull(vault.getUser(token));

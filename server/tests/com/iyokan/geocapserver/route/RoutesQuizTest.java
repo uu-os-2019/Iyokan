@@ -33,7 +33,7 @@ class RoutesQuizTest {
         users.addUser(testa);
 
         Route route = new RouteQuizStart(quizRounds, locations);
-        Route route_answer = new RouteQuizAnswer(quizRounds, locations, hs);
+        Route route_answer = new RouteQuizAnswer(quizRounds, locations, hs, users);
 
         // /quiz/start without location
         JSONObject response = route.handle(data);
