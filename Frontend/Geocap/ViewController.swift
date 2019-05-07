@@ -113,8 +113,8 @@ extension ViewController: MKMapViewDelegate {
         let distance = annotationLocation.distance(from: userLocation)
         
         let pin = view.annotation as! Pin
-        //TODO: distance check is inverted atm to simplify testing
-        if distance >= pin.radius, !geoCap.quizModel.quizTimeoutIsActive {
+        
+        if distance <= pin.radius, !geoCap.quizModel.quizTimeoutIsActive {
             geoCap.currentLocation = pin.title
             performSegue(withIdentifier: "QuizSegue", sender: self)
         } else if geoCap.quizModel.quizTimeoutIsActive {
