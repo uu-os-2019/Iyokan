@@ -29,14 +29,40 @@ public class Location {
         this.description = object.getString("description");
     }
 
+
+    /**
+     * Serializes the location. Does NOT include the owner
+     * @return
+     */
     public JSONObject getJson() {
         JSONObject json = new JSONObject();
         json.put("identifier", identifier);
         json.put("name", name);
         json.put("description", description);
-        json.put("owner", owner == null ? JSONObject.NULL : owner.toString());
         json.put("position", position.getJson());
         json.put("radius", radius);
+        return json;
+    }
+
+    /**
+     * Serializes the location and includes the owners name and guid
+     * @param users
+     * @return
+     */
+    public JSONObject getJson(UserCollection users) {
+        JSONObject json = getJson();
+
+        Object jsonOwner = JSONObject.NULL;
+
+        if (owner != null) {
+            User user = users.getUser(owner);
+            if (user != null) {
+                jsonOwner = user.getJson();
+            }
+        }
+
+        json.put("owner", jsonOwner);
+
         return json;
     }
 
