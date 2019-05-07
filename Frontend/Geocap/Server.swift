@@ -85,7 +85,7 @@ class Server {
         setToken()
     }
     
-    private func setToken() {
+    func setToken() {
         token = UserDefaults.standard.string(forKey: "token")
     }
     

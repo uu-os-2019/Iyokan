@@ -32,6 +32,7 @@ class SpelaViewController: UIViewController {
         
         //if there is a locally saved user, skips this view
         if (UserDefaults.standard.object(forKey: "token") != nil) {
+            geoCap.server.setToken()
             performSegue(withIdentifier: "SpelaSegue", sender: self)
         }
     }
