@@ -10,10 +10,15 @@ import UIKit
 
 class Profile: UIViewController {
 
+    @IBOutlet weak var namn: UILabel!
+    @IBOutlet weak var points: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let string = UserDefaults.standard.object(forKey: "token")
+        let username = UserDefaults.standard.string(forKey: "username")
+        self.namn.text = username
+        
         
         var quiz: Quiz!
         let url = URL(string: "http://3.14.65.225/quiz/start")!
