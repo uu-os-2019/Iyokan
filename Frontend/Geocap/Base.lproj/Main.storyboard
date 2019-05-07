@@ -88,8 +88,8 @@
                         <viewLayoutGuide key="safeArea" id="J3v-kZ-djO"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="SkipLoginSegue" id="iA8-kc-Wz0"/>
-                        <segue destination="EsH-EB-OUH" kind="presentation" identifier="LoginSegue" id="xTb-2W-C0J"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="SkipLoginSegue" modalTransitionStyle="crossDissolve" id="iA8-kc-Wz0"/>
+                        <segue destination="EsH-EB-OUH" kind="presentation" identifier="LoginSegue" modalTransitionStyle="crossDissolve" id="xTb-2W-C0J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qf0-FI-P9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,7 +308,7 @@
                         <outlet property="alternative4" destination="7ud-2k-Qgx" id="KtK-MH-Pgy"/>
                         <outlet property="nextQuestion" destination="Wq3-oP-7So" id="04J-a6-ipG"/>
                         <outlet property="question" destination="9NL-at-r7X" id="xiF-Eg-Hel"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" id="1c3-Ko-O0M"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" modalTransitionStyle="flipHorizontal" id="1c3-Ko-O0M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1b4-NX-wmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,7 +354,7 @@
                         <viewLayoutGuide key="safeArea" id="Ufu-7c-Uxx"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LeaderboardToMapSegue" modalTransitionStyle="crossDissolve" id="Pqw-X3-9QW"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LeaderboardToMapSegue" modalTransitionStyle="flipHorizontal" id="Pqw-X3-9QW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GD7-1W-Ktl" userLabel="First Responder" sceneMemberID="firstResponder"/>

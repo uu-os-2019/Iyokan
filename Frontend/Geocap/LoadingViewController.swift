@@ -15,12 +15,13 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         //removes locally saved information
-        resetDefaults()
+        //resetDefaults()
         
         //if there is a locally saved user, skips this view
         if (UserDefaults.standard.object(forKey: "token") != nil) {
