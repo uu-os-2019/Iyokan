@@ -61,6 +61,15 @@ struct Register: Codable {
     let token: String?
     let reason: String?
 }
+
+struct HighscoreObject: Codable {
+    let name: String
+    let points: Int
+}
+
+struct Leaderboard: Codable {
+    let highscore: [HighscoreObject]
+}
     
 struct LastQuizAnswer: Codable {
     let correct, success: Bool
@@ -254,6 +263,33 @@ class Server {
         setToken()
         
         return "success"
+    }
+    
+    func getLeaderboard() -> Leaderboard {
+        var leaderboard: Leaderboard!
+        let url = URL(string: "http://13.53.140.24/highscore")!
+        let request = URLRequest(url: url)
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                leaderboard = try JSONDecoder().decode(Leaderboard.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error when retrieving leaderboard")
+                print(leaderboard)
+                print(error)
+            }
+            }.resume()
+        
+        //TODO: Future optimisation could be to not have to wait for the server to fetch
+        //      and let the map load meanwhile
+        semaphore.wait()
+
+        print(leaderboard)
+        return leaderboard
     }
 
 }

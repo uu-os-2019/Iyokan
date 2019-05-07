@@ -341,14 +341,32 @@
                                     <action selector="LeaderboardToMap:" destination="JAb-Cx-39D" eventType="touchUpInside" id="epK-SX-ivr"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="93j-29-RhM">
+                                <rect key="frame" x="0.0" y="59" width="375" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellHighscore" id="3CH-b2-rRL">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3CH-b2-rRL" id="Nwu-mA-x0g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="93j-29-RhM" firstAttribute="trailing" secondItem="Ufu-7c-Uxx" secondAttribute="trailing" id="Iut-Gv-tFw"/>
                             <constraint firstItem="KL9-RI-1GZ" firstAttribute="top" secondItem="Ufu-7c-Uxx" secondAttribute="top" id="Jw3-ft-IHG"/>
+                            <constraint firstItem="gWP-rM-0Rr" firstAttribute="top" secondItem="93j-29-RhM" secondAttribute="bottom" constant="8" id="Ovo-cq-ERD"/>
                             <constraint firstItem="gWP-rM-0Rr" firstAttribute="leading" secondItem="Ufu-7c-Uxx" secondAttribute="leading" id="Pvc-Td-RmX"/>
                             <constraint firstItem="gWP-rM-0Rr" firstAttribute="bottom" secondItem="Ufu-7c-Uxx" secondAttribute="bottom" id="T84-bY-Xj3"/>
                             <constraint firstItem="KL9-RI-1GZ" firstAttribute="leading" secondItem="Ufu-7c-Uxx" secondAttribute="leading" id="VYy-yk-gQX"/>
+                            <constraint firstItem="93j-29-RhM" firstAttribute="top" secondItem="KL9-RI-1GZ" secondAttribute="bottom" constant="0.5" id="cfW-eF-YyH"/>
                             <constraint firstItem="Ufu-7c-Uxx" firstAttribute="trailing" secondItem="gWP-rM-0Rr" secondAttribute="trailing" constant="265" id="oDe-7x-Wsg"/>
+                            <constraint firstItem="93j-29-RhM" firstAttribute="leading" secondItem="Ufu-7c-Uxx" secondAttribute="leading" id="pYf-iK-Lj0"/>
                             <constraint firstItem="KL9-RI-1GZ" firstAttribute="trailing" secondItem="Ufu-7c-Uxx" secondAttribute="trailing" id="wg4-OF-hM0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ufu-7c-Uxx"/>
@@ -419,6 +437,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iA8-kc-Wz0"/>
+        <segue reference="Pqw-X3-9QW"/>
     </inferredMetricsTieBreakers>
 </document>

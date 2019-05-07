@@ -10,6 +10,8 @@ import UIKit
 
 class LeaderboardViewController: UIViewController {
 
+    let leaderboard = geoCap.server.getLeaderboard()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
