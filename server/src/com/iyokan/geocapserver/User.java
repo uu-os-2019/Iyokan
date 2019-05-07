@@ -13,6 +13,12 @@ public class User {
     private QuizSession quizSession;
     private ArrayList<String> locationsTaken = new ArrayList<>();
 
+    public User(UserGuid id, String name) {
+        this.id = id;
+        this.name = name;
+        this.locationsTaken = new ArrayList<>();
+    }
+
     public User(UserGuid id, String name, ArrayList<String> locations) {
         this.id = id;
         this.name = name;

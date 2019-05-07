@@ -49,7 +49,7 @@ public class RouteRegister extends Route {
         }
 
         UserGuid guid = Utils.generateUserGuid();
-        User user = new User(guid, username, new ArrayList<>());
+        User user = new User(guid, username);
 
         users.addUser(user);
 

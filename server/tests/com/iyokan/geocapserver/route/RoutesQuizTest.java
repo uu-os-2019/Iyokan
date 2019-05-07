@@ -7,8 +7,6 @@ import com.iyokan.geocapserver.testutils.DummyDatabase;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoutesQuizTest {
@@ -30,7 +28,7 @@ class RoutesQuizTest {
         QuizRoundCollection quizRounds = new QuizRoundCollection();
         quizRounds.loadQuizRounds(FileReader.readJsonArrayFromFile("resources/quizRounds.json"));
 
-        var testa = new User(Utils.generateUserGuid(), "Testa fiesta", new ArrayList<>());
+        var testa = new User(Utils.generateUserGuid(), "Testa fiesta");
         sessions.insert("OsthyvelOsthyvelOsthyvelOsthyvel", testa);
         users.addUser(testa);
 
