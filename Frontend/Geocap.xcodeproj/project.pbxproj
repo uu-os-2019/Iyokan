@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0333759D22817F02008B1D30 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333759C22817F02008B1D30 /* LoadingViewController.swift */; };
 		036D66242265FDCD009D6FC6 /* globepic.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D66232265FDCC009D6FC6 /* globepic.png */; };
 		037D80B12270802300988ABC /* GeoCapIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037D80B02270802300988ABC /* GeoCapIcon.png */; };
 		03969F2A2271D9EF00450C0D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03969F292271D9EF00450C0D /* Profile.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0333759C22817F02008B1D30 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		036D66232265FDCC009D6FC6 /* globepic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globepic.png; sourceTree = "<group>"; };
 		037D80B02270802300988ABC /* GeoCapIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeoCapIcon.png; sourceTree = "<group>"; };
 		03969F292271D9EF00450C0D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				F04D5161225CD7A500A32DBD /* AppDelegate.swift */,
 				F04D5163225CD7A500A32DBD /* ViewController.swift */,
 				43F82CAD22647E2A0043EBAA /* Server.swift */,
+				0333759C22817F02008B1D30 /* LoadingViewController.swift */,
 				F04D5191225D091300A32DBD /* SpelaViewController.swift */,
 				43EF88D022803AF800213A05 /* QuizModel.swift */,
 				F04D518F225CDF2000A32DBD /* Pins.swift */,
@@ -313,6 +316,7 @@
 				F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */,
 				03969F2A2271D9EF00450C0D /* Profile.swift in Sources */,
 				F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */,
+				0333759D22817F02008B1D30 /* LoadingViewController.swift in Sources */,
 				F0ED8EB4227C91CA001FE77C /* confetti.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

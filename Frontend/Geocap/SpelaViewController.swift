@@ -8,7 +8,6 @@
 
 import UIKit
 
-let geoCap = GeoCap()
 
 class SpelaViewController: UIViewController {
 
@@ -25,17 +24,6 @@ class SpelaViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //removes locally saved information
-        //resetDefaults()
-        
-        //if there is a locally saved user, skips this view
-        if (UserDefaults.standard.object(forKey: "token") != nil) {
-            geoCap.server.setToken()
-            performSegue(withIdentifier: "SpelaSegue", sender: self)
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -92,14 +80,6 @@ class SpelaViewController: UIViewController {
         NameField.delegate = self
     }
     
-    //removes the locally saved information
-    func resetDefaults() {
-        let defaults = UserDefaults.standard
-        let dictionary = defaults.dictionaryRepresentation()
-        dictionary.keys.forEach { key in
-            defaults.removeObject(forKey: key)
-        }
-    }
 
     /*
     // MARK: - Navigation
