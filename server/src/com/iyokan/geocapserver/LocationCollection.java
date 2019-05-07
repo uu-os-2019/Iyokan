@@ -1,7 +1,6 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
-import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.database.DatabaseLocationData;
 import org.json.JSONArray;
 
@@ -22,18 +21,17 @@ public class LocationCollection {
             locations.put(location.identifier, location);
         }
 
-        if (database != null) {
-            // Get the necessary data from the database
-            DatabaseLocationData[] locationsData = database.getLocations();
+        // Get the necessary data from the database
+        DatabaseLocationData[] locationsData = database.getLocations();
 
-            for (DatabaseLocationData locationData : locationsData) {
-                // Get the saved location
-                Location location = locations.get(locationData.identifier);
-                if (location != null) {
-                    location.setOwner(locationData.owner, locationData.score);
-                }
+        for (DatabaseLocationData locationData : locationsData) {
+            // Get the saved location
+            Location location = locations.get(locationData.identifier);
+            if (location != null) {
+                location.setOwner(locationData.owner, locationData.score);
             }
         }
+
     }
 
     public Location[] getAllLocations() {
@@ -49,8 +47,6 @@ public class LocationCollection {
     }
 
     public void updateLocation(Location location) {
-        if (database != null) {
-            database.updateLocation(location);
-        }
+        database.updateLocation(location);
     }
 }
