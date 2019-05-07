@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EsH-EB-OUH">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,7 +75,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tzw-xQ-5nN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-759.5" y="120.5"/>
+            <point key="canvasLocation" x="1001" y="121"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="v0v-Cu-X79">
+            <objects>
+                <viewController id="Hon-WI-sEz" customClass="LoadingViewController" customModule="Geocap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yjY-rV-gUv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="J3v-kZ-djO"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="SkipLoginSegue" modalTransitionStyle="crossDissolve" id="iA8-kc-Wz0"/>
+                        <segue destination="EsH-EB-OUH" kind="presentation" identifier="LoginSegue" modalTransitionStyle="crossDissolve" id="xTb-2W-C0J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qf0-FI-P9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-687.20000000000005" y="120.98950524737631"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -293,7 +308,7 @@
                         <outlet property="alternative4" destination="7ud-2k-Qgx" id="KtK-MH-Pgy"/>
                         <outlet property="nextQuestion" destination="Wq3-oP-7So" id="04J-a6-ipG"/>
                         <outlet property="question" destination="9NL-at-r7X" id="xiF-Eg-Hel"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" id="1c3-Ko-O0M"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" modalTransitionStyle="flipHorizontal" id="1c3-Ko-O0M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1b4-NX-wmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,7 +354,7 @@
                         <viewLayoutGuide key="safeArea" id="Ufu-7c-Uxx"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LeaderboardToMapSegue" modalTransitionStyle="crossDissolve" id="Pqw-X3-9QW"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LeaderboardToMapSegue" modalTransitionStyle="flipHorizontal" id="Pqw-X3-9QW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GD7-1W-Ktl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,6 +419,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1c3-Ko-O0M"/>
+        <segue reference="iA8-kc-Wz0"/>
     </inferredMetricsTieBreakers>
 </document>
