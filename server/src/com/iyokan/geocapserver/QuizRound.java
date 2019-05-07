@@ -47,5 +47,7 @@ public class QuizRound {
         }
     }
 
-
+    public String getCorrectAnswer() {
+        return alternatives.get(0);
+    }
 }

@@ -24,11 +24,8 @@ public class RouteQuizAnswer extends Route {
         JSONObject json = data.getJSON();
 
         JSONObject response = new JSONObject();
-        boolean success = true;
 
         response.put("type", "quiz_answer");
-        String request = data.getRequest();
-
         User me = data.getUser();
 
         response.put("type", "quiz_answer");
@@ -50,7 +47,13 @@ public class RouteQuizAnswer extends Route {
         }
 
         response.put("success", true);
-        response.put("correct", quizSession.answer(answer));
+        QuizRound round = quizSession.getQuestion();
+        boolean correctAnswer = quizSession.answer(answer);
+
+        response.put("correct", correctAnswer);
+        if (correctAnswer == false) {
+            response.put("correct_answer", round.getCorrectAnswer());
+        }
 
         int score = quizSession.getScore();
         response.put("points", score);
@@ -68,7 +71,6 @@ public class RouteQuizAnswer extends Route {
             if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", true);
 
-                //rensa user.locationsTaken
                 if(location.hasOwner()) {
                     User oldOwner = users.getUser(location.getOwner());
                     oldOwner.removeLocation(location.getId());
