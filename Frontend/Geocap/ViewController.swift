@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
@@ -90,6 +89,7 @@ extension ViewController: MKMapViewDelegate {
         let pin = view.annotation as! Pin
         //TODO: distance check is inverted atm to simplify testing
         if distance >= pin.radius, !geoCap.quizModel.quizTimeoutIsActive {
+            geoCap.currentLocation = pin.title
             performSegue(withIdentifier: "QuizSegue", sender: self)
         } else if geoCap.quizModel.quizTimeoutIsActive {
             let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
