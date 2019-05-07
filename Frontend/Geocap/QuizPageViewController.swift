@@ -39,16 +39,11 @@ class QuizPageViewController: UIViewController {
 
         self.question.text = quiz?.question
         self.nextQuestion.isHidden = true
-        
-        
+
         self.alternative1.setTitle(quiz?.alternatives[0], for: .normal)
-        
         self.alternative2.setTitle(quiz?.alternatives[1], for: .normal)
-        
         self.alternative3.setTitle(quiz?.alternatives[2], for: .normal)
-        
         self.alternative4.setTitle(quiz?.alternatives[3], for: .normal)
-        
         self.alternative1.backgroundColor = UIColor.blue
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
@@ -234,17 +229,5 @@ class QuizPageViewController: UIViewController {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
     }
     
-    
-    /*
-    // MARK: - Navigation
-     
- 
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -22,7 +22,7 @@ class RoutesQuizTest {
         SessionVault sessions = new SessionVault(db, users);
         Highscore hs = new Highscore();
 
-        LocationCollection locations = new LocationCollection(null);
+        LocationCollection locations = new LocationCollection(db);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
         QuizRoundCollection quizRounds = new QuizRoundCollection();
