@@ -29,9 +29,11 @@ public class User {
         this.id = new UserGuid(json.getString("id"));
         this.name = json.getString("name");
 
-        JSONArray array = json.getJSONArray("locationsTaken");
-        for(int i = 0; i < array.length(); i++) {
-            this.locationsTaken.add(array.get(i).toString());
+        if (json.has("locationsTaken")) {
+            JSONArray array = json.getJSONArray("locationsTaken");
+            for (int i = 0; i < array.length(); i++) {
+                this.locationsTaken.add(array.get(i).toString());
+            }
         }
     }
 
