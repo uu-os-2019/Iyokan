@@ -11,7 +11,7 @@
 		0339C0B42282DCF200488319 /* LeadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0339C0B32282DCF200488319 /* LeadTableCell.swift */; };
 		036D66242265FDCD009D6FC6 /* globepic.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D66232265FDCC009D6FC6 /* globepic.png */; };
 		037D80B12270802300988ABC /* GeoCapIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037D80B02270802300988ABC /* GeoCapIcon.png */; };
-		03969F2A2271D9EF00450C0D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03969F292271D9EF00450C0D /* Profile.swift */; };
+		03969F2A2271D9EF00450C0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03969F292271D9EF00450C0D /* ProfileViewController.swift */; };
 		43EF88D122803AF800213A05 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF88D022803AF800213A05 /* QuizModel.swift */; };
 		43EF88D322804C7700213A05 /* GeoCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF88D222804C7700213A05 /* GeoCap.swift */; };
 		43F82CAE22647E2A0043EBAA /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F82CAD22647E2A0043EBAA /* Server.swift */; };
@@ -27,7 +27,6 @@
 		F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5191225D091300A32DBD /* SpelaViewController.swift */; };
 		F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91632265D43A003574EC /* QuizPageViewController.swift */; };
 		F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91652265D62A003574EC /* LeaderboardViewController.swift */; };
-		F0ED8EB4227C91CA001FE77C /* confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED8EB3227C91CA001FE77C /* confetti.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,7 @@
 		0339C0B32282DCF200488319 /* LeadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTableCell.swift; sourceTree = "<group>"; };
 		036D66232265FDCC009D6FC6 /* globepic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globepic.png; sourceTree = "<group>"; };
 		037D80B02270802300988ABC /* GeoCapIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeoCapIcon.png; sourceTree = "<group>"; };
-		03969F292271D9EF00450C0D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		03969F292271D9EF00450C0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		43EF88D022803AF800213A05 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		43EF88D222804C7700213A05 /* GeoCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCap.swift; sourceTree = "<group>"; };
 		43F82CAD22647E2A0043EBAA /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -74,7 +73,6 @@
 		F04D5191225D091300A32DBD /* SpelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpelaViewController.swift; sourceTree = "<group>"; };
 		F0EB91632265D43A003574EC /* QuizPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageViewController.swift; sourceTree = "<group>"; };
 		F0EB91652265D62A003574EC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
-		F0ED8EB3227C91CA001FE77C /* confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confetti.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +132,11 @@
 				F04D518F225CDF2000A32DBD /* Pins.swift */,
 				43EF88D222804C7700213A05 /* GeoCap.swift */,
 				F0401994225F5A3C007B0C75 /* PinsView.swift */,
-				03969F292271D9EF00450C0D /* Profile.swift */,
+				03969F292271D9EF00450C0D /* ProfileViewController.swift */,
 				F04D5165225CD7A500A32DBD /* Main.storyboard */,
 				0339C0B32282DCF200488319 /* LeadTableCell.swift */,
 				F0EB91652265D62A003574EC /* LeaderboardViewController.swift */,
 				F0EB91632265D43A003574EC /* QuizPageViewController.swift */,
-				F0ED8EB3227C91CA001FE77C /* confetti.swift */,
 				F04D5168225CD7B300A32DBD /* Assets.xcassets */,
 				F04D516A225CD7B300A32DBD /* LaunchScreen.storyboard */,
 				F04D516D225CD7B300A32DBD /* Info.plist */,
@@ -318,10 +315,9 @@
 				F0401995225F5A3C007B0C75 /* PinsView.swift in Sources */,
 				0339C0B42282DCF200488319 /* LeadTableCell.swift in Sources */,
 				F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */,
-				03969F2A2271D9EF00450C0D /* Profile.swift in Sources */,
+				03969F2A2271D9EF00450C0D /* ProfileViewController.swift in Sources */,
 				F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */,
 				0333759D22817F02008B1D30 /* LoadingViewController.swift in Sources */,
-				F0ED8EB4227C91CA001FE77C /* confetti.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,13 +491,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DZGJ9SPL88;
+
+				DEVELOPMENT_TEAM = 967V79226Y;
+
 				INFOPLIST_FILE = Geocap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.erik.Geocap;
+
+				PRODUCT_BUNDLE_IDENTIFIER = com.oscar.Geocap;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -513,13 +514,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DZGJ9SPL88;
+
+				DEVELOPMENT_TEAM = 967V79226Y;
+
 				INFOPLIST_FILE = Geocap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.erik.Geocap;
+
+				PRODUCT_BUNDLE_IDENTIFIER = com.oscar.Geocap;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -13,12 +13,45 @@ import CoreLocation
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    var mapRefreshTimer: Timer?
+
+    func startMapRefreshTimer() {
+        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
+            Timer.tolerance = 3
+            self.loadLocations()
+        }
+    }
     
+    func stopMapRefreshTimer() {
+        mapRefreshTimer?.invalidate()
+        mapRefreshTimer = nil
+    }
     
+    func clearMap() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+    }
+    
+    func loadLocations() {
+        clearMap()
+        
+        let locations = geoCap.server.getLocations()
+        var overlayCircles = [MKCircle]()
+        for location in locations {
+            let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
+            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
+            
+            let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
+            overlayCircles.append(circle)
+            _ = mapView(mapView, rendererFor: circle)
+        }
+        mapView.addOverlays(overlayCircles)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
@@ -27,19 +60,8 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        let locations = geoCap.server.getLocations()
-
-        // generate locations on the map
-        var overlayCircles = [MKCircle]()
-        for location in locations {
-                let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
-            
-            let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
-                overlayCircles.append(circle)
-                _ = mapView(mapView, rendererFor: circle)
-            }
-        mapView.addOverlays(overlayCircles)
+        loadLocations()
+        startMapRefreshTimer()
     }
     
     let regionRadius: CLLocationDistance = 5000
@@ -67,6 +89,11 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "LeaderboardSegue", sender: self)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        stopMapRefreshTimer()
+    }
+    
 }
 extension ViewController: MKMapViewDelegate {
     
@@ -78,6 +105,9 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
+ 
+
+    
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
@@ -87,8 +117,10 @@ extension ViewController: MKMapViewDelegate {
         let distance = annotationLocation.distance(from: userLocation)
         
         let pin = view.annotation as! Pin
-        //TODO: distance check is inverted atm to simplify testing
-        if distance >= pin.radius, !geoCap.quizModel.quizTimeoutIsActive {
+        
+        // distance check commented out for testing purposes
+        if !geoCap.quizModel.quizTimeoutIsActive//, distance <= pin.radius 
+        {
             geoCap.currentLocation = pin.title
             performSegue(withIdentifier: "QuizSegue", sender: self)
         } else if geoCap.quizModel.quizTimeoutIsActive {
