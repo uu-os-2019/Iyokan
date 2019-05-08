@@ -26,7 +26,6 @@
 		F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04D5191225D091300A32DBD /* SpelaViewController.swift */; };
 		F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91632265D43A003574EC /* QuizPageViewController.swift */; };
 		F0EB91662265D62A003574EC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB91652265D62A003574EC /* LeaderboardViewController.swift */; };
-		F0ED8EB4227C91CA001FE77C /* confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ED8EB3227C91CA001FE77C /* confetti.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +71,6 @@
 		F04D5191225D091300A32DBD /* SpelaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpelaViewController.swift; sourceTree = "<group>"; };
 		F0EB91632265D43A003574EC /* QuizPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageViewController.swift; sourceTree = "<group>"; };
 		F0EB91652265D62A003574EC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
-		F0ED8EB3227C91CA001FE77C /* confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confetti.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +134,6 @@
 				F04D5165225CD7A500A32DBD /* Main.storyboard */,
 				F0EB91652265D62A003574EC /* LeaderboardViewController.swift */,
 				F0EB91632265D43A003574EC /* QuizPageViewController.swift */,
-				F0ED8EB3227C91CA001FE77C /* confetti.swift */,
 				F04D5168225CD7B300A32DBD /* Assets.xcassets */,
 				F04D516A225CD7B300A32DBD /* LaunchScreen.storyboard */,
 				F04D516D225CD7B300A32DBD /* Info.plist */,
@@ -317,7 +314,6 @@
 				03969F2A2271D9EF00450C0D /* ProfileViewController.swift in Sources */,
 				F0EB91642265D43A003574EC /* QuizPageViewController.swift in Sources */,
 				0333759D22817F02008B1D30 /* LoadingViewController.swift in Sources */,
-				F0ED8EB4227C91CA001FE77C /* confetti.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
