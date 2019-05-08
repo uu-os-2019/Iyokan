@@ -17,4 +17,5 @@ class GeoCap {
         self.server = Server()
         self.quizModel = QuizModel()
     }
+
 }

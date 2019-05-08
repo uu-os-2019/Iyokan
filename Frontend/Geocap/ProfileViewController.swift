@@ -23,7 +23,7 @@ class Profile: UIViewController, UITableViewDataSource {
     
     var token: String!
     var locations: [String]?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
