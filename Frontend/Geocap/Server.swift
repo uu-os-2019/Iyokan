@@ -76,6 +76,12 @@ struct LastQuizAnswer: Codable {
     }
 }
 
+struct ProfileInfo: Codable {
+    let score: Int
+    let locations: [String]?
+    let type: String
+}
+
 class Server {
     
     var token: String!
@@ -254,6 +260,32 @@ class Server {
         setToken()
         
         return "success"
+    }
+    
+    func getProfileInfo() -> ProfileInfo? {
+        var profileInfo: ProfileInfo!
+        let url = URL(string: "http://13.53.140.24/my-profile")!
+        var request = URLRequest(url: url)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        
+        
+        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        
+        // Asynchronous function
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            do {
+                profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
+                semaphore.signal()
+            } catch {
+                print("error in retrieving quiz")
+                print(error)
+            }
+            }.resume()
+        
+        semaphore.wait()
+        
+        return profileInfo
     }
 
 }
