@@ -10,11 +10,13 @@ public class RouteQuizAnswer extends Route {
     private LocationCollection locationCollection;
     QuizRoundCollection quizRoundCollection;
     Highscore hs;
+    UserCollection users;
 
-    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs){
+    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs, UserCollection users){
         this.quizRoundCollection = quizRoundCollection;
         this.hs = hs;
         this.locationCollection = collection;
+        this.users = users;
     }
 
 
@@ -22,11 +24,8 @@ public class RouteQuizAnswer extends Route {
         JSONObject json = data.getJSON();
 
         JSONObject response = new JSONObject();
-        boolean success = true;
 
         response.put("type", "quiz_answer");
-        String request = data.getRequest();
-
         User me = data.getUser();
 
         response.put("type", "quiz_answer");
@@ -48,7 +47,13 @@ public class RouteQuizAnswer extends Route {
         }
 
         response.put("success", true);
-        response.put("correct", quizSession.answer(answer));
+        QuizRound round = quizSession.getQuestion();
+        boolean correctAnswer = quizSession.answer(answer);
+
+        response.put("correct", correctAnswer);
+        if (correctAnswer == false) {
+            response.put("correct_answer", round.getCorrectAnswer());
+        }
 
         int score = quizSession.getScore();
         response.put("points", score);
@@ -65,9 +70,19 @@ public class RouteQuizAnswer extends Route {
 
             if(location.hasOwner() == false || location.getScore() <= score) {
                 response.put("successful_takeover", true);
+
+                if(location.hasOwner()) {
+                    User oldOwner = users.getUser(location.getOwner());
+                    oldOwner.removeLocation(location.getId());
+                    users.updateUser(oldOwner);
+                }
+
                 hs.updateHighscore(me.getID(), score);
                 location.setOwner(me.getID(), score);
                 locationCollection.updateLocation(location);
+
+                me.addLocation(location.getId());
+                users.updateUser(me);
 
             } else {
                 response.put("successful_takeover", false);

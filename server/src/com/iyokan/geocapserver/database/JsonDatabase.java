@@ -72,7 +72,7 @@ public class JsonDatabase implements Database {
 
 
     public void insertUser(User user) {
-        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName()));
+        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName(), user.getLocationsTaken()));
         save();
     }
 
@@ -83,7 +83,8 @@ public class JsonDatabase implements Database {
     public void updateUser(User user) {
         // Finds the old user and updates its data
         DatabaseUserData savedUser = users.get(user.getID());
-        // There is currently no changing data to save
+        savedUser.locationsTaken = user.getLocationsTaken();
+        save();
     }
 
     /**

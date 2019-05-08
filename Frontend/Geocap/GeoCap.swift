@@ -11,6 +11,7 @@ import Foundation
 class GeoCap {
     let server: Server
     let quizModel: QuizModel
+    var currentLocation: String?
     
     init() {
         self.server = Server()

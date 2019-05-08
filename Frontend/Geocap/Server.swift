@@ -84,7 +84,6 @@ struct ProfileInfo: Codable {
 
 class Server {
     
-    //TODO: maybe move to future User class
     var token: String!
     
     init() {
@@ -118,17 +117,16 @@ class Server {
         return locationsJSON.locations
     }
     
-    func getQuiz() -> Quiz? {
+    func getQuiz(for location: String) -> Quiz? {
         var quiz: Quiz!
         let url = URL(string: "http://13.53.140.24/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
-        let location = ["location": "domkyrkan"]
+        let location = ["location": location]
         
         let json = try? JSONSerialization.data(withJSONObject: location, options: [])
         request.httpBody = json
-        
         
         let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
         
