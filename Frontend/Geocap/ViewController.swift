@@ -51,6 +51,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
@@ -104,6 +105,9 @@ extension ViewController: MKMapViewDelegate {
         renderer.lineWidth = 2
         return renderer
     }
+ 
+
+    
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
