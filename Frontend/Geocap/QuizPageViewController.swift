@@ -67,11 +67,15 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 else {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 
             }
@@ -87,6 +91,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative1.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -104,11 +109,15 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 else {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 
             }
@@ -124,6 +133,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative2.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -140,11 +150,15 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 else {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                     
                     geoCap.quizModel.quizTimeoutIsActive = true
                     geoCap.quizModel.startQuizTimer()
@@ -163,6 +177,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative3.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -180,11 +195,15 @@ class QuizPageViewController: UIViewController {
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                 }
                 else {
                     let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
                     
                 }
                 
@@ -201,6 +220,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative4.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -218,8 +238,23 @@ class QuizPageViewController: UIViewController {
         self.question.text = quizAnswer?.newQuestion
     }
     
+    func disableButtons() {
+        self.alternative1.isEnabled = false
+        self.alternative2.isEnabled = false
+        self.alternative3.isEnabled = false
+        self.alternative4.isEnabled = false
+    }
+    func enableButtons() {
+        self.alternative1.isEnabled = true
+        self.alternative2.isEnabled = true
+        self.alternative3.isEnabled = true
+        self.alternative4.isEnabled = true
+    }
+    
     
     @IBAction func getNextQuestion(_ sender: Any) {
+        self.nextQuestion.isHighlighted = true
+        enableButtons()
         getNewQuestions(quizAnswer: quizAnswer)
         
     }
