@@ -8,10 +8,41 @@
 
 import UIKit
 
-class LeaderboardViewController: UIViewController {
-
+class LeaderboardViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableLead: UITableView!
+    
+    let leaderboard = geoCap.server.getLeaderboard()
+    
+    private var data: [String] = []
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return leaderboard.highscore.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableLead.dequeueReusableCell(withIdentifier: "cellHighscore") as! LeadTableCell
+        
+        cell.rank.text = data[indexPath.row] + "."
+        cell.name.text = leaderboard.highscore[indexPath.row].name
+        cell.points.text = "Points: " + "\(leaderboard.highscore[indexPath.row].points)"
+        
+        return cell //4.
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 1...leaderboard.highscore.count {
+            data.append("\(i)")
+        }
+        
+        tableLead.dataSource = self
+        tableLead.tableFooterView = UIView(frame: .zero)
 
         // Do any additional setup after loading the view.
     }
