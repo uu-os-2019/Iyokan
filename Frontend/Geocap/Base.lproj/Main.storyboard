@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -189,6 +185,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="O8l-Yb-RfM" id="9Wj-n5-7OC"/>
+                        <outlet property="profilbutton" destination="Fh9-hF-SPY" id="3Ue-h7-c5N"/>
                         <segue destination="7MW-zh-wgF" kind="presentation" identifier="QuizSegue" modalTransitionStyle="coverVertical" id="IOA-cv-p5Z"/>
                         <segue destination="JAb-Cx-39D" kind="presentation" identifier="LeaderboardSegue" modalTransitionStyle="coverVertical" id="28K-Ul-yMn"/>
                     </connections>
@@ -498,8 +495,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-
-        <segue reference="iA8-kc-Wz0"/>
-
+        <segue reference="Sqj-Ij-cYG"/>
     </inferredMetricsTieBreakers>
 </document>

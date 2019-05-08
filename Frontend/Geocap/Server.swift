@@ -51,13 +51,13 @@ struct QuizAnswer: Codable {
 }
 
 
-struct User: Codable {
+struct UserInfo: Codable {
     let id: String
     let name: String
 }
 struct Register: Codable {
     let success: Bool
-    let user: User?
+    let user: UserInfo?
     let token: String?
     let reason: String?
 }
