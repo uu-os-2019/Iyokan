@@ -39,6 +39,7 @@ struct QuizAnswer: Codable {
     let newAlternatives: [String]
     let correct, success: Bool
     let type: String
+    let correctAnswer: String?
     let points: Int
     let newQuestion: String
     
@@ -46,6 +47,7 @@ struct QuizAnswer: Codable {
         case newAlternatives = "new_alternatives"
         case correct, success, type, points
         case newQuestion = "new_question"
+        case correctAnswer = "correct_answer"
     }
 
 }
@@ -76,12 +78,14 @@ struct LastQuizAnswer: Codable {
     let type: String
     let points: Int
     let newQuestion: String?
+    let correctAnswer: String?
     let successfulTakeover: Bool
     
     enum CodingKeys: String, CodingKey {
         case correct, success, type, points
         case newQuestion = "new_question"
         case successfulTakeover = "successful_takeover"
+        case correctAnswer = "correct_answer"
     }
 }
 

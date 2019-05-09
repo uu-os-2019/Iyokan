@@ -57,7 +57,7 @@ public class RouteRegister extends Route {
         String token = Base64.getUrlEncoder().encodeToString(tokenBytes);
 
         obj.put("success", true);
-        obj.put("user", user.getJson());
+        obj.put("user", user.getPrivateJson());
         obj.put("token", token);
 
         sessionVault.insert(token, user);
