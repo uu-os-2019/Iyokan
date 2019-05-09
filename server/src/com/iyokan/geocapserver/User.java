@@ -11,7 +11,7 @@ public class User {
     private String name;
     private Position position;
     private QuizSession quizSession;
-    private ArrayList<String> locationsTaken = new ArrayList<>();
+    private ArrayList<String> locationsTaken;
 
     public User(UserGuid id, String name) {
         this.id = id;
@@ -42,6 +42,10 @@ public class User {
         return id;
     }
 
+    /**
+     * Serializes the user, does not contain private user data
+     * @return
+     */
     public JSONObject getJson() {
         JSONObject obj = new JSONObject();
         obj.put("id", id.toString());
@@ -50,6 +54,10 @@ public class User {
         return obj;
     }
 
+    /**
+     * Includes private user data that should only be sent to the user who it is
+     * @return
+     */
     public JSONObject getPrivateJson() {
         JSONObject obj = getJson();
         obj.put("locationsTaken", locationsTaken);

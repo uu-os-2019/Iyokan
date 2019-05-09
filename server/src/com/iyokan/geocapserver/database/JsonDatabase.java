@@ -72,7 +72,7 @@ public class JsonDatabase implements Database {
     public void filterLocations(LocationCollection collection) {
         // Removes stored locations that are not in the database
 
-        // A list of what to remove, because we can not modify a collecion when we iterate over it
+        // A list of what to remove, because we can not modify a collection while we iterate over it
         LinkedList<String> toRemove = new LinkedList<>();
 
         for (DatabaseLocationData location : locations.values()) {

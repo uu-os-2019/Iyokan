@@ -7,6 +7,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * A round for a quiz. Contains a question and alternatives
+ */
 public class QuizRound {
     private String question;
     private ArrayList<String> alternatives = new ArrayList<String>();
