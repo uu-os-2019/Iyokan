@@ -1,14 +1,13 @@
 package com.iyokan.geocapserver.database;
 
-import com.iyokan.geocapserver.FileReader;
-import com.iyokan.geocapserver.Location;
-import com.iyokan.geocapserver.User;
-import com.iyokan.geocapserver.UserGuid;
+import com.iyokan.geocapserver.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * Fetches data from a database, or so far, just from JSON files
@@ -49,6 +48,13 @@ public class JsonDatabase implements Database {
                 users.put(user.id, user);
             }
 
+            // Loop through all locations and put the owners in the users
+            for (DatabaseLocationData location : locations.values()) {
+                if (users.containsKey(location.owner)) {
+                    users.get(location.owner).locationsTaken.add(location.identifier);
+                }
+            }
+
             JSONArray jsonSessions = root.getJSONArray("sessions");
 
             for (int i=0; i < jsonSessions.length(); i++) {
@@ -57,6 +63,33 @@ public class JsonDatabase implements Database {
                 sessions.put(session.token, session);
             }
         }
+    }
+
+    /**
+     * Removes all locations from the database that are not in the provided LocationCollection
+     * @param collection
+     */
+    public void filterLocations(LocationCollection collection) {
+        // Removes stored locations that are not in the database
+
+        // A list of what to remove, because we can not modify a collecion when we iterate over it
+        LinkedList<String> toRemove = new LinkedList<>();
+
+        for (DatabaseLocationData location : locations.values()) {
+            // Remove it for the user
+            if (collection.isLocation(location.identifier) == false) {
+                if (users.containsKey(location.owner)) {
+                    users.get(location.owner).locationsTaken.remove(location.identifier);
+                }
+            }
+
+            // Put it in the list for removal later
+            toRemove.add(location.identifier);
+        }
+
+        // Remove all the locations
+        toRemove.forEach(x -> locations.remove(x));
+        save();
     }
 
     public DatabaseUserData[] getUsers() {
