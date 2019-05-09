@@ -41,15 +41,7 @@ struct QuizAnswer: Codable {
     let type: String
     let points: Int
     let newQuestion: String
-    
-    enum CodingKeys: String, CodingKey {
-        case newAlternatives = "new_alternatives"
-        case correct, success, type, points
-        case newQuestion = "new_question"
-    }
-
 }
-
 
 struct UserInfo: Codable {
     let id: String
@@ -77,12 +69,6 @@ struct LastQuizAnswer: Codable {
     let points: Int
     let newQuestion: String?
     let successfulTakeover: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case correct, success, type, points
-        case newQuestion = "new_question"
-        case successfulTakeover = "successful_takeover"
-    }
 }
 
 struct ProfileInfo: Codable {
@@ -142,7 +128,9 @@ class Server {
         // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
-                quiz = try JSONDecoder().decode(Quiz.self, from: data!)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                quiz = try decoder.decode(Quiz.self, from: data!)
                 semaphore.signal()
             } catch {
                 print("error in retrieving quiz")
@@ -177,7 +165,9 @@ class Server {
         // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
-                quizAnswer = try JSONDecoder().decode(QuizAnswer.self, from: data!)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                quizAnswer = try decoder.decode(QuizAnswer.self, from: data!)
                 semaphore.signal()
             } catch {
                 print("error in retrieving quiz answer")
@@ -212,7 +202,9 @@ class Server {
         // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
-                lastQuizAnswer = try JSONDecoder().decode(LastQuizAnswer.self, from: data!)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                lastQuizAnswer = try decoder.decode(LastQuizAnswer.self, from: data!)
                 semaphore.signal()
             } catch {
                 print("error in retrieving quiz answer")
