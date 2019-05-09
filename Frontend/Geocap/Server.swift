@@ -287,7 +287,7 @@ class Server {
                 profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
                 semaphore.signal()
             } catch {
-                print("error in retrieving quiz")
+                print("error in retrieving profile info")
                 print(error)
             }
             }.resume()
