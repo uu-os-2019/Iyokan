@@ -28,19 +28,15 @@ class Profile: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
         
         let username = UserDefaults.standard.string(forKey: "username")
-        self.namn.text = username
-        token = UserDefaults.standard.string(forKey: "token")
-        
-        
         let profileInfo = geoCap.server.getProfileInfo()
-        self.points.text = String(profileInfo!.score)
+        self.points.text = username! + " " + String(profileInfo!.score) + "p"
         
         locations = profileInfo!.locations!
         
-        
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: .zero)
         // Do any additional setup after loading the view.
     }
     
