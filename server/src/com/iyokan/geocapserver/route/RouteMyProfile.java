@@ -30,8 +30,9 @@ public class RouteMyProfile extends Route {
             locationNames.add(locations.getLocation(s).getName());
         }
 
-        response.put("score", hs.getUserHighscore(data.getUser().getID()));
         response.put("locations", locationNames);
+        response.put("currentScore", data.getUser().getPointRate());
+        response.put("totalScore", data.getUser().getTotalScore());
 
         return response;
     }
