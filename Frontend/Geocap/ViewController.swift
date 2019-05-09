@@ -37,8 +37,7 @@ class ViewController: UIViewController {
     
     func loadLocations() {
         clearMap()
-        
-        let locations = geoCap.server.getLocations()
+        let locations = geoCap.locations
         var overlayCircles = [MKCircle]()
         for location in locations {
             let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        loadLocations()
+        geoCap.server.getLocations(self)
         startMapRefreshTimer()
     }
     

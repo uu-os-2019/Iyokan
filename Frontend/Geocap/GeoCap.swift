@@ -12,6 +12,7 @@ class GeoCap {
     let server: Server
     let quizModel: QuizModel
     var currentLocation: String?
+    var locations = [Location]()
     
     init() {
         self.server = Server()

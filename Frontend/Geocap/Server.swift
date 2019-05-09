@@ -47,6 +47,7 @@ struct UserInfo: Codable {
     let id: String
     let name: String
 }
+
 struct Register: Codable {
     let success: Bool
     let user: UserInfo?
@@ -89,27 +90,51 @@ class Server {
         token = UserDefaults.standard.string(forKey: "token")
     }
     
-    func getLocations() -> [Location] {
-
+    private func handleClientError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    private func handleServerError(_ response: URLResponse?) {
+        if let responseURL = response?.url {
+            print("Request to \(responseURL) failed)")
+        } else {
+            print("Unknown server error")
+        }
+    }
+    
+    func getLocations(_ viewController: ViewController) -> [Location] {
         let url = "http://13.53.140.24/location/get-all"
         let urlObject = URL(string: url)!
-        var locationsJSON: jsonLocations!
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
         
-        // Asynchronous function
         URLSession.shared.dataTask(with: urlObject) {(data, response, error) in
             do {
-                locationsJSON = try JSONDecoder().decode(jsonLocations.self, from: data!)
-                semaphore.signal()
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
+                if let data = data {
+                    let parsedJSON = try JSONDecoder().decode(jsonLocations.self, from: data)
+                    geoCap.locations = parsedJSON.locations
+                    DispatchQueue.main.async {
+                        viewController.loadLocations()
+                    }
+                }
+            
             } catch {
-                print("error in retrieving JSON locations")
+                print("getLocations() failed")
             }
         }.resume()
+
+        print("loolol")
         
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
-        semaphore.wait()
-        return locationsJSON.locations
+        return [Location]()
     }
     
     func getQuiz(for location: String) -> Quiz? {
