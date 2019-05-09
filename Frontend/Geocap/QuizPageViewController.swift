@@ -64,14 +64,21 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
                 if(lastQuizAnswer.successfulTakeover) {
+                    /*
                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
                     self.present(alert, animated: true)
+ */
+                    doneWithQuizWin()
+
                 }
                 else {
-                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizLoss()
                 }
                 
             }
@@ -87,6 +94,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative1.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -101,14 +109,21 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
                 if(lastQuizAnswer.successfulTakeover) {
-                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizWin()
+
                 }
                 else {
-                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizLoss()
                 }
                 
             }
@@ -124,6 +139,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative2.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -137,14 +153,22 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
                 if(lastQuizAnswer.successfulTakeover) {
-                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizWin()
+
                 }
                 else {
-                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizLoss()
+
                     
                     geoCap.quizModel.quizTimeoutIsActive = true
                     geoCap.quizModel.startQuizTimer()
@@ -163,6 +187,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative3.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -177,14 +202,22 @@ class QuizPageViewController: UIViewController {
             if(counter == 2) {
                 lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
                 if(lastQuizAnswer.successfulTakeover) {
-                    let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizWin()
+
                 }
                 else {
-                    let alert = UIAlertController(title: "Tyvärr, du fick inte området", message: "Kom tillbaka om 30 sek och försök igen", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    /*
+                     let alert = UIAlertController(title: "Grattis du tog över området", message: "", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Stäng", style: .default, handler: nil))
+                     self.present(alert, animated: true)
+                     */
+                    doneWithQuizLoss()
+
                     
                 }
                 
@@ -201,6 +234,7 @@ class QuizPageViewController: UIViewController {
         else {
             self.alternative4.backgroundColor = UIColor.red
         }
+        disableButtons()
         counter += 1
         self.nextQuestion.isHidden = false
         
@@ -218,8 +252,58 @@ class QuizPageViewController: UIViewController {
         self.question.text = quizAnswer?.newQuestion
     }
     
+    func disableButtons() {
+        self.alternative1.isEnabled = false
+        self.alternative2.isEnabled = false
+        self.alternative3.isEnabled = false
+        self.alternative4.isEnabled = false
+    }
+    func enableButtons() {
+        self.alternative1.isEnabled = true
+        self.alternative2.isEnabled = true
+        self.alternative3.isEnabled = true
+        self.alternative4.isEnabled = true
+    }
+    
+    func doneWithQuizWin() {
+        let alertController = UIAlertController(title: "Grattis du tog över området!", message: "", preferredStyle: .alert)
+        
+        // Create OK button
+        let OKAction = UIAlertAction(title: "Tillbaka till kartan", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+
+            print("Ok button tapped");
+            
+        }
+        alertController.addAction(OKAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
+    }
+    func doneWithQuizLoss() {
+        let alertController = UIAlertController(title: "Du misslyckades med att ta över området", message: "Vänta 30 sekunder och försök igen!", preferredStyle: .alert)
+        
+        // Create OK button
+        let OKAction = UIAlertAction(title: "Tillbaka till kartan", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+            
+            print("Ok button tapped");
+            
+        }
+        alertController.addAction(OKAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
     
     @IBAction func getNextQuestion(_ sender: Any) {
+        self.nextQuestion.isHighlighted = true
+        enableButtons()
         getNewQuestions(quizAnswer: quizAnswer)
         
     }

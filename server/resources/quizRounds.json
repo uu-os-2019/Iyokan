@@ -16,5 +16,58 @@
   {
     "question": "Hur många bor i Uppsala kommun",
     "alternatives": ["225 000", "150 000", "310 000", "565 000" ]
+  },
+  {
+    "question": "Vilket påstående är sant?",
+    "alternatives": ["Uppsalas universitet är det äldsta i norden", "Uppsala är nordens äldsta stad", "Domkyrkan är nordens äldsta kyrka", "Uppsala var Sveriges första huvudstad" ]
+  },
+  {
+    "question": "Under 1500-talet erövrades Uppsala av danska trupper. Vilken svensk kung återerövrade Uppsala?",
+    "alternatives": ["Gustav Vasa", "Erik XIV", "Johan III", "Gustav II Adolf" ]
+  },
+  {
+    "question": "Vilket innebandy lag i Uppsala vann SM-guld tre år irad, mellan 2010 och 2012?",
+    "alternatives": ["Storvreta IBK", "IK Sirius IBK", "Uppsala IBK", "Team Thorengruppen SK" ]
+  },
+  {
+    "question": "Vad var Uppsalas tidigaste namn?",
+    "alternatives": ["Östra Aros", "Västa Aros", "Gamla Uppsala", "Sala" ]
+  },
+  {
+    "question": "Vilket landskap tillhör Uppsala?",
+    "alternatives": ["Uppland", "Södermanland", "Gästrikland", "Närke" ]
+  },
+  {
+    "question": "Vilken världskänd botaniker och naturforskare avled i Uppsala år 1788?",
+    "alternatives": ["Carl von Linne", "Olof Rudbeck", "Olof Celsius", "Carl De Geer" ]
+  },
+  {
+    "question": "Vad hette juridikstudenten i Uppsala som är den misstänkta gärningsmannen bakom von Sydowska morden?",
+    "alternatives": ["Fredrik von Sydow", "Hjalmar von Sydow", "Olof Palme", "Mijailo Mijailovic" ]
+  },
+  {
+    "question": "Ungefär hur många invånare bor i Uppsala kommun?",
+    "alternatives": ["200 000", "300 000", "100 000", "400 000" ]
+  },
+  {
+    "question": "Vilket valår var första gången som allmän rösträtt för kvinnor praktiserades?",
+    "alternatives": ["1921", "1919", "1924", "1920" ]
+  },
+  {
+    "question": "Vad heter den svenska författaren som bland annat skrivit Röda rummet?",
+    "alternatives": ["August Strindberg", "Selma Lagerlöf", "Astrid Lindgren", "Karin Boye" ]
+  },
+  {
+    "question": "Vilket av följande år vann Sveriges herrlandslag i fotboll brons i VM?",
+    "alternatives": ["1994", "1990", "1998", "2002" ]
+  },
+  {
+    "question": "Vilket år påbörjades Berlinmurens fall?",
+    "alternatives": ["1989", "1991", "1990", "1992" ]
+  },
+  {
+    "question": "Vem var första kvinnan att vinna nobelpriset i litteratur?",
+    "alternatives": ["Selma Lagerlöf", "Astrid Lindgren", "Karin Boye", "Marie Curie" ]
   }
+  
 ]

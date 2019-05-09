@@ -23,7 +23,7 @@ class Profile: UIViewController, UITableViewDataSource {
     
     var token: String!
     var locations: [String]?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +49,14 @@ class Profile: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = locations?.count
-        return rows!
+        let rows = locations!.count
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         
-        let text = locations?[indexPath.row]
+        let text = locations![indexPath.row]
         
         cell.textLabel?.text = text //3.
         
