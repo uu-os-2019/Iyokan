@@ -46,8 +46,13 @@ public class User {
         JSONObject obj = new JSONObject();
         obj.put("id", id.toString());
         obj.put("name", name);
-        obj.put("locationsTaken", locationsTaken);
 
+        return obj;
+    }
+
+    public JSONObject getPrivateJson() {
+        JSONObject obj = getJson();
+        obj.put("locationsTaken", locationsTaken);
         return obj;
     }
 
