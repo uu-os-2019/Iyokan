@@ -1,10 +1,11 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
-import com.iyokan.geocapserver.database.JsonDatabase;
+import com.iyokan.geocapserver.database.DatabaseLocationData;
 import com.iyokan.geocapserver.database.DatabaseUserData;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class UserCollection {
     private Database database;

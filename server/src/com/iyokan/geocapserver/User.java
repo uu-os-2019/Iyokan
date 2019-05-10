@@ -11,9 +11,9 @@ public class User {
     private String name;
     private Position position;
     private QuizSession quizSession;
-    private ArrayList<String> locationsTaken = new ArrayList<>();
+    private ArrayList<String> locationsTaken;
     private int pointRate;
-    private int lastCalculatedScore;
+    private long lastCalculatedScore;
     private long timeLastCalculated;
 
 
@@ -34,7 +34,7 @@ public class User {
         this.lastCalculatedScore = 0;
     }
 
-    public User(UserGuid id, String name, ArrayList<String> locations, int pointRate, int lastCalculatedScore, long timeLastCalculated){
+    public User(UserGuid id, String name, ArrayList<String> locations, int pointRate, long lastCalculatedScore, long timeLastCalculated){
         this.id = id;
         this.name = name;
         this.locationsTaken = locations;
@@ -51,7 +51,7 @@ public class User {
             this.pointRate = json.getInt("pointRate");
         }
         if (json.has("lastCalculatedScore")) {
-            this.lastCalculatedScore = json.getInt("lastCalculatedScore");
+            this.lastCalculatedScore = json.getLong("lastCalculatedScore");
         }
         if (json.has("timeLastCalculated")) {
             this.timeLastCalculated = json.getLong("timeLastCalculated");
@@ -70,6 +70,10 @@ public class User {
         return id;
     }
 
+    /**
+     * Serializes the user, does not contain private user data
+     * @return
+     */
     public JSONObject getJson() {
         JSONObject obj = new JSONObject();
         obj.put("id", id.toString());
@@ -78,6 +82,10 @@ public class User {
         return obj;
     }
 
+    /**
+     * Includes private user data that should only be sent to the user who it is
+     * @return
+     */
     public JSONObject getPrivateJson() {
         JSONObject obj = getJson();
         obj.put("locationsTaken", locationsTaken);
@@ -119,7 +127,7 @@ public class User {
         return quizSession;
     }
 
-    public int getLastCalculatedScore(){ return lastCalculatedScore; }
+    public long getLastCalculatedScore(){ return lastCalculatedScore; }
 
     public long getTimeLastCalculated(){ return timeLastCalculated; }
 
@@ -138,11 +146,11 @@ public class User {
         long currentTime = System.nanoTime();
         int timePassed = (int)((currentTime-timeLastCalculated)/1000000000);
         timeLastCalculated = currentTime;
-        int totalScore = (timePassed * pointRate) + lastCalculatedScore;
+        long totalScore = (timePassed * pointRate) + lastCalculatedScore;
         lastCalculatedScore = totalScore;
     }
 
-    public int getTotalScore(){
+    public long getTotalScore(){
         this.setTotalScore();
         return lastCalculatedScore;
     }

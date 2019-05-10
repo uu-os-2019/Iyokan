@@ -10,7 +10,7 @@ public class QuizRoundCollection {
     private ArrayList<QuizRound> quizRounds;
 
     public QuizRoundCollection(){
-        quizRounds = new ArrayList<QuizRound>();
+        quizRounds = new ArrayList<>();
     }
 
     public void loadQuizRounds(JSONArray array) {
@@ -19,12 +19,12 @@ public class QuizRoundCollection {
             quizRounds.add(quizRound);
         }
     }
-    public QuizRound[] getAllQuizRounds() {return quizRounds.toArray(new QuizRound[0]);}
 
-    // Lägg till out of bounds index handling
-    public QuizRound getQuizRound(int index){
-        return quizRounds.get(index);
-    }
+    /**
+     * Returns all quiz rounds
+     * @return
+     */
+    public QuizRound[] getAllQuizRounds() {return quizRounds.toArray(new QuizRound[0]);}
 
     public QuizRound[] getRandomQuizRounds(int count) {
         // Select random values we haven't selected before until we have all we need

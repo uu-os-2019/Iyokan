@@ -14,6 +14,8 @@ public class Main {
         LocationCollection locations = new LocationCollection(database);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
 
+        database.filterLocations(locations);
+
         UserCollection users = new UserCollection(database);
 
         SessionVault sessions = new SessionVault(database, users);
