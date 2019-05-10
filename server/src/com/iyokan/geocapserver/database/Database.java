@@ -14,6 +14,13 @@ public interface Database {
     void insertSession(String token, UserGuid user);
 
     /**
+     * Gets the user attached with the specified guid
+     * @param guid
+     * @return
+     */
+    DatabaseUserData getUser(UserGuid guid);
+
+    /**
      * Gets an array of all users currently in the database
      * @return
      */
@@ -24,6 +31,13 @@ public interface Database {
      * @return
      */
     DatabaseSessionData[] getSessions();
+
+    /**
+     * Gets the location with the specified identifier
+     * @param identifier
+     * @return
+     */
+    DatabaseLocationData getLocation(String identifier);
 
     /**
      * Gets an array of all locations currently stored in the database
