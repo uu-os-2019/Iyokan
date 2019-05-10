@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DatabaseUserData {
     public final UserGuid id;
     public String name;
-    public ArrayList<String> locationsTaken = new ArrayList<String>();
+    public ArrayList<String> locationsTaken;
 
     public DatabaseUserData(UserGuid guid, String name, ArrayList<String> locationsTaken) {
         this.id = guid;
@@ -20,19 +20,17 @@ public class DatabaseUserData {
     public DatabaseUserData(JSONObject json) {
         this.id = new UserGuid(json.getString("id"));
         this.name = json.getString("name");
-
-        if (json.has("locationsTaken")) {
-            JSONArray array = json.getJSONArray("locationsTaken");
-            for (int i = 0; i < array.length(); i++) {
-                this.locationsTaken.add(array.get(i).toString());
-            }
-        }
+        this.locationsTaken = new ArrayList<String>();
     }
 
+    /**
+     * Returns thet json of the object, does not contain locations taken
+     * @return
+     */
     public JSONObject getJson() {
+        // Purposefully does not include locations taken because it creates an aliasing issue
         return new JSONObject()
                 .put("id", id.toString())
-                .put("name", name)
-                .put("locationsTaken", locationsTaken);
+                .put("name", name);
     }
 }

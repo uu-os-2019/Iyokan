@@ -66,6 +66,11 @@ public class Location {
         return json;
     }
 
+    /**
+     * Updates the owner of the location and sets a new score required to take it over
+     * @param owner
+     * @param newScore
+     */
     public void setOwner(UserGuid owner, int newScore) {
         this.owner = owner;
         this.score = newScore;

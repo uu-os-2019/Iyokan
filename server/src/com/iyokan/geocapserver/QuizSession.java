@@ -1,7 +1,12 @@
 package com.iyokan.geocapserver;
 
+/**
+ * Represents a session of quiz questions. Contains n number of questions and will store the score as you answer them
+ */
 public class QuizSession {
-
+    /**
+     * Represents a single quiz question
+     */
     private class QuizInstance {
         private long timeStarted;
         private long timeEnded;
@@ -55,15 +60,27 @@ public class QuizSession {
         return location;
     }
 
-
+    /**
+     * Gets the question that's at the current index
+     * @return
+     */
     public QuizRound getQuestion() {
         return rounds[questionIndex].quiz;
     }
 
+    /**
+     * Returns true if all questions in the session has been answered
+     * @return true if all questions in the session has been answered
+     */
     public boolean isDone() {
         return questionIndex >= quizQuestionCount;
     }
-    
+
+    /**
+     * Answers the current quiz session with a provided answer. Updates score if correct and moves to the next question
+     * @param answer
+     * @return true if the answer was correct
+     */
     public boolean answer(String answer) {
         boolean correct = false;
         QuizInstance instance = rounds[questionIndex];
