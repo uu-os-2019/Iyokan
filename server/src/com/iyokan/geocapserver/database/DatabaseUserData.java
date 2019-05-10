@@ -1,6 +1,7 @@
 package com.iyokan.geocapserver.database;
 
 import com.iyokan.geocapserver.UserGuid;
+import com.iyokan.geocapserver.Utils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,19 +28,11 @@ public class DatabaseUserData {
     public DatabaseUserData(JSONObject json) {
         this.id = new UserGuid(json.getString("id"));
         this.name = json.getString("name");
+        this.pointRate = Utils.getJsonDefault(json, "pointRate", 0);
+        this.lastCalculatedScore = Utils.getJsonDefault(json, "lastCalculatedScore", 0L);
+        this.timeLastCalculated = Utils.getJsonDefault(json, "timeLastCalculated", 0L);
 
-        if (json.has("pointRate")){
-            this.pointRate = json.getInt("pointRate");
-        }
-        if (json.has("lastCalculatedScore")) {
-            this.lastCalculatedScore = json.getLong("lastCalculatedScore");
-        }
-        if (json.has("timeLastCalculated")) {
-            this.timeLastCalculated = json.getLong("timeLastCalculated");
-        }
-
-
-        this.locationsTaken = new ArrayList<String>();
+        this.locationsTaken = new ArrayList<>();
     }
 
     /**
