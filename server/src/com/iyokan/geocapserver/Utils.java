@@ -58,6 +58,9 @@ public class Utils {
      * @return if the field exists, returns it, otherwise returns the default
      */
     public static int getJsonDefault(JSONObject obj, String field, int defaultValue) {
+        if (obj == null) {
+            return defaultValue;
+        }
         if (obj.has(field)) {
             return obj.getInt(field);
         }
@@ -71,7 +74,26 @@ public class Utils {
      * @param defaultValue the default value
      * @return if the field exists, returns it, otherwise returns the default
      */
+    public static long getJsonDefault(JSONObject obj, String field, long defaultValue) {
+        if (obj == null) {
+            return defaultValue;
+        }
+        if (obj.has(field)) {
+            return obj.getLong(field);
+        }
+        return defaultValue;
+
+    /**
+     * Tries to read a value from a JsonObject, if it does not exists returns the defaultValue
+     * @param obj json object to read from
+     * @param field field to read from
+     * @param defaultValue the default value
+     * @return if the field exists, returns it, otherwise returns the default
+     */
     public static String getJsonDefault(JSONObject obj, String field, String defaultValue) {
+        if (obj == null) {
+            return defaultValue;
+        }
         if (obj.has(field)) {
             return obj.getString(field);
         }
@@ -86,6 +108,9 @@ public class Utils {
      * @return if the field exists, returns it, otherwise returns the default
      */
     public static boolean getJsonDefault(JSONObject obj, String field, boolean defaultValue) {
+        if (obj == null) {
+            return defaultValue;
+        }
         if (obj.has(field)) {
             return obj.getBoolean(field);
         }
@@ -100,6 +125,9 @@ public class Utils {
      * @return if the field exists, returns it, otherwise returns the default
      */
     public static double getJsonDefault(JSONObject obj, String field, double defaultValue) {
+        if (obj == null) {
+            return defaultValue;
+        }
         if (obj.has(field)) {
             return obj.getDouble(field);
         }
