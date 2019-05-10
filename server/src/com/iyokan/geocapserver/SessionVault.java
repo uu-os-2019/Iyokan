@@ -21,6 +21,11 @@ public class SessionVault {
 
     }
 
+    /**
+     * Inserts a new session to the vault, and updates the attached database
+     * @param token
+     * @param user
+     */
     public void insert(String token, User user) {
         users.put(token, user);
 
@@ -28,6 +33,11 @@ public class SessionVault {
         database.insertSession(token, user.getID());
     }
 
+    /**
+     * Gets a user from the database
+     * @param token
+     * @return
+     */
     public User getUser(String token) {
         if (users.containsKey(token)) {
             return users.get(token);

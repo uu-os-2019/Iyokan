@@ -15,6 +15,10 @@ public class LocationCollection {
         locations = new HashMap<>();
     }
 
+    /**
+     * Loads a collection of locations from a specified JSONArray
+     * @param array
+     */
     public void loadLocations(JSONArray array) {
         for (int i=0; i < array.length(); i++) {
             Location location = new Location(array.getJSONObject(i));
@@ -41,6 +45,8 @@ public class LocationCollection {
     public Location getLocation(String identifier) {
         return locations.get(identifier);
     }
+
+    public boolean isLocation(String identifier) {return locations.containsKey(identifier);}
 
     public void addLocation(Location location) {
         locations.put(location.identifier, location);
