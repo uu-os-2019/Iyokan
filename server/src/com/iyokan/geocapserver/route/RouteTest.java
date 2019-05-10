@@ -11,7 +11,7 @@ public class RouteTest extends Route {
         response.put("watusent", data.getJSON());
 
         if (data.hasUser()) {
-            response.put("you are", data.getUser().getJson());
+            response.put("you are", data.getUser().getPrivateJson());
         }
 
         return response;

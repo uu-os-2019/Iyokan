@@ -12,7 +12,7 @@ public abstract class Guid {
         this.bytes = new byte[16];
     }
 
-    /***
+    /**
      * Creates a guid with the specified bytes
      * @param bytes bytes to use
      */
@@ -23,6 +23,10 @@ public abstract class Guid {
         this.bytes = bytes;
     }
 
+    /**
+     * Creates a guid based on the supplied string
+     * @param string
+     */
     public Guid(String string) {
         String s = string.replace("-", "");
         bytes = new byte[16];
@@ -34,6 +38,10 @@ public abstract class Guid {
         }
     }
 
+    /**
+     * Returns the internal bytes of the guid
+     * @return
+     */
     public byte[] getBytes() {
         return bytes;
     }
