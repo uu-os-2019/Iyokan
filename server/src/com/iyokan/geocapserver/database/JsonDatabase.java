@@ -91,12 +91,15 @@ public class JsonDatabase implements Database {
         toRemove.forEach(x -> locations.remove(x));
         save();
     }
+    public DatabaseUserData getUser(UserGuid guid) { return users.get(guid);}
 
     public DatabaseUserData[] getUsers() {
         return users.values().toArray(new DatabaseUserData[0]);
     }
 
     public DatabaseSessionData[] getSessions() { return sessions.values().toArray(new DatabaseSessionData[0]);}
+
+    public DatabaseLocationData getLocation(String identifier) {return locations.get(identifier);}
 
     public DatabaseLocationData[] getLocations() {
         return locations.values().toArray(new DatabaseLocationData[0]);
