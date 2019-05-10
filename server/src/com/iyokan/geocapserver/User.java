@@ -133,6 +133,10 @@ public class User {
 
     public int getPointRate() { return pointRate; }
 
+    public void setPointRate(int pointRate) {
+        this.pointRate = pointRate;
+    }
+
     public void updatePointRate(int newRate) {
         if(lastCalculatedScore == 0){
             timeLastCalculated = System.nanoTime();

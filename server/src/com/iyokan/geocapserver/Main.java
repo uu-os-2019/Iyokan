@@ -17,6 +17,7 @@ public class Main {
         database.filterLocations(locations);
 
         UserCollection users = new UserCollection(database);
+        users.updatePoints(locations);
 
         SessionVault sessions = new SessionVault(database, users);
         QuizRoundCollection quizRounds = new QuizRoundCollection();

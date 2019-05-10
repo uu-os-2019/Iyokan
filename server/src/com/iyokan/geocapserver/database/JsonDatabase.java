@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+
 /**
  * Fetches data from a database, or so far, just from JSON files
  */
@@ -81,10 +82,10 @@ public class JsonDatabase implements Database {
                 if (users.containsKey(location.owner)) {
                     users.get(location.owner).locationsTaken.remove(location.identifier);
                 }
+                // Put it in the list for removal later
+                toRemove.add(location.identifier);
             }
 
-            // Put it in the list for removal later
-            toRemove.add(location.identifier);
         }
 
         // Remove all the locations
