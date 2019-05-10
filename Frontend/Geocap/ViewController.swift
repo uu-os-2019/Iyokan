@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     func startMapRefreshTimer() {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             Timer.tolerance = 3
-            self.loadLocations()
+            geoCap.server.fetchLocations(completionHandler: self.loadLocations)
             let profileInfo = geoCap.server.getProfileInfo()
             self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
         }
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let profileInfo = geoCap.server.getProfileInfo()
         self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
         
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        geoCap.server.getLocations(self)
+        geoCap.server.fetchLocations(completionHandler: loadLocations)
         startMapRefreshTimer()
     }
     

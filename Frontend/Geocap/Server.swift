@@ -29,18 +29,21 @@ struct Position: Codable {
 }
 
 struct Quiz: Codable {
-    let question: String
+    let question: String?
     let success: Bool
-    let alternatives: [String]
+    let reason: String?
+    let alternatives: [String]?
     let type: String
 }
 
 struct QuizAnswer: Codable {
-    let newAlternatives: [String]
-    let correct, success: Bool
+    let newAlternatives: [String]?
+    let correct: Bool?
+    let success: Bool
     let type: String
-    let points: Int
-    let newQuestion: String
+    let reason: String?
+    let points: Int?
+    let newQuestion: String?
 }
 
 struct UserInfo: Codable {
@@ -68,6 +71,7 @@ struct LastQuizAnswer: Codable {
     let correct, success: Bool
     let type: String
     let points: Int
+    let reason: String?
     let newQuestion: String?
     let successfulTakeover: Bool
 }
@@ -96,17 +100,16 @@ class Server {
     
     private func handleServerError(_ response: URLResponse?) {
         if let responseURL = response?.url {
-            print("Request to \(responseURL) failed)")
+            print("Server error: request to \(responseURL) failed")
         } else {
             print("Unknown server error")
         }
     }
     
-    func getLocations(_ viewController: ViewController) -> [Location] {
-        let url = "http://13.53.140.24/location/get-all"
-        let urlObject = URL(string: url)!
+    func fetchLocations(completionHandler: @escaping () -> ()) {
+        let url = URL(string: "http://13.53.140.24/location/get-all")!
         
-        URLSession.shared.dataTask(with: urlObject) {(data, response, error) in
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
@@ -122,54 +125,66 @@ class Server {
                 if let data = data {
                     let parsedJSON = try JSONDecoder().decode(jsonLocations.self, from: data)
                     geoCap.locations = parsedJSON.locations
+                    
                     DispatchQueue.main.async {
-                        viewController.loadLocations()
+                        completionHandler()
                     }
                 }
-            
+                
             } catch {
                 print("getLocations() failed")
+                print(error)
             }
         }.resume()
-
-        print("loolol")
-        
-        return [Location]()
     }
     
     func getQuiz(for location: String) -> Quiz? {
-        var quiz: Quiz!
         let url = URL(string: "http://13.53.140.24/quiz/start")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let location = ["location": location]
+        var quiz: Quiz!
         
-        let json = try? JSONSerialization.data(withJSONObject: location, options: [])
-        request.httpBody = json
+        do {
+            let json = try JSONSerialization.data(withJSONObject: location, options: [])
+            request.httpBody = json
+        } catch {
+            print("Location couldn't be parsed to JSON in getQuiz()")
+            return nil
+        }
         
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
+        let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 quiz = try decoder.decode(Quiz.self, from: data!)
-                semaphore.signal()
             } catch {
-                print("error in retrieving quiz")
+                print("getQuiz() failed")
                 print(error)
             }
-            }.resume()
-        
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
+            semaphore.signal()
+            
+        }.resume()
         semaphore.wait()
-        if(!quiz.success) {
-            print("Invalid user")
+        
+        if !quiz.success {
+            print("getQuiz() failed with error: \(quiz.reason!)")
             return nil
         }
+        
         return quiz
     }
     
@@ -181,30 +196,44 @@ class Server {
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
-        let json = try? JSONSerialization.data(withJSONObject: answer, options: [])
-        request.httpBody = json
+        do {
+            let json = try JSONSerialization.data(withJSONObject: answer, options: [])
+            request.httpBody = json
+        } catch {
+            print("Answer couldn't be parsed to JSON in sendQuizAnswer()")
+            return nil
+        }
         
+        // semaphore used for forcing dataTask to finish before returning
+        let semaphore = DispatchSemaphore(value: 0)
         
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 quizAnswer = try decoder.decode(QuizAnswer.self, from: data!)
-                semaphore.signal()
             } catch {
-                print("error in retrieving quiz answer")
+                print("Error in sendQuizAnswer()")
                 print(error)
             }
-            }.resume()
+            semaphore.signal()
+        }.resume()
         
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
         semaphore.wait()
-        if(!quizAnswer.success) {
-            print("Invalid user")
+        
+        if !quizAnswer.success {
+            print("getQuizAnswer() failed with error: \(quizAnswer.reason!)")
             return nil
         }
         
@@ -218,37 +247,48 @@ class Server {
         request.httpMethod = "POST"
         let answer = ["answer": answer]
         
-        let json = try? JSONSerialization.data(withJSONObject: answer, options: [])
-        request.httpBody = json
+        do {
+            let json = try JSONSerialization.data(withJSONObject: answer, options: [])
+            request.httpBody = json
+        } catch {
+            print("Answer couldn't be parsed to JSON in sendLastQuizAnswer()")
+            return nil
+        }
         
-        
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
+        // Semaphore used for forcing dataTask to finish before returning
+        let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 lastQuizAnswer = try decoder.decode(LastQuizAnswer.self, from: data!)
-                semaphore.signal()
             } catch {
-                print("error in retrieving quiz answer")
+                print("Error in sendLastQuizAnswer()")
                 print(error)
             }
-            }.resume()
-        
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
+            semaphore.signal()
+        }.resume()
         semaphore.wait()
-        if(!lastQuizAnswer.success) {
-            print("Invalid user")
+        
+        if !lastQuizAnswer.success {
+            print("getLastQuizAnswer() failed with error: \(lastQuizAnswer.reason!)")
             return nil
         }
         
         return lastQuizAnswer
     }
     
-
     func register(userName: String) -> String {
         var register: Register!
         let url = URL(string: "http://13.53.140.24/register")!
@@ -266,6 +306,17 @@ class Server {
         // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 register = try JSONDecoder().decode(Register.self, from: data!)
                 semaphore.signal()
             } catch {
@@ -287,7 +338,6 @@ class Server {
         
         return "success"
     }
-    
 
     func getProfileInfo() -> ProfileInfo? {
         var profileInfo: ProfileInfo!
@@ -296,21 +346,31 @@ class Server {
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
+        // Semaphore used for forcing dataTask to finish before returning
+        let semaphore = DispatchSemaphore(value: 0)
         
-        // Asynchronous function
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
                 semaphore.signal()
             } catch {
-                print("error in retrieving quiz")
+                print("Error in getProfileInfo()")
                 print(error)
             }
             }.resume()
-        
+    
         semaphore.wait()
-        
         return profileInfo
 
     }
@@ -319,25 +379,30 @@ class Server {
         let url = URL(string: "http://13.53.140.24/highscore")!
         let request = URLRequest(url: url)
         
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
+        // Semaphore used for forcing dataTask to finish before returning
+        let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
+                if let error = error {
+                    self.handleClientError(error)
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        return
+                }
+                
                 leaderboard = try JSONDecoder().decode(Leaderboard.self, from: data!)
-                semaphore.signal()
             } catch {
-                print("error when retrieving leaderboard")
-                print(leaderboard)
+                print("Error in getLeaderboard()")
                 print(error)
             }
-            }.resume()
-        
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
+            semaphore.signal()
+        }.resume()
+    
         semaphore.wait()
-
-        print(leaderboard)
         return leaderboard
     }
 
