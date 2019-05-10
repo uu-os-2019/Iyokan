@@ -34,11 +34,28 @@ public class User {
         this.lastCalculatedScore = 0;
     }
 
+    public User(UserGuid id, String name, ArrayList<String> locations, int pointRate, int lastCalculatedScore, long timeLastCalculated){
+        this.id = id;
+        this.name = name;
+        this.locationsTaken = locations;
+        this.pointRate = pointRate;
+        this.lastCalculatedScore = lastCalculatedScore;
+        this.timeLastCalculated = timeLastCalculated;
+    }
+
     public User(JSONObject json) {
         this.id = new UserGuid(json.getString("id"));
         this.name = json.getString("name");
-        this.pointRate = json.getInt("pointRate");
-        this.lastCalculatedScore = json.getInt("lastCalculatedScore");
+
+        if (json.has("pointRate")){
+            this.pointRate = json.getInt("pointRate");
+        }
+        if (json.has("lastCalculatedScore")) {
+            this.lastCalculatedScore = json.getInt("lastCalculatedScore");
+        }
+        if (json.has("timeLastCalculated")) {
+            this.timeLastCalculated = json.getLong("timeLastCalculated");
+        }
 
         if (json.has("locationsTaken")) {
             JSONArray array = json.getJSONArray("locationsTaken");
@@ -57,8 +74,6 @@ public class User {
         JSONObject obj = new JSONObject();
         obj.put("id", id.toString());
         obj.put("name", name);
-        obj.put("pointRate", pointRate);
-        obj.put("lastCalculatedScore", lastCalculatedScore);
 
         return obj;
     }
@@ -66,6 +81,9 @@ public class User {
     public JSONObject getPrivateJson() {
         JSONObject obj = getJson();
         obj.put("locationsTaken", locationsTaken);
+        obj.put("pointRate", pointRate);
+        obj.put("lastCalculatedScore", lastCalculatedScore);
+        obj.put("timeLastCalculated", timeLastCalculated);
         return obj;
     }
 
@@ -101,7 +119,11 @@ public class User {
         return quizSession;
     }
 
-    public int getPointRate() {return pointRate; }
+    public int getLastCalculatedScore(){ return lastCalculatedScore; }
+
+    public long getTimeLastCalculated(){ return timeLastCalculated; }
+
+    public int getPointRate() { return pointRate; }
 
     public void updatePointRate(int newRate) {
         if(lastCalculatedScore == 0){
