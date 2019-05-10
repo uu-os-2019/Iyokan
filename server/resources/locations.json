@@ -58,7 +58,7 @@
   {
     "identifier": "pellestaty",
     "name": "Pelle Svanslös-statyn",
-    "description": "En staty på Pelle Svanslös",
+    "description": "En staty av Pelle Svanslös",
     "position": {"lat": 59.853424, "lng": 17.642544},
     "radius": 100
   },
@@ -123,6 +123,90 @@
     "name": "Norrlands Nation",
     "description": "Norrlands studentnation",
     "position": {"lat": 59.857294, "lng": 17.637814},
+    "radius": 50
+  },
+  {
+    "identifier": "stocken",
+    "name": "Stockholms Nation",
+    "description": "Stockholms sudentnation",
+    "position": {"lat": 59.8566468, "lng": 17.6339372},
+    "radius": 50
+  },
+  {
+    "identifier": "uplands",
+    "name": "Uplands Nation",
+    "description": "sudentnation",
+    "position": {"lat": 59.8598535, "lng": 17.6292037},
+    "radius": 50
+  },
+  {
+    "identifier": "gh",
+    "name": "Gästrike-Hälsinge Nation",
+    "description": "Gästrike-Hälsinge sudentnation",
+    "position": {"lat": 59.8560993, "lng": 17.635896},
+    "radius": 50
+  },
+  {
+    "identifier": "ög",
+    "name": "Östgöta Nation",
+    "description": "Östgöta sudentnation",
+    "position": {"lat": 59.8551616, "lng": 17.6357765},
+    "radius": 50
+  },
+  {
+    "identifier": "vg",
+    "name": "Västgöta Nation",
+    "description": "Västgöta sudentnation",
+    "position": {"lat": 59.8567371, "lng": 17.6362652},
+    "radius": 50
+  },
+  {
+    "identifier": "snerkes",
+    "name": "Södermanlands-Nerikes Nation",
+    "description": "Södermanlands-Nerikes sudentnation",
+    "position": {"lat": 59.8589595, "lng": 17.6292821},
+    "radius": 50
+  },
+  {
+    "identifier": "vdala",
+    "name": "Västmanlands-Dala Nation",
+    "description": "Västmanlands-Dala sudentnation",
+    "position": {"lat": 59.8600819, "lng": 17.6264853},
+    "radius": 50
+  },
+  {
+    "identifier": "smålands",
+    "name": "Smålands Nation",
+    "description": "Smålands sudentnation",
+    "position": {"lat": 59.8592369, "lng": 17.6284965},
+    "radius": 50
+  },
+  {
+    "identifier": "göteborgs",
+    "name": "Göteborgs Nation",
+    "description": "Göteborgs sudentnation",
+    "position": {"lat": 59.8595116, "lng": 7.6279988},
+    "radius": 50
+  },
+  {
+    "identifier": "kalmars",
+    "name": "Kalmar Nation",
+    "description": "Kalmar sudentnation",
+    "position": {"lat": 59.8590084, "lng": 17.6249643},
+    "radius": 50
+  },
+  {
+    "identifier": "värmlands",
+    "name": "Värmlands Nation",
+    "description": "Värmlands sudentnation",
+    "position": {"lat": 59.8570647, "lng": 17.6316581},
+    "radius": 50
+  },
+  {
+    "identifier": "gotlands",
+    "name": "Gotlands Nation",
+    "description": "Gotlands sudentnation",
+    "position": {"lat": 59.8597507, "lng": 17.632274},
     "radius": 50
   },
   {
