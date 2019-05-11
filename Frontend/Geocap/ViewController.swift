@@ -19,15 +19,20 @@ class ViewController: UIViewController {
     func startMapRefreshTimer() {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             Timer.tolerance = 3
-            self.loadLocations()
-            let profileInfo = geoCap.server.getProfileInfo()
-            self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
+            geoCap.server.fetchLocations(completionHandler: self.loadLocations)
+            geoCap.server.fetchProfileInfo(completionHandler: self.updateProfileButtonScore)
         }
     }
     
     func stopMapRefreshTimer() {
         mapRefreshTimer?.invalidate()
         mapRefreshTimer = nil
+    }
+    
+    func updateProfileButtonScore() {
+        if let profileInfo = geoCap.profileInfo {
+            profilbutton.setTitle("Poäng:" + String(profileInfo.score!), for: .normal)
+        }
     }
     
     func clearMap() {
@@ -37,8 +42,7 @@ class ViewController: UIViewController {
     
     func loadLocations() {
         clearMap()
-        
-        let locations = geoCap.server.getLocations()
+        let locations = geoCap.locations
         var overlayCircles = [MKCircle]()
         for location in locations {
             let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
@@ -53,10 +57,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let profileInfo = geoCap.server.getProfileInfo()
-        self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
-        
+    
+        geoCap.server.fetchProfileInfo(completionHandler: updateProfileButtonScore)
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        loadLocations()
+        geoCap.server.fetchLocations(completionHandler: loadLocations)
         startMapRefreshTimer()
     }
     
