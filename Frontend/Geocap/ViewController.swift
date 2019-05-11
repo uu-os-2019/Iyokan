@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         var overlayCircles = [MKCircle]()
         for location in locations {
             let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
+            mapView.addAnnotation(Pin(title: location.name, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
             
             let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
             overlayCircles.append(circle)
@@ -124,18 +124,26 @@ extension ViewController: MKMapViewDelegate {
         let pin = view.annotation as! Pin
         
         // distance check commented out for testing purposes
-        if !geoCap.quizModel.quizTimeoutIsActive//, distance <= pin.radius 
-        {
+        if geoCap.userHasLocations(location: pin.title!) {
+            let alert = UIAlertController(title: "Du har redan " + pin.title!, message: "Ta över något annat område!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okej", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        else {
+            if !geoCap.quizModel.quizTimeoutIsActive {
             geoCap.currentLocation = pin.title
             performSegue(withIdentifier: "QuizSegue", sender: self)
-        } else if geoCap.quizModel.quizTimeoutIsActive {
+            } else if geoCap.quizModel.quizTimeoutIsActive {
             let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okej då...", style: .default, handler: nil))
             self.present(alert, animated: true)
-        } else {
-            let alert = UIAlertController(title: "You're not in this area", message: "Move within the area border to be able to capture it.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        }
+            
+        else {
+            let alert = UIAlertController(title: "Du är inte i det här området", message: "Gå till området för att ta över det", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okej", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
+      }
     }
 }

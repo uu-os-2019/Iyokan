@@ -49,11 +49,7 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
-        
-        self.alternative1.showsTouchWhenHighlighted = true
-        self.alternative2.showsTouchWhenHighlighted = true
-        self.alternative3.showsTouchWhenHighlighted = true
-        self.alternative4.showsTouchWhenHighlighted = true
+
 
         
         
@@ -62,7 +58,19 @@ class QuizPageViewController: UIViewController {
     }
     
     
-    @IBAction func alternative1(_ sender: Any) {
+    @IBAction func alternative1(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.25,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.90)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.25, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+    
+        
         if(counter == 0) {
             let answer = quiz?.alternatives[0]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
@@ -77,6 +85,7 @@ class QuizPageViewController: UIViewController {
                 }
                 else {
                     showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
+
                     doneWithQuizLoss()
                 }
             }
@@ -99,7 +108,18 @@ class QuizPageViewController: UIViewController {
         
     }
     
-    @IBAction func alternative2(_ sender: Any) {
+    @IBAction func alternative2(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.25,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.25, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+        
         if(counter == 0) {
             let answer = quiz?.alternatives[1]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
@@ -136,7 +156,18 @@ class QuizPageViewController: UIViewController {
         self.nextQuestion.isHidden = false
         
     }
-    @IBAction func alternative3(_ sender: Any) {
+    @IBAction func alternative3(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.25,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.25, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+        
         if(counter == 0) {
             let answer = quiz?.alternatives[2]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
@@ -178,7 +209,18 @@ class QuizPageViewController: UIViewController {
         
     }
     
-    @IBAction func alternative4(_ sender: Any) {
+    @IBAction func alternative4(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.25,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.25, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+        
         if(counter == 0) {
             let answer = quiz?.alternatives[3]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
@@ -295,7 +337,18 @@ class QuizPageViewController: UIViewController {
     }
     
     
-    @IBAction func getNextQuestion(_ sender: Any) {
+    @IBAction func getNextQuestion(_ sender: UIButton) {
+        
+        UIButton.animate(withDuration: 0.25,
+                         animations: {
+                            sender.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+        },
+                         completion: { finish in
+                            UIButton.animate(withDuration: 0.25, animations: {
+                                sender.transform = CGAffineTransform.identity
+                            })
+        })
+        
         self.nextQuestion.isHighlighted = true
         enableButtons()
         getNewQuestions(quizAnswer: quizAnswer)

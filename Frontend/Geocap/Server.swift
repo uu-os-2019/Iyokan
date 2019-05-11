@@ -219,7 +219,7 @@ class Server {
                 lastQuizAnswer = try JSONDecoder().decode(LastQuizAnswer.self, from: data!)
                 semaphore.signal()
             } catch {
-                print("error in retrieving quiz answer")
+                print("error in retrieving last quiz answer")
                 print(error)
             }
             }.resume()
