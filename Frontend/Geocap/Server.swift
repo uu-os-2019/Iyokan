@@ -77,7 +77,9 @@ struct LastQuizAnswer: Codable {
 }
 
 struct ProfileInfo: Codable {
-    let score: Int
+    let score: Int?
+    let success: Bool?
+    let reason: String?
     let locations: [String]?
     let type: String
 }
@@ -144,7 +146,7 @@ class Server {
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let location = ["location": location]
-        var quiz: Quiz!
+        var quiz: Quiz?
         
         do {
             let json = try JSONSerialization.data(withJSONObject: location, options: [])
@@ -154,17 +156,20 @@ class Server {
             return nil
         }
         
+        // semaphore used for forcing dataTask to finish before returning
         let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
+                    semaphore.signal()
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                         self.handleServerError(response)
+                        semaphore.signal()
                         return
                 }
                 
@@ -180,7 +185,7 @@ class Server {
         }.resume()
         semaphore.wait()
         
-        if !quiz.success {
+        if let quiz = quiz, !quiz.success {
             print("getQuiz() failed with error: \(quiz.reason!)")
             return nil
         }
@@ -189,12 +194,12 @@ class Server {
     }
     
     func sendQuizAnswer(answer: String) -> QuizAnswer? {
-        var quizAnswer: QuizAnswer!
         let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
+        var quizAnswer: QuizAnswer?
         
         do {
             let json = try JSONSerialization.data(withJSONObject: answer, options: [])
@@ -204,19 +209,20 @@ class Server {
             return nil
         }
         
-        // semaphore used for forcing dataTask to finish before returning
         let semaphore = DispatchSemaphore(value: 0)
         
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
+                    semaphore.signal()
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                         self.handleServerError(response)
+                        semaphore.signal()
                         return
                 }
                 
@@ -232,20 +238,21 @@ class Server {
         
         semaphore.wait()
         
-        if !quizAnswer.success {
+        if let quizAnswer = quizAnswer, !quizAnswer.success {
             print("getQuizAnswer() failed with error: \(quizAnswer.reason!)")
             return nil
         }
         
         return quizAnswer
     }
+    
     func sendLastQuizAnswer(answer: String) -> LastQuizAnswer? {
-        var lastQuizAnswer: LastQuizAnswer!
         let url = URL(string: "http://13.53.140.24/quiz/answer")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let answer = ["answer": answer]
+        var lastQuizAnswer: LastQuizAnswer?
         
         do {
             let json = try JSONSerialization.data(withJSONObject: answer, options: [])
@@ -255,18 +262,19 @@ class Server {
             return nil
         }
         
-        // Semaphore used for forcing dataTask to finish before returning
         let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
+                    semaphore.signal()
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                         self.handleServerError(response)
+                        semaphore.signal()
                         return
                 }
                 
@@ -281,7 +289,7 @@ class Server {
         }.resume()
         semaphore.wait()
         
-        if !lastQuizAnswer.success {
+        if let lastQuizAnswer = lastQuizAnswer, !lastQuizAnswer.success {
             print("getLastQuizAnswer() failed with error: \(lastQuizAnswer.reason!)")
             return nil
         }
@@ -289,65 +297,69 @@ class Server {
         return lastQuizAnswer
     }
     
-    func register(userName: String) -> String {
-        var register: Register!
+    func register(userName: String) -> String? {
         let url = URL(string: "http://13.53.140.24/register")!
         var request = URLRequest(url: url)
         request.addValue(userName, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
+        var register: Register?
         let userName = ["username": userName]
         
         let json = try? JSONSerialization.data(withJSONObject: userName, options: [])
         request.httpBody = json
+        do {
+            let json = try JSONSerialization.data(withJSONObject: userName, options: [])
+            request.httpBody = json
+        } catch {
+            print("Username couldn't be parsed to JSON in register()")
+            return nil
+        }
         
-        
-        let semaphore = DispatchSemaphore(value: 0) // Semaphore used for forcing dataTask to finish before returning
-        
-        // Asynchronous function
+        let semaphore = DispatchSemaphore(value: 0)
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
+                    semaphore.signal()
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                         self.handleServerError(response)
+                        semaphore.signal()
                         return
                 }
                 
                 register = try JSONDecoder().decode(Register.self, from: data!)
-                semaphore.signal()
             } catch {
-                print("error when registering")
+                print("Error in register()")
                 print(error)
             }
-            }.resume()
+            semaphore.signal()
+        }.resume()
         
-        //TODO: Future optimisation could be to not have to wait for the server to fetch
-        //      and let the map load meanwhile
         semaphore.wait()
-        if(!register.success) {
-            return register.reason!
+        guard let registerUnwrapped = register else { return nil }
+        
+        if !registerUnwrapped.success {
+            return registerUnwrapped.reason!
         }
-        UserDefaults.standard.set(register.user!.name, forKey: "username")
-        UserDefaults.standard.set(register.user!.id, forKey: "guid")
-        UserDefaults.standard.set(register.token, forKey: "token")
+        
+        UserDefaults.standard.set(registerUnwrapped.user!.name, forKey: "username")
+        UserDefaults.standard.set(registerUnwrapped.user!.id, forKey: "guid")
+        UserDefaults.standard.set(registerUnwrapped.token, forKey: "token")
         setToken()
         
         return "success"
     }
 
-    func getProfileInfo() -> ProfileInfo? {
-        var profileInfo: ProfileInfo!
+    func fetchProfileInfo(completionHandler: @escaping () -> ()) {
         let url = URL(string: "http://13.53.140.24/my-profile")!
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
-        
-        // Semaphore used for forcing dataTask to finish before returning
-        let semaphore = DispatchSemaphore(value: 0)
+        var profileInfo: ProfileInfo?
         
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
@@ -363,34 +375,39 @@ class Server {
                 }
                 
                 profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
-                semaphore.signal()
+                geoCap.profileInfo = profileInfo
+                
+                DispatchQueue.main.async {
+                    completionHandler()
+                }
             } catch {
                 print("Error in getProfileInfo()")
                 print(error)
             }
-            }.resume()
-    
-        semaphore.wait()
-        return profileInfo
-
-    }
-    func getLeaderboard() -> Leaderboard {
-        var leaderboard: Leaderboard!
-        let url = URL(string: "http://13.53.140.24/highscore")!
-        let request = URLRequest(url: url)
+        }.resume()
         
-        // Semaphore used for forcing dataTask to finish before returning
+        if let profileInfo = profileInfo, let _ = profileInfo.success, !profileInfo.success! {
+            print("getProfileInfo() failed with error: \(profileInfo.reason!)")
+        }
+    }
+    
+    func getLeaderboard() -> Leaderboard? {
+        let url = URL(string: "http://13.53.140.24/highscore")!
+        var leaderboard: Leaderboard?
+    
         let semaphore = DispatchSemaphore(value: 0)
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
             do {
                 if let error = error {
                     self.handleClientError(error)
+                    semaphore.signal()
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                         self.handleServerError(response)
+                        semaphore.signal()
                         return
                 }
                 

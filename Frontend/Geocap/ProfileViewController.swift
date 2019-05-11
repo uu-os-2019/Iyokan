@@ -3,7 +3,7 @@
 //  Geocap
 //
 //  Created by Erik Hellström on 2019-04-25.
-//  Copyright © 2019 Oscar Englöf. All rights reserved.
+//  Copyright © 2019 Iyokan. All rights reserved.
 //
 
 import UIKit
@@ -24,7 +24,6 @@ class Profile: UIViewController, UITableViewDataSource {
     var token: String!
     var locations: [String]?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,14 +33,13 @@ class Profile: UIViewController, UITableViewDataSource {
         self.namn.text = username
         token = UserDefaults.standard.string(forKey: "token")
         
-        
-        let profileInfo = geoCap.server.getProfileInfo()
-        self.points.text = String(profileInfo!.score)
-        
-        locations = profileInfo!.locations!
-        
-        
-        // Do any additional setup after loading the view.
+        geoCap.server.fetchProfileInfo(completionHandler: updateProfileView)
+    }
+    
+    func updateProfileView() {
+        points.text = String(geoCap.profileInfo!.score!)
+        locations = geoCap.profileInfo!.locations!
+        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,7 +47,7 @@ class Profile: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = locations!.count
+        let rows = locations?.count ?? 0
         return rows
     }
     

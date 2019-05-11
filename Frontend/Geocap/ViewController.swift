@@ -20,14 +20,19 @@ class ViewController: UIViewController {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             Timer.tolerance = 3
             geoCap.server.fetchLocations(completionHandler: self.loadLocations)
-            let profileInfo = geoCap.server.getProfileInfo()
-            self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
+            geoCap.server.fetchProfileInfo(completionHandler: self.updateProfileButtonScore)
         }
     }
     
     func stopMapRefreshTimer() {
         mapRefreshTimer?.invalidate()
         mapRefreshTimer = nil
+    }
+    
+    func updateProfileButtonScore() {
+        if let profileInfo = geoCap.profileInfo {
+            profilbutton.setTitle("Poäng:" + String(profileInfo.score!), for: .normal)
+        }
     }
     
     func clearMap() {
@@ -53,9 +58,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        let profileInfo = geoCap.server.getProfileInfo()
-        self.profilbutton.setTitle("Poäng:" + String(profileInfo!.score), for: .normal)
-        
+        geoCap.server.fetchProfileInfo(completionHandler: updateProfileButtonScore)
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
         
