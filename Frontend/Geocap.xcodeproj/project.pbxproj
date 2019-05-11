@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0333759D22817F02008B1D30 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333759C22817F02008B1D30 /* LoadingViewController.swift */; };
 		0339C0B42282DCF200488319 /* LeadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0339C0B32282DCF200488319 /* LeadTableCell.swift */; };
+		0339C0B82284441300488319 /* SegueFromTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0339C0B72284441300488319 /* SegueFromTop.swift */; };
 		036D66242265FDCD009D6FC6 /* globepic.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D66232265FDCC009D6FC6 /* globepic.png */; };
 		037D80B12270802300988ABC /* GeoCapIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037D80B02270802300988ABC /* GeoCapIcon.png */; };
 		03969F2A2271D9EF00450C0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03969F292271D9EF00450C0D /* ProfileViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		0333759C22817F02008B1D30 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0339C0B32282DCF200488319 /* LeadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadTableCell.swift; sourceTree = "<group>"; };
+		0339C0B72284441300488319 /* SegueFromTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromTop.swift; sourceTree = "<group>"; };
 		036D66232265FDCC009D6FC6 /* globepic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globepic.png; sourceTree = "<group>"; };
 		037D80B02270802300988ABC /* GeoCapIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GeoCapIcon.png; sourceTree = "<group>"; };
 		03969F292271D9EF00450C0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				F0401994225F5A3C007B0C75 /* PinsView.swift */,
 				03969F292271D9EF00450C0D /* ProfileViewController.swift */,
 				F04D5165225CD7A500A32DBD /* Main.storyboard */,
+				0339C0B72284441300488319 /* SegueFromTop.swift */,
 				0339C0B32282DCF200488319 /* LeadTableCell.swift */,
 				F0EB91652265D62A003574EC /* LeaderboardViewController.swift */,
 				F0EB91632265D43A003574EC /* QuizPageViewController.swift */,
@@ -308,6 +311,7 @@
 				F04D5192225D091300A32DBD /* SpelaViewController.swift in Sources */,
 				43EF88D122803AF800213A05 /* QuizModel.swift in Sources */,
 				43EF88D322804C7700213A05 /* GeoCap.swift in Sources */,
+				0339C0B82284441300488319 /* SegueFromTop.swift in Sources */,
 				F04D5164225CD7A500A32DBD /* ViewController.swift in Sources */,
 				F04D5162225CD7A500A32DBD /* AppDelegate.swift in Sources */,
 				F04D5190225CDF2000A32DBD /* Pins.swift in Sources */,

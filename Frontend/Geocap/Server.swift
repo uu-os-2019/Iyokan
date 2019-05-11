@@ -73,6 +73,7 @@ struct LastQuizAnswer: Codable {
     let points: Int
     let reason: String?
     let newQuestion: String?
+    let correctAnswer: String?
     let successfulTakeover: Bool
 }
 

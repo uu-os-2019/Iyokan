@@ -1,14 +1,14 @@
 package com.iyokan.geocapserver.database;
 
-import com.iyokan.geocapserver.FileReader;
-import com.iyokan.geocapserver.Location;
-import com.iyokan.geocapserver.User;
-import com.iyokan.geocapserver.UserGuid;
+import com.iyokan.geocapserver.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
+
 
 /**
  * Fetches data from a database, or so far, just from JSON files
@@ -49,6 +49,13 @@ public class JsonDatabase implements Database {
                 users.put(user.id, user);
             }
 
+            // Loop through all locations and put the owners in the users
+            for (DatabaseLocationData location : locations.values()) {
+                if (users.containsKey(location.owner)) {
+                    users.get(location.owner).locationsTaken.add(location.identifier);
+                }
+            }
+
             JSONArray jsonSessions = root.getJSONArray("sessions");
 
             for (int i=0; i < jsonSessions.length(); i++) {
@@ -59,11 +66,41 @@ public class JsonDatabase implements Database {
         }
     }
 
+    /**
+     * Removes all locations from the database that are not in the provided LocationCollection
+     * @param collection
+     */
+    public void filterLocations(LocationCollection collection) {
+        // Removes stored locations that are not in the database
+
+        // A list of what to remove, because we can not modify a collection while we iterate over it
+        LinkedList<String> toRemove = new LinkedList<>();
+
+        for (DatabaseLocationData location : locations.values()) {
+            // Remove it for the user
+            if (collection.isLocation(location.identifier) == false) {
+                if (users.containsKey(location.owner)) {
+                    users.get(location.owner).locationsTaken.remove(location.identifier);
+                }
+                // Put it in the list for removal later
+                toRemove.add(location.identifier);
+            }
+
+        }
+
+        // Remove all the locations
+        toRemove.forEach(x -> locations.remove(x));
+        save();
+    }
+    public DatabaseUserData getUser(UserGuid guid) { return users.get(guid);}
+
     public DatabaseUserData[] getUsers() {
         return users.values().toArray(new DatabaseUserData[0]);
     }
 
     public DatabaseSessionData[] getSessions() { return sessions.values().toArray(new DatabaseSessionData[0]);}
+
+    public DatabaseLocationData getLocation(String identifier) {return locations.get(identifier);}
 
     public DatabaseLocationData[] getLocations() {
         return locations.values().toArray(new DatabaseLocationData[0]);
@@ -72,7 +109,7 @@ public class JsonDatabase implements Database {
 
 
     public void insertUser(User user) {
-        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName(), user.getLocationsTaken()));
+        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName(), user.getLocationsTaken(), user.getPointRate(), user.getLastCalculatedScore(), user.getTimeLastCalculated()));
         save();
     }
 
@@ -84,6 +121,10 @@ public class JsonDatabase implements Database {
         // Finds the old user and updates its data
         DatabaseUserData savedUser = users.get(user.getID());
         savedUser.locationsTaken = user.getLocationsTaken();
+        savedUser.pointRate = user.getPointRate();
+        savedUser.lastCalculatedScore = user.getLastCalculatedScore();
+        savedUser.timeLastCalculated = user.getTimeLastCalculated();
+
         save();
     }
 

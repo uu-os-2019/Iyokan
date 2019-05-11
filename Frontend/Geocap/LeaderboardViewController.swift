@@ -14,8 +14,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource {
     
     var leaderboard = geoCap.server.getLeaderboard()
     
-    private var data: [String] = []
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaderboard?.highscore.count ?? 0
     }

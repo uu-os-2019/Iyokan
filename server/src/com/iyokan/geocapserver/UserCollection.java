@@ -1,10 +1,11 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
-import com.iyokan.geocapserver.database.JsonDatabase;
+import com.iyokan.geocapserver.database.DatabaseLocationData;
 import com.iyokan.geocapserver.database.DatabaseUserData;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class UserCollection {
     private Database database;
@@ -17,7 +18,7 @@ public class UserCollection {
 
         // Add initial users from database
         for (DatabaseUserData user : database.getUsers()) {
-            users.put(user.id, new User(user.id, user.name, user.locationsTaken));
+            users.put(user.id, new User(user.id, user.name, user.locationsTaken, user.pointRate, user.lastCalculatedScore, user.timeLastCalculated));
         }
     }
 
@@ -62,6 +63,17 @@ public class UserCollection {
 
     public void removeUser(UserGuid id) {
         users.remove(id);
+    }
+
+    public void updatePoints(LocationCollection locations) {
+        for(User user : users.values()){
+            int sum = 0;
+            for (String locationId : user.getLocationsTaken()) {
+                Location location = locations.getLocation(locationId);
+                sum += 1; // TODO: read from locations score
+            }
+            user.setPointRate(sum);
+        }
     }
 
 }

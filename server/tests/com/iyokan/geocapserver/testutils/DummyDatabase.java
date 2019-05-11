@@ -16,6 +16,11 @@ public class DummyDatabase implements Database {
     }
 
     @Override
+    public DatabaseUserData getUser(UserGuid guid) {
+        return null;
+    }
+
+    @Override
     public DatabaseUserData[] getUsers() {
         return new DatabaseUserData[0];
     }
@@ -23,6 +28,11 @@ public class DummyDatabase implements Database {
     @Override
     public DatabaseSessionData[] getSessions() {
         return new DatabaseSessionData[0];
+    }
+
+    @Override
+    public DatabaseLocationData getLocation(String identifier) {
+        return null;
     }
 
     @Override

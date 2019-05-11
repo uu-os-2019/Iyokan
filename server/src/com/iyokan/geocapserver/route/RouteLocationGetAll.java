@@ -7,8 +7,6 @@ import com.iyokan.geocapserver.UserCollection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Collections;
-
 public class RouteLocationGetAll extends Route {
     LocationCollection locationCollection;
     UserCollection users;

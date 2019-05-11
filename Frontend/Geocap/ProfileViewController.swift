@@ -27,13 +27,14 @@ class Profile: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        
         let username = UserDefaults.standard.string(forKey: "username")
         self.namn.text = username
         token = UserDefaults.standard.string(forKey: "token")
-        
+
         geoCap.server.fetchProfileInfo(completionHandler: updateProfileView)
+      
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     func updateProfileView() {
@@ -60,23 +61,10 @@ class Profile: UIViewController, UITableViewDataSource {
         
         return cell
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

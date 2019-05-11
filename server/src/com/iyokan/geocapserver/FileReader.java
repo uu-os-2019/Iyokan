@@ -13,6 +13,11 @@ public class FileReader {
         return Files.exists(Paths.get(path));
     }
 
+    /**
+     * Reads a string from the specified file
+     * @param path
+     * @return
+     */
     static public String readStringFromFile(String path) {
         try {
             byte[] encoded = Files.readAllBytes(Paths.get(path));
@@ -22,6 +27,11 @@ public class FileReader {
         }
     }
 
+    /**
+     * Writes a string to a file
+     * @param path
+     * @param string
+     */
     static public void writeStringToFile(String path, String string) {
         try {
             byte[] encoded = string.getBytes();
@@ -31,16 +41,31 @@ public class FileReader {
         }
     }
 
+    /**
+     * Reads a JsonArray from a file
+     * @param path
+     * @return
+     */
     static public JSONArray readJsonArrayFromFile(String path) {
         JSONTokener tokener = new JSONTokener(readStringFromFile(path));
         return new JSONArray(tokener);
     }
 
+    /**
+     * Reads a JsonObject from a file
+     * @param path
+     * @return
+     */
     static public JSONObject readJsonObjectFromFile(String path) {
         JSONTokener tokener = new JSONTokener(readStringFromFile(path));
         return new JSONObject(tokener);
     }
 
+    /**
+     * Writes a JsonObject to a file
+     * @param path
+     * @param object
+     */
     static public void writeJsonToFile(String path, JSONObject object) {
         writeStringToFile(path, object.toString());
     }
