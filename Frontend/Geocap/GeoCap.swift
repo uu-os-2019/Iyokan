@@ -21,11 +21,8 @@ class GeoCap {
     }
     
     func userHasLocations(location: String) -> Bool {
-        let profileInfo = self.server.getProfileInfo()
         let locations = profileInfo!.locations!
         for userLocations in locations {
-            print(location)
-            print(userLocations)
             if(userLocations == location) {
                 return true
             }
