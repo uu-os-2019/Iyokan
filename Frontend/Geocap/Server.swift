@@ -44,6 +44,7 @@ struct QuizAnswer: Codable {
     let reason: String?
     let points: Int?
     let newQuestion: String?
+    let correctAnswer: String?
 }
 
 struct UserInfo: Codable {
