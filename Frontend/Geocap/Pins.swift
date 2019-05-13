@@ -15,7 +15,7 @@ class Pin: NSObject, MKAnnotation {
     let locationName: String
     let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
-    let owner: Owner?
+    var owner: Owner?
     
     init(title: String, identifier: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: Owner?) {
         self.title = title
