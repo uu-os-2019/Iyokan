@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -208,6 +208,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDY-Nx-KyV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="38.5"/>
                                 <color key="backgroundColor" red="0.91558047279999999" green="0.2939646541" blue="0.26892619670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38.5" id="vhC-i4-9lP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -312,21 +315,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9NL-at-r7X" firstAttribute="top" secondItem="hDY-Nx-KyV" secondAttribute="bottom" constant="8.5" id="0Kh-er-6fm"/>
                             <constraint firstItem="C51-R5-691" firstAttribute="bottom" secondItem="V7U-3V-Zr8" secondAttribute="bottom" id="7GZ-zf-1Sf"/>
+                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" id="Dr9-V8-6CW"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="Wq3-oP-7So" secondAttribute="trailing" constant="59" id="E3I-ME-8iY"/>
                             <constraint firstItem="Xk2-3N-hRr" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="16" id="EBW-dd-P6J"/>
                             <constraint firstItem="9NL-at-r7X" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="16" id="Fo2-a8-C5p"/>
                             <constraint firstItem="C51-R5-691" firstAttribute="top" secondItem="Wq3-oP-7So" secondAttribute="bottom" constant="40" id="HMd-Pc-Lvs"/>
-                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" id="Mj7-8x-5lt"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="Xk2-3N-hRr" secondAttribute="trailing" constant="16" id="NlI-dR-sve"/>
-                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="trailing" secondItem="V7U-3V-Zr8" secondAttribute="trailing" id="Wjb-C1-ZJv"/>
                             <constraint firstItem="Xk2-3N-hRr" firstAttribute="top" secondItem="9NL-at-r7X" secondAttribute="bottom" constant="8" id="agW-8M-6no"/>
                             <constraint firstItem="C51-R5-691" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" id="bBp-Ks-6Jq"/>
+                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="top" secondItem="V7U-3V-Zr8" secondAttribute="top" id="fGa-8j-kVw"/>
+                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="trailing" secondItem="V7U-3V-Zr8" secondAttribute="trailing" id="j9h-K2-CmS"/>
                             <constraint firstItem="Wq3-oP-7So" firstAttribute="top" secondItem="Xk2-3N-hRr" secondAttribute="bottom" constant="48" id="ma7-2O-25J"/>
                             <constraint firstItem="Wq3-oP-7So" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="59" id="ooL-VH-PEt"/>
-                            <constraint firstItem="9NL-at-r7X" firstAttribute="top" secondItem="hDY-Nx-KyV" secondAttribute="bottom" constant="8.5" id="r9F-cU-DV5"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="9NL-at-r7X" secondAttribute="trailing" constant="16" id="sox-XD-epj"/>
-                            <constraint firstItem="hDY-Nx-KyV" firstAttribute="top" secondItem="V7U-3V-Zr8" secondAttribute="top" id="zee-Rk-DCy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7U-3V-Zr8"/>
                     </view>
@@ -337,6 +340,10 @@
                         <outlet property="alternative4" destination="7ud-2k-Qgx" id="KtK-MH-Pgy"/>
                         <outlet property="nextQuestion" destination="Wq3-oP-7So" id="04J-a6-ipG"/>
                         <outlet property="question" destination="9NL-at-r7X" id="xiF-Eg-Hel"/>
+                        <outletCollection property="answerButtons" destination="Ikb-ic-e21" collectionClass="NSMutableArray" id="O5g-Re-c0L"/>
+                        <outletCollection property="answerButtons" destination="Op7-vn-dRq" collectionClass="NSMutableArray" id="7zi-Cx-JVF"/>
+                        <outletCollection property="answerButtons" destination="Lco-JS-rYp" collectionClass="NSMutableArray" id="CgM-mh-5Ks"/>
+                        <outletCollection property="answerButtons" destination="7ud-2k-Qgx" collectionClass="NSMutableArray" id="YJS-UX-OhP"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="QuizToMapSegue" customClass="SegueFromTop" customModule="Geocap" customModuleProvider="target" id="1c3-Ko-O0M"/>
                     </connections>
                 </viewController>
