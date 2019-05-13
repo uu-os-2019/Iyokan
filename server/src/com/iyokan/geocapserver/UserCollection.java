@@ -1,11 +1,9 @@
 package com.iyokan.geocapserver;
 
 import com.iyokan.geocapserver.database.Database;
-import com.iyokan.geocapserver.database.DatabaseLocationData;
 import com.iyokan.geocapserver.database.DatabaseUserData;
 
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class UserCollection {
     private Database database;
@@ -72,7 +70,7 @@ public class UserCollection {
                 Location location = locations.getLocation(locationId);
                 sum += 1; // TODO: read from locations score
             }
-            user.setPointRate(sum);
+            user.setExpRate(sum);
         }
     }
 

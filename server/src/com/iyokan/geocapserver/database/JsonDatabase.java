@@ -4,8 +4,6 @@ import com.iyokan.geocapserver.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -109,7 +107,7 @@ public class JsonDatabase implements Database {
 
 
     public void insertUser(User user) {
-        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName(), user.getLocationsTaken(), user.getPointRate(), user.getLastCalculatedScore(), user.getTimeLastCalculated()));
+        users.put(user.getID(), new DatabaseUserData(user.getID(), user.getName(), user.getLocationsTaken(), user.getExpRate(), user.getLastCalculatedExp(), user.getTimeLastCalculated()));
         save();
     }
 
@@ -121,8 +119,8 @@ public class JsonDatabase implements Database {
         // Finds the old user and updates its data
         DatabaseUserData savedUser = users.get(user.getID());
         savedUser.locationsTaken = user.getLocationsTaken();
-        savedUser.pointRate = user.getPointRate();
-        savedUser.lastCalculatedScore = user.getLastCalculatedScore();
+        savedUser.pointRate = user.getExpRate();
+        savedUser.lastCalculatedScore = user.getLastCalculatedExp();
         savedUser.timeLastCalculated = user.getTimeLastCalculated();
 
         save();
