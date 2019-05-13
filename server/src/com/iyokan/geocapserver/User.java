@@ -3,7 +3,6 @@ package com.iyokan.geocapserver;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User {
@@ -12,8 +11,8 @@ public class User {
     private Position position;
     private QuizSession quizSession;
     private ArrayList<String> locationsTaken;
-    private int pointRate;
-    private long lastCalculatedScore;
+    private int expRate;
+    private long lastCalculatedExp;
     private long timeLastCalculated;
 
 
@@ -21,8 +20,8 @@ public class User {
         this.id = id;
         this.name = name;
         this.locationsTaken = new ArrayList<>();
-        this.pointRate = 0;
-        this.lastCalculatedScore = 0;
+        this.expRate = 0;
+        this.lastCalculatedExp = 0;
 
     }
 
@@ -30,41 +29,18 @@ public class User {
         this.id = id;
         this.name = name;
         this.locationsTaken = locations;
-        this.pointRate = 0;
-        this.lastCalculatedScore = 0;
+        this.expRate = 0;
+        this.lastCalculatedExp = 0;
     }
 
     public User(UserGuid id, String name, ArrayList<String> locations, int pointRate, long lastCalculatedScore, long timeLastCalculated){
         this.id = id;
         this.name = name;
         this.locationsTaken = locations;
-        this.pointRate = pointRate;
-        this.lastCalculatedScore = lastCalculatedScore;
+        this.expRate = pointRate;
+        this.lastCalculatedExp = lastCalculatedScore;
         this.timeLastCalculated = timeLastCalculated;
     }
-
-    public User(JSONObject json) {
-        this.id = new UserGuid(json.getString("id"));
-        this.name = json.getString("name");
-
-        if (json.has("pointRate")){
-            this.pointRate = json.getInt("pointRate");
-        }
-        if (json.has("lastCalculatedScore")) {
-            this.lastCalculatedScore = json.getLong("lastCalculatedScore");
-        }
-        if (json.has("timeLastCalculated")) {
-            this.timeLastCalculated = json.getLong("timeLastCalculated");
-        }
-
-        if (json.has("locationsTaken")) {
-            JSONArray array = json.getJSONArray("locationsTaken");
-            for (int i = 0; i < array.length(); i++) {
-                this.locationsTaken.add(array.get(i).toString());
-            }
-        }
-    }
-
 
     public UserGuid getID() {
         return id;
@@ -88,12 +64,43 @@ public class User {
      */
     public JSONObject getPrivateJson() {
         JSONObject obj = getJson();
-        obj.put("locationsTaken", locationsTaken);
-        obj.put("pointRate", pointRate);
-        obj.put("lastCalculatedScore", lastCalculatedScore);
-        obj.put("timeLastCalculated", timeLastCalculated);
+        obj.put("locations_taken", locationsTaken);
+
+        LevelInformation information = getLevelInformation();
+        obj.put("level", information.level);
+        obj.put("exp", information.exp);
+        obj.put("exp_rate", expRate);
+        obj.put("exp_to_level", information.expToLevel);
         return obj;
     }
+
+    public static class LevelInformation {
+        public final long exp;
+        public final long expToLevel;
+        public final int level;
+
+        public LevelInformation(long exp, long expToLevel, int level) {
+            this.exp = exp;
+            this.expToLevel = expToLevel;
+            this.level = level;
+        }
+    }
+
+    public LevelInformation getLevelInformation () {
+        long levelCap = 100;
+        long exp = getTotalExp();
+        int level = 1;
+
+        while (exp >= levelCap) {
+            exp -= levelCap;
+            levelCap += 100*level;
+            level++;
+        }
+
+        return new LevelInformation(exp, levelCap, level);
+    }
+
+
 
     public String getName() {
         return name;
@@ -127,35 +134,35 @@ public class User {
         return quizSession;
     }
 
-    public long getLastCalculatedScore(){ return lastCalculatedScore; }
+    public long getLastCalculatedExp(){ return lastCalculatedExp; }
 
     public long getTimeLastCalculated(){ return timeLastCalculated; }
 
-    public int getPointRate() { return pointRate; }
+    public int getExpRate() { return expRate; }
 
-    public void setPointRate(int pointRate) {
-        this.pointRate = pointRate;
+    public void setExpRate(int pointRate) {
+        this.expRate = pointRate;
     }
 
     public void updatePointRate(int newRate) {
-        if(lastCalculatedScore == 0){
+        if(lastCalculatedExp == 0){
             timeLastCalculated = System.nanoTime();
         } else {
-            this.setTotalScore();
+            this.updateTotalExp();
         }
-        this.pointRate += newRate;
+        this.expRate += newRate;
     }
 
-    public void setTotalScore() {
+    public void updateTotalExp() {
         long currentTime = System.nanoTime();
         int timePassed = (int)((currentTime-timeLastCalculated)/1000000000);
         timeLastCalculated = currentTime;
-        long totalScore = (timePassed * pointRate) + lastCalculatedScore;
-        lastCalculatedScore = totalScore;
+        long totalScore = (timePassed * expRate) + lastCalculatedExp;
+        lastCalculatedExp = totalScore;
     }
 
-    public long getTotalScore(){
-        this.setTotalScore();
-        return lastCalculatedScore;
+    public long getTotalExp(){
+        this.updateTotalExp();
+        return lastCalculatedExp;
     }
 }
