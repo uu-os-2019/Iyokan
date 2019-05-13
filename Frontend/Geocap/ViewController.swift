@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     func startMapRefreshTimer() {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             Timer.tolerance = 3
-            geoCap.server.fetchLocations(completionHandler: self.loadLocations)
+            geoCap.server.fetchLocations(completionHandler: self.refreshLocations)
             geoCap.server.fetchProfileInfo(completionHandler: self.updateProfileButtonScore)
         }
     }
@@ -53,6 +53,26 @@ class ViewController: UIViewController {
             _ = mapView(mapView, rendererFor: circle)
         }
         mapView.addOverlays(overlayCircles)
+    }
+    
+    func refreshLocations() {
+        let locations = geoCap.locations
+        let annotations = mapView.annotations
+        
+        for annotation in annotations {
+            for location in locations {
+                
+                if annotation.title == location.name {
+                    let pin = annotation as! Pin
+                    if pin.owner?.id != location.owner?.id {
+                        pin.owner = location.owner
+                        mapView.removeAnnotation(annotation)
+                        mapView.addAnnotation(pin)
+                    }
+                }
+            }
+        }
+        
     }
     
     override func viewDidLoad() {
