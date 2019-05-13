@@ -82,6 +82,7 @@ public class Utils {
             return obj.getLong(field);
         }
         return defaultValue;
+    }
 
     /**
      * Tries to read a value from a JsonObject, if it does not exists returns the defaultValue
