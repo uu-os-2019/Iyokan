@@ -12,10 +12,22 @@ class GeoCap {
     let server: Server
     let quizModel: QuizModel
     var currentLocation: String?
+    var locations = [Location]()
+    var profileInfo: ProfileInfo?
     
     init() {
         self.server = Server()
         self.quizModel = QuizModel()
+    }
+    
+    func userHasLocations(location: String) -> Bool {
+        let locations = profileInfo!.locations!
+        for userLocations in locations {
+            if(userLocations == location) {
+                return true
+            }
+        }
+        return false
     }
 
 }
