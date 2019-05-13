@@ -10,53 +10,45 @@ import UIKit
 
 class QuizPageViewController: UIViewController {
    
-
     @IBOutlet weak var question: UILabel!
-    
     @IBOutlet weak var alternative1: UIButton!
-    
     @IBOutlet weak var alternative2: UIButton!
-    
     @IBOutlet weak var alternative3: UIButton!
-    
     @IBOutlet weak var alternative4: UIButton!
-    
     @IBOutlet weak var nextQuestion: UIButton!
     
-
     let quiz = geoCap.server.getQuiz(for: geoCap.currentLocation!)
-
-    
     var quizAnswer: QuizAnswer!
-    
     var lastQuizAnswer: LastQuizAnswer!
-    
     var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         self.question.text = quiz?.question
         self.nextQuestion.isHidden = true
 
-        self.alternative1.setTitle(quiz?.alternatives[0], for: .normal)
-        self.alternative2.setTitle(quiz?.alternatives[1], for: .normal)
-        self.alternative3.setTitle(quiz?.alternatives[2], for: .normal)
-        self.alternative4.setTitle(quiz?.alternatives[3], for: .normal)
-        
+        self.alternative1.setTitle(quiz?.alternatives![0], for: .normal)
+        self.alternative2.setTitle(quiz?.alternatives![1], for: .normal)
+        self.alternative3.setTitle(quiz?.alternatives![2], for: .normal)
+        self.alternative4.setTitle(quiz?.alternatives![3], for: .normal)
+
         self.alternative1.backgroundColor = UIColor.blue
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
-
-
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        if quiz == nil {
+            let alertController = UIAlertController(title: "Något gick fel", message: "Det gick inte att hämta quizen, försök igen senare", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true, completion:nil)
+        }
+    }
     
     @IBAction func alternative1(_ sender: UIButton) {
         
@@ -72,12 +64,12 @@ class QuizPageViewController: UIViewController {
     
         
         if(counter == 0) {
-            let answer = quiz?.alternatives[0]
+            let answer = quiz?.alternatives![0]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
                 if(lastQuizAnswer.successfulTakeover) {
              
                     doneWithQuizWin()
@@ -90,7 +82,7 @@ class QuizPageViewController: UIViewController {
                 }
             }
             else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[0])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
             }
         }
         
@@ -121,12 +113,12 @@ class QuizPageViewController: UIViewController {
         })
         
         if(counter == 0) {
-            let answer = quiz?.alternatives[1]
+            let answer = quiz?.alternatives![1]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![1])!)
                 if(lastQuizAnswer.successfulTakeover) {
                    
                     doneWithQuizWin()
@@ -139,7 +131,7 @@ class QuizPageViewController: UIViewController {
                 
             }
             else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[1])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![1])!)
             }
         }
         
@@ -169,12 +161,12 @@ class QuizPageViewController: UIViewController {
         })
         
         if(counter == 0) {
-            let answer = quiz?.alternatives[2]
+            let answer = quiz?.alternatives![2]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![2])!)
                 if(lastQuizAnswer.successfulTakeover) {
                 
                     doneWithQuizWin()
@@ -191,7 +183,7 @@ class QuizPageViewController: UIViewController {
                 
             }
             else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[2])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![2])!)
             }
         }
         
@@ -222,12 +214,12 @@ class QuizPageViewController: UIViewController {
         })
         
         if(counter == 0) {
-            let answer = quiz?.alternatives[3]
+            let answer = quiz?.alternatives![3]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
         }
         else {
             if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![3])!)
                 if(lastQuizAnswer.successfulTakeover) {
                    
                     doneWithQuizWin()
@@ -240,7 +232,7 @@ class QuizPageViewController: UIViewController {
                 
             }
             else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives[3])!)
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![3])!)
             }
         }
         
@@ -281,10 +273,10 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
-        self.alternative1.setTitle(quizAnswer?.newAlternatives[0], for: .normal)
-        self.alternative2.setTitle(quizAnswer?.newAlternatives[1], for: .normal)
-        self.alternative3.setTitle(quizAnswer?.newAlternatives[2], for: .normal)
-        self.alternative4.setTitle(quizAnswer?.newAlternatives[3], for: .normal)
+        self.alternative1.setTitle(quizAnswer?.newAlternatives![0], for: .normal)
+        self.alternative2.setTitle(quizAnswer?.newAlternatives![1], for: .normal)
+        self.alternative3.setTitle(quizAnswer?.newAlternatives![2], for: .normal)
+        self.alternative4.setTitle(quizAnswer?.newAlternatives![3], for: .normal)
         self.question.text = quizAnswer?.newQuestion
     }
     
@@ -309,8 +301,6 @@ class QuizPageViewController: UIViewController {
             
             // Code in this block will trigger when OK button tapped.
             self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
-
-            print("Ok button tapped");
             
         }
         alertController.addAction(OKAction)
@@ -326,9 +316,6 @@ class QuizPageViewController: UIViewController {
             
             // Code in this block will trigger when OK button tapped.
             self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
-            
-            print("Ok button tapped");
-            
         }
         alertController.addAction(OKAction)
         

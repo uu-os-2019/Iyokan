@@ -11,13 +11,15 @@ import MapKit
 
 class Pin: NSObject, MKAnnotation {
     let title: String?
+    let identifier: String
     let locationName: String
     let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
     let owner: Owner?
     
-    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: Owner?) {
+    init(title: String, identifier: String, locationName: String, coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, owner: Owner?) {
         self.title = title
+        self.identifier = identifier
         
         if let placeOwner = owner?.name {
             self.locationName = "Tagen av: \(placeOwner)"
