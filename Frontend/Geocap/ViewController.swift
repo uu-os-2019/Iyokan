@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     func updateProfileButtonScore() {
         if let profileInfo = geoCap.profileInfo {
-            profilbutton.setTitle("Poäng:" + String(profileInfo.score!), for: .normal)
+            profilbutton.setTitle("Poäng:" + String(profileInfo.totalScore), for: .normal)
         }
     }
     
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         var overlayCircles = [MKCircle]()
         for location in locations {
             let coordinate = CLLocationCoordinate2D(latitude: location.position.lat, longitude: location.position.lng)
-            mapView.addAnnotation(Pin(title: location.name, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
+            mapView.addAnnotation(Pin(title: location.name, identifier: location.identifier, locationName: location.description, coordinate: coordinate, radius: CLLocationDistance(location.radius), owner: location.owner))
             
             let circle = MKCircle(center: coordinate, radius: CLLocationDistance(location.radius))
             overlayCircles.append(circle)
@@ -133,7 +133,7 @@ extension ViewController: MKMapViewDelegate {
         }
         else {
             if !geoCap.quizModel.quizTimeoutIsActive {
-            geoCap.currentLocation = pin.title
+            geoCap.currentLocation = pin.identifier
             performSegue(withIdentifier: "QuizSegue", sender: self)
             } else if geoCap.quizModel.quizTimeoutIsActive {
             let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
