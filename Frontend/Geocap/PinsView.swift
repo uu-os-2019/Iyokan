@@ -27,6 +27,7 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             button.backgroundColor = .red
             button.frame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
             
+            
             rightCalloutAccessoryView = button
             markerTintColor = pin.markerTintColor
         }
