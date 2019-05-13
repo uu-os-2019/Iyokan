@@ -28,7 +28,6 @@ public class RouteQuizAnswer extends Route {
         response.put("type", "quiz_answer");
         User me = data.getUser();
 
-        response.put("type", "quiz_answer");
         if (me == null) {
             response.put("success", false);
             response.put("reason", "no user");
@@ -36,7 +35,7 @@ public class RouteQuizAnswer extends Route {
             return response;
         }
 
-        String answer = json.getString("answer");
+        String answer = Utils.getJsonDefault(json, "answer", "");
         QuizSession quizSession = me.getQuizSession();
 
         if (quizSession == null) {

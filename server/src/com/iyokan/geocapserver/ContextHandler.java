@@ -53,7 +53,8 @@ public class ContextHandler implements HttpHandler {
             responseType = "application/json";
             code = 200;
         } catch(Exception ex) {
-            System.out.println("Error inside route: " + route + "\n" + ex);
+            System.out.println("Error inside route: " + route + "\n" + ex + "\n");
+            ex.printStackTrace();
             response = "Internal server error";
             responseType = "text";
             code = 500;

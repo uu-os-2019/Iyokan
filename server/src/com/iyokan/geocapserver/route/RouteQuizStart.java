@@ -28,20 +28,14 @@ public class RouteQuizStart extends Route {
             return response;
         }
 
-        if (json == null) {
+        String locationID = Utils.getJsonDefault(json, "location", "");
+        Location location = locationCollection.getLocation(locationID);
+
+        if (location == null) {
             response.put("success", false);
             response.put("reason", "Couldn't find location");
             return response;
         }
-
-        String locationID = json.getString("location");
-        Location location = locationCollection.getLocation(locationID);
-
-        if (location == null) {
-            response.put("reason", "Couldn't find location");
-        }
-
-
 
         QuizSession quizSession = new QuizSession(quizRoundCollection, location);
         data.getUser().setQuizSession(quizSession);
