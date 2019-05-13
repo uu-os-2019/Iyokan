@@ -34,10 +34,7 @@ public class RouteMyProfile extends Route {
         }
 
         response.put("locations", locationNames);
-        response.put("currentScore", data.getUser().getPointRate());
-        response.put("totalScore", data.getUser().getTotalScore());
-
-        users.updateUser(data.getUser());
+        response.put("user", data.getUser().getPrivateJson());
 
         return response;
     }

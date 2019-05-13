@@ -40,7 +40,7 @@ class RouteRegisterTest {
         JSONObject userJson = response.getJSONObject("user");
 
         ArrayList<String> locationsTaken = new ArrayList<>();
-        JSONArray array = userJson.getJSONArray("locationsTaken");
+        JSONArray array = userJson.getJSONArray("locations_taken");
         for(int i = 0; i < array.length(); i++) {
             locationsTaken.add(array.get(i).toString());
         }
