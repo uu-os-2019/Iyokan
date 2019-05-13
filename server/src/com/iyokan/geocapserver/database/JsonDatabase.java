@@ -119,8 +119,8 @@ public class JsonDatabase implements Database {
         // Finds the old user and updates its data
         DatabaseUserData savedUser = users.get(user.getID());
         savedUser.locationsTaken = user.getLocationsTaken();
-        savedUser.pointRate = user.getExpRate();
-        savedUser.lastCalculatedScore = user.getLastCalculatedExp();
+        savedUser.expRate = user.getExpRate();
+        savedUser.lastCalculatedExp = user.getLastCalculatedExp();
         savedUser.timeLastCalculated = user.getTimeLastCalculated();
 
         save();
