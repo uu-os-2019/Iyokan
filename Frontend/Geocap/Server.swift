@@ -79,11 +79,12 @@ struct LastQuizAnswer: Codable {
 }
 
 struct ProfileInfo: Codable {
-    let score: Int?
     let success: Bool?
     let reason: String?
     let locations: [String]?
     let type: String
+    let currentScore: Int
+    let totalScore: Int
 }
 
 class Server {

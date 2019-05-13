@@ -16,7 +16,8 @@ class Profile: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     struct ProfileInfo: Codable {
-        let score: Int
+        let totalScore: Int
+        let currentScore: Int
         let locations: [String]?
         let type: String
     }
@@ -38,7 +39,7 @@ class Profile: UIViewController, UITableViewDataSource {
     }
     
     func updateProfileView() {
-        points.text = String(geoCap.profileInfo!.score!)
+        points.text = String(geoCap.profileInfo!.totalScore)
         locations = geoCap.profileInfo!.locations!
         tableView.reloadData()
     }
