@@ -15,6 +15,7 @@ class QuizModel {
     init() {}
 
     func startQuizTimer() {
+        quizTimeoutIsActive = true
         quizTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { Timer in
             Timer.tolerance = 2
             self.quizTimeoutIsActive = false

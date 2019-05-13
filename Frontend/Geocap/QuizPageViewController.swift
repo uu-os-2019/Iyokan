@@ -16,11 +16,13 @@ class QuizPageViewController: UIViewController {
     @IBOutlet weak var alternative3: UIButton!
     @IBOutlet weak var alternative4: UIButton!
     @IBOutlet weak var nextQuestion: UIButton!
+    @IBOutlet var answerButtons: [UIButton]!
     
     let quiz = geoCap.server.getQuiz(for: geoCap.currentLocation!)
     var quizAnswer: QuizAnswer!
     var lastQuizAnswer: LastQuizAnswer!
     var counter = 0
+    var alternatives = [alternative1, alternative2, alternative3, alternative4]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
+        
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -50,11 +54,73 @@ class QuizPageViewController: UIViewController {
         }
     }
     
+    func chooseAnswer(alternative: Int) {
+        
+        if(counter == 0) {
+            let answer = quiz?.alternatives![alternative]
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
+            
+            if((quizAnswer?.correct)!) {
+                answerButtons[alternative].backgroundColor = UIColor.green
+            }
+            else {
+                showCorrectAnswer(answer: quizAnswer.correctAnswer!)
+                answerButtons[alternative].backgroundColor = UIColor.red
+            }
+            disableButtons()
+            counter += 1
+            self.nextQuestion.isHidden = false
+        }
+        else {
+            if(counter == 2) {
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![alternative])!)
+                if(lastQuizAnswer.successfulTakeover) {
+                    if((lastQuizAnswer?.correct)!) {
+                        answerButtons[alternative].backgroundColor = UIColor.green
+                    }
+                    else {
+                        showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
+                        answerButtons[alternative].backgroundColor = UIColor.red
+                    }
+                    doneWithQuizWin()
+                    
+                }
+                else {
+                    if((lastQuizAnswer?.correct)!) {
+                        answerButtons[alternative].backgroundColor = UIColor.green
+                    }
+                    else {
+                        showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
+                        answerButtons[alternative].backgroundColor = UIColor.red
+                    }
+                    geoCap.quizModel.startQuizTimer()
+                    doneWithQuizLoss()
+                    
+                }
+            }
+            else {
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![alternative])!)
+                if((quizAnswer?.correct)!) {
+                    answerButtons[alternative].backgroundColor = UIColor.green
+                }
+                else {
+                    showCorrectAnswer(answer: quizAnswer.correctAnswer!)
+                    answerButtons[alternative].backgroundColor = UIColor.red
+                }
+                disableButtons()
+                counter += 1
+                self.nextQuestion.isHidden = false
+            }
+        }
+        
+        
+    }
+    
     @IBAction func alternative1(_ sender: UIButton) {
         
         UIButton.animate(withDuration: 0.25,
                          animations: {
-                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.90)
+                            sender.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
         },
                          completion: { finish in
                             UIButton.animate(withDuration: 0.25, animations: {
@@ -62,49 +128,15 @@ class QuizPageViewController: UIViewController {
                             })
         })
     
-        
-        if(counter == 0) {
-            let answer = quiz?.alternatives![0]
-            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
-        }
-        else {
-            if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
-                if(lastQuizAnswer.successfulTakeover) {
-             
-                    doneWithQuizWin()
+        chooseAnswer(alternative: 0)
 
-                }
-                else {
-                    showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
-
-                    doneWithQuizLoss()
-                }
-            }
-            else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
-            }
-        }
-        
-        
-        if((quizAnswer?.correct)!) {
-            self.alternative1.backgroundColor = UIColor.green
-        }
-        else {
-            showCorrectAnswer(answer: quizAnswer.correctAnswer!)
-            self.alternative1.backgroundColor = UIColor.red
-        }
-        disableButtons()
-        counter += 1
-        self.nextQuestion.isHidden = false
-        
     }
     
     @IBAction func alternative2(_ sender: UIButton) {
         
         UIButton.animate(withDuration: 0.25,
                          animations: {
-                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+                            sender.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
         },
                          completion: { finish in
                             UIButton.animate(withDuration: 0.25, animations: {
@@ -112,47 +144,14 @@ class QuizPageViewController: UIViewController {
                             })
         })
         
-        if(counter == 0) {
-            let answer = quiz?.alternatives![1]
-            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
-        }
-        else {
-            if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![1])!)
-                if(lastQuizAnswer.successfulTakeover) {
-                   
-                    doneWithQuizWin()
-
-                }
-                else {
-                    showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
-                    doneWithQuizLoss()
-                }
-                
-            }
-            else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![1])!)
-            }
-        }
-        
-        
-        if((quizAnswer?.correct)!) {
-            self.alternative2.backgroundColor = UIColor.green
-        }
-        else {
-            showCorrectAnswer(answer: quizAnswer.correctAnswer!)
-            self.alternative2.backgroundColor = UIColor.red
-        }
-        disableButtons()
-        counter += 1
-        self.nextQuestion.isHidden = false
+       chooseAnswer(alternative: 1)
         
     }
     @IBAction func alternative3(_ sender: UIButton) {
         
         UIButton.animate(withDuration: 0.25,
                          animations: {
-                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+                            sender.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
         },
                          completion: { finish in
                             UIButton.animate(withDuration: 0.25, animations: {
@@ -160,44 +159,7 @@ class QuizPageViewController: UIViewController {
                             })
         })
         
-        if(counter == 0) {
-            let answer = quiz?.alternatives![2]
-            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
-        }
-        else {
-            if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![2])!)
-                if(lastQuizAnswer.successfulTakeover) {
-                
-                    doneWithQuizWin()
-                }
-                else {
-                    
-                    showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
-                    doneWithQuizLoss()
-
-                    
-                    geoCap.quizModel.quizTimeoutIsActive = true
-                    geoCap.quizModel.startQuizTimer()
-                }
-                
-            }
-            else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![2])!)
-            }
-        }
-        
-        
-        if((quizAnswer?.correct)!) {
-            self.alternative3.backgroundColor = UIColor.green
-        }
-        else {
-            showCorrectAnswer(answer: quizAnswer.correctAnswer!)
-            self.alternative3.backgroundColor = UIColor.red
-        }
-        disableButtons()
-        counter += 1
-        self.nextQuestion.isHidden = false
+        chooseAnswer(alternative: 2)
         
     }
     
@@ -205,7 +167,7 @@ class QuizPageViewController: UIViewController {
         
         UIButton.animate(withDuration: 0.25,
                          animations: {
-                            sender.transform = CGAffineTransform(scaleX: 1, y: 0.94)
+                            sender.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
         },
                          completion: { finish in
                             UIButton.animate(withDuration: 0.25, animations: {
@@ -213,40 +175,7 @@ class QuizPageViewController: UIViewController {
                             })
         })
         
-        if(counter == 0) {
-            let answer = quiz?.alternatives![3]
-            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
-        }
-        else {
-            if(counter == 2) {
-                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![3])!)
-                if(lastQuizAnswer.successfulTakeover) {
-                   
-                    doneWithQuizWin()
-
-                }
-                else {
-                    showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
-                    doneWithQuizLoss()
-                }
-                
-            }
-            else {
-                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![3])!)
-            }
-        }
-        
-        
-        if((quizAnswer?.correct)!) {
-            self.alternative4.backgroundColor = UIColor.green
-        }
-        else {
-            showCorrectAnswer(answer: quizAnswer.correctAnswer!)
-            self.alternative4.backgroundColor = UIColor.red
-        }
-        disableButtons()
-        counter += 1
-        self.nextQuestion.isHidden = false
+        chooseAnswer(alternative: 3)
         
     }
     
