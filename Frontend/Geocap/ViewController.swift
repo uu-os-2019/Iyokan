@@ -86,6 +86,7 @@ class ViewController: UIViewController {
         
         mapView.register(ArtworkMarkerView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
         if mapView.annotations.count < 1 {
             geoCap.server.fetchLocations(completionHandler: loadLocations)
         }
