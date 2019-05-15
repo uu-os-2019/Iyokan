@@ -119,10 +119,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
     }
-    @IBAction func LeaderboardButton(_ sender: Any) {
-        performSegue(withIdentifier: "LeaderboardSegue", sender: self)
-    }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         stopMapRefreshTimer()
