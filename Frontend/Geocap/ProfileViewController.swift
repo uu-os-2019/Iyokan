@@ -39,8 +39,8 @@ class Profile: UIViewController, UITableViewDataSource {
     }
     
     func updateProfileView() {
-        points.text = String(geoCap.profileInfo!.totalScore)
-        locations = geoCap.profileInfo!.locations!
+        points.text = String(geoCap.profileInfo!.level!)
+        locations = geoCap.profileInfo!.locations_taken!
         tableView.reloadData()
     }
     
