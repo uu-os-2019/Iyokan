@@ -43,6 +43,10 @@ public class UserCollection {
         }
     }
 
+    public User[] getUsers() {
+        return users.values().toArray(new User[0]);
+    }
+
     /**
      * Sees if the collection contains a user with the given name. This is slow
      * @param username
