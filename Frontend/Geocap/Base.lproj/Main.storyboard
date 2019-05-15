@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hon-WI-sEz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -297,7 +297,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq3-oP-7So">
-                                <rect key="frame" x="59" y="527" width="257" height="60"/>
+                                <rect key="frame" x="59" y="540" width="257" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XK9-UG-aEv"/>
@@ -311,8 +311,11 @@
                                     <action selector="getNextQuestion:" destination="7MW-zh-wgF" eventType="touchUpInside" id="t1R-Z4-IHV"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-UL-6eW">
-                                <rect key="frame" x="112" y="506" width="150" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-UL-6eW">
+                                <rect key="frame" x="16" y="506" width="343" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="v3k-B8-acz"/>
+                                </constraints>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,16 +326,18 @@
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="Wq3-oP-7So" secondAttribute="trailing" constant="59" id="E3I-ME-8iY"/>
                             <constraint firstItem="Xk2-3N-hRr" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="16" id="EBW-dd-P6J"/>
                             <constraint firstItem="9NL-at-r7X" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="16" id="Fo2-a8-C5p"/>
-                            <constraint firstItem="C51-R5-691" firstAttribute="top" secondItem="Wq3-oP-7So" secondAttribute="bottom" constant="40" id="HMd-Pc-Lvs"/>
+                            <constraint firstItem="C51-R5-691" firstAttribute="top" secondItem="Wq3-oP-7So" secondAttribute="bottom" constant="27" id="KVa-VI-0rs"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="Xk2-3N-hRr" secondAttribute="trailing" constant="16" id="NlI-dR-sve"/>
                             <constraint firstItem="Xk2-3N-hRr" firstAttribute="top" secondItem="9NL-at-r7X" secondAttribute="bottom" constant="8" id="agW-8M-6no"/>
                             <constraint firstItem="C51-R5-691" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" id="bBp-Ks-6Jq"/>
-                            <constraint firstItem="Wq3-oP-7So" firstAttribute="top" secondItem="DXZ-UL-6eW" secondAttribute="bottom" constant="19" id="dTL-Bj-ILd"/>
                             <constraint firstItem="hDY-Nx-KyV" firstAttribute="top" secondItem="V7U-3V-Zr8" secondAttribute="top" id="fGa-8j-kVw"/>
                             <constraint firstItem="hDY-Nx-KyV" firstAttribute="trailing" secondItem="V7U-3V-Zr8" secondAttribute="trailing" id="j9h-K2-CmS"/>
-                            <constraint firstItem="DXZ-UL-6eW" firstAttribute="top" secondItem="7ud-2k-Qgx" secondAttribute="bottom" constant="27" id="oiq-hE-gGo"/>
+                            <constraint firstItem="DXZ-UL-6eW" firstAttribute="top" secondItem="Xk2-3N-hRr" secondAttribute="bottom" constant="27" id="o36-zZ-NJS"/>
                             <constraint firstItem="Wq3-oP-7So" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="59" id="ooL-VH-PEt"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="9NL-at-r7X" secondAttribute="trailing" constant="16" id="sox-XD-epj"/>
+                            <constraint firstItem="DXZ-UL-6eW" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="16" id="v7P-F5-O2y"/>
+                            <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="DXZ-UL-6eW" secondAttribute="trailing" constant="16" id="wW4-QM-Dqx"/>
+                            <constraint firstItem="Wq3-oP-7So" firstAttribute="top" secondItem="DXZ-UL-6eW" secondAttribute="bottom" constant="19" id="z4g-pe-jxz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7U-3V-Zr8"/>
                     </view>
@@ -566,7 +571,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IOA-cv-p5Z"/>
         <segue reference="1c3-Ko-O0M"/>
     </inferredMetricsTieBreakers>
 </document>

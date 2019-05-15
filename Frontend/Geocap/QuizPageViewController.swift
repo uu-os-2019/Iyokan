@@ -25,8 +25,8 @@ class QuizPageViewController: UIViewController {
     var counter = 0
     var alternatives = [alternative1, alternative2, alternative3, alternative4]
     var timer: Timer?
-    var totalTime = 10
-    var timeRemaining = 10
+    var totalTime = 1000
+    var timeRemaining = 1000
     var timerIsOn: Bool?
     
     override func viewDidLoad() {
@@ -44,10 +44,10 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
+        progressView.progressTintColor = UIColor.green
+        quizTimer()
         
         
-        
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +62,7 @@ class QuizPageViewController: UIViewController {
     }
     
     func chooseAnswer(alternative: Int) {
-        
+        stopTimer()
         if(counter == 0) {
             let answer = quiz?.alternatives![alternative]
             quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
@@ -245,6 +245,7 @@ class QuizPageViewController: UIViewController {
         // Present Dialog message
         self.present(alertController, animated: true, completion:nil)
     }
+    
     func doneWithQuizLoss() {
         let alertController = UIAlertController(title: "Du misslyckades med att ta över området", message: "Vänta 30 sekunder och försök igen!", preferredStyle: .alert)
         
@@ -253,6 +254,21 @@ class QuizPageViewController: UIViewController {
             
             // Code in this block will trigger when OK button tapped.
             self.performSegue(withIdentifier: "QuizToMapSegue", sender: self)
+        }
+        alertController.addAction(OKAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
+    }
+    
+    func toSlowAnswer() {
+        let alertController = UIAlertController(title: "Du svarade för långsamt", message: "", preferredStyle: .alert)
+        
+        // Create OK button
+        let OKAction = UIAlertAction(title: "Okej", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            
         }
         alertController.addAction(OKAction)
         
@@ -272,7 +288,7 @@ class QuizPageViewController: UIViewController {
                                 sender.transform = CGAffineTransform.identity
                             })
         })
-        self.timerIsOn = false
+        stopTimer()
         self.nextQuestion.isHighlighted = true
         enableButtons()
         getNewQuestions(quizAnswer: quizAnswer)
@@ -280,17 +296,19 @@ class QuizPageViewController: UIViewController {
     }
     
     func quizTimer() {
-        while timerIsOn! {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+        timerIsOn = true
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { Timer in
+            if(!self.timerIsOn!) {
+                self.stopTimer()
+            }
             Timer.tolerance = 2
             self.timerRunning()
         }
-      }
-        stopTimer()
     }
     
     func stopTimer() {
-        timeRemaining = 1500
+        progressView.progressTintColor = UIColor.green
+        timeRemaining = 1000
         timer?.invalidate()
         self.timer = nil
     }
@@ -298,7 +316,79 @@ class QuizPageViewController: UIViewController {
     func timerRunning() {
         timeRemaining -= 1
         progressView.setProgress(Float(timeRemaining)/Float(totalTime), animated: true)
+        if(timeRemaining == 750) {
+            progressView.progressTintColor = UIColor.yellow
+        }
+        else if(timeRemaining == 500) {
+            progressView.progressTintColor = UIColor.orange
+        }
+        else if(timeRemaining == 250) {
+            progressView.progressTintColor = UIColor.red
+        }
+        
+        else if(timeRemaining == 0) {
+            defaultChooseAnswer()
+            toSlowAnswer()
+            timerIsOn = false
+        }
     
+    }
+    func defaultChooseAnswer() {
+        
+        if(counter == 0) {
+            let answer = quiz?.alternatives![0]
+            quizAnswer = geoCap.server.sendQuizAnswer(answer: answer!)
+            
+            if((quizAnswer?.correct)!) {
+                answerButtons[0].backgroundColor = UIColor.green
+            }
+            else {
+                showCorrectAnswer(answer: quizAnswer.correctAnswer!)
+            }
+            disableButtons()
+            counter += 1
+            self.nextQuestion.isHidden = false
+        }
+        else {
+            if(counter == 2) {
+                lastQuizAnswer = geoCap.server.sendLastQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
+                if(lastQuizAnswer.successfulTakeover) {
+                    if((lastQuizAnswer?.correct)!) {
+                        answerButtons[0].backgroundColor = UIColor.green
+                    }
+                    else {
+                        showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
+                    }
+                    doneWithQuizWin()
+                    
+                }
+                else {
+                    if((lastQuizAnswer?.correct)!) {
+                        answerButtons[0].backgroundColor = UIColor.green
+                    }
+                    else {
+                        showCorrectAnswer(answer: lastQuizAnswer.correctAnswer!)
+                    }
+                    geoCap.quizModel.startQuizTimer()
+                    doneWithQuizLoss()
+                    
+                }
+            }
+            else {
+                quizAnswer = geoCap.server.sendQuizAnswer(answer: (quizAnswer?.newAlternatives![0])!)
+                if((quizAnswer?.correct)!) {
+                    answerButtons[0].backgroundColor = UIColor.green
+                }
+                else {
+                    showCorrectAnswer(answer: quizAnswer.correctAnswer!)
+                }
+                disableButtons()
+                counter += 1
+                self.nextQuestion.isHidden = false
+            }
+        }
+        
+        
     }
     @IBAction func QuizToMap(_ sender: Any) {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
