@@ -1,6 +1,10 @@
 package com.iyokan.geocapserver;
 
+import com.iyokan.geocapserver.database.JsonDatabase;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Location {
     private Position position;
@@ -11,6 +15,7 @@ public class Location {
     private UserGuid owner;
     private int score;
     private int expValue;
+    private LocationTag[] tags;
 
     public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius, int expValue) {
         this.position = position;
@@ -21,6 +26,18 @@ public class Location {
         this.description = description;
         this.score = 0;
         this.expValue = expValue;
+        tags = new LocationTag[0];
+    }
+
+    private LocationTag[] readTags(JSONObject obj) {
+        ArrayList<LocationTag> tags = new ArrayList<>();
+        Iterator<String> keys = obj.keys();
+        while(keys.hasNext()) {
+            String key = keys.next();
+            LocationTag tag = new LocationTag(key, obj.getInt(key));
+            tags.add(tag);
+        }
+        return tags.toArray(new LocationTag[0]);
     }
 
     public Location(JSONObject object) {
@@ -30,6 +47,7 @@ public class Location {
         this.position = new Position(object.getJSONObject("position"));
         this.description = object.getString("description");
         this.expValue = object.getInt("exp");
+        this.tags = readTags(object.getJSONObject("tags"));
     }
 
 
@@ -106,5 +124,9 @@ public class Location {
 
     public UserGuid getOwner() {
         return owner;
+    }
+
+    public LocationTag[] getTags() {
+        return tags;
     }
 }
