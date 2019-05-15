@@ -10,8 +10,9 @@ public class Location {
     private double radius;
     private UserGuid owner;
     private int score;
+    private int expValue;
 
-    public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius) {
+    public Location(Position position, String identifier, String name, String description, UserGuid owner, double radius, int expValue) {
         this.position = position;
         this.name = name;
         this.owner = owner;
@@ -27,6 +28,7 @@ public class Location {
         this.radius = object.getDouble("radius");
         this.position = new Position(object.getJSONObject("position"));
         this.description = object.getString("description");
+        this.expValue = object.getInt("exp");
     }
 
 
@@ -78,6 +80,10 @@ public class Location {
 
     public int getScore() {
         return score;
+    }
+
+    public int getExpValue() {
+        return expValue;
     }
 
     public Position getPosition() {

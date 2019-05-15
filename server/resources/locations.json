@@ -4,251 +4,287 @@
     "name": "Uppsala Domkyrka",
     "description": "Uppsala Domkyrka",
     "position": {"lat": 59.8581, "lng": 17.634},
-    "radius": 200
+    "radius": 200,
+    "exp": 4
   },
   {
     "identifier": "ekeby",
     "name": "Ekeby",
     "description": "Ekebyvägen",
     "position": {"lat": 59.84913, "lng": 17.6097114},
-    "radius": 200
+    "radius": 200,
+    "exp": 1
   },
   {
     "identifier": "triangeln",
     "name": "Triangeln",
     "description": "Gräsmattan i triangeln",
     "position": {"lat": 59.855115, "lng": 17.61795},
-    "radius": 200
+    "radius": 200,
+    "exp": 1
   },
   {
     "identifier": "iyokan",
     "name": "Iyokans grupprum",
     "description": "Where dreams come true",
     "position": {"lat": 59.840954, "lng": 17.648401},
-    "radius": 10
+    "radius": 10,
+    "exp": 10
   },
   {
     "identifier": "polacksrullan",
     "name": "Restaurang Rullan",
     "description": "Rullan",
     "position": {"lat": 59.841032, "lng": 17.650128},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "polackshus4",
     "name": "Hus 4",
     "description": "Fjärde bästa huset",
     "position": {"lat": 59.840297, "lng": 17.648510},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "ångström",
     "name": "Ångströms",
     "description": "Ångströmslaboratoriet",
     "position": {"lat": 59.839068, "lng": 17.647044},
-    "radius": 100
+    "radius": 100,
+    "exp": 2
   },
   {
     "identifier": "uppsalaslott",
     "name": "Uppsala Slott",
     "description": "Slottet i Uppsala",
     "position": {"lat": 59.853630, "lng": 17.634765},
-    "radius": 100
+    "radius": 100,
+    "exp": 3
   },
   {
     "identifier": "pellestaty",
     "name": "Pelle Svanslös-statyn",
     "description": "En staty av Pelle Svanslös",
     "position": {"lat": 59.853424, "lng": 17.642544},
-    "radius": 100
+    "radius": 100,
+    "exp": 2
   },
   {
     "identifier": "studenternasip",
     "name": "Studenternas IP",
     "description": "Studenternas IP",
     "position": {"lat": 59.849616, "lng": 17.645340},
-    "radius": 100
+    "radius": 100,
+    "exp": 1
   },
   {
     "identifier": "hågahögen",
     "name": "Hågahögen",
     "description": "En hög",
     "position": {"lat": 59.837344, "lng": 17.586832},
-    "radius": 200
+    "radius": 200,
+    "exp": 1
   },
   {
     "identifier": "botaniska",
     "name": "Botaniska Trädgården",
     "description": "Botaniska",
     "position": {"lat": 59.852775, "lng": 17.630618},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "linneträdgården",
     "name": "Linnéträdgården",
     "description": "Linnéträdgården",
     "position": {"lat": 59.862324, "lng": 17.634162},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "ekonomikum",
     "name": "Ekonomikum",
     "description": "eko",
     "position": {"lat": 59.859469, "lng": 17.619822},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "uppsalacentralstation",
     "name": "Uppsala C",
     "description": "Uppsala Centralstation",
     "position": {"lat": 59.858087, "lng": 17.646618},
-    "radius": 100
+    "radius": 100,
+    "exp": 3
   },
   {
     "identifier": "bmc",
     "name": "BMC",
     "description": "Biomedicinskt Centrum",
     "position": {"lat": 59.842436, "lng": 17.636749},
-    "radius": 100
+    "radius": 100,
+    "exp": 2
   },
   {
     "identifier": "storatorget",
     "name": "Stora Torget",
     "description": "Ett torg som är ganska stort",
     "position": {"lat": 59.858563, "lng": 17.638934},
-    "radius": 50
+    "radius": 50,
+    "exp": 3
   },
   {
     "identifier": "norrlands",
     "name": "Norrlands Nation",
     "description": "Norrlands studentnation",
     "position": {"lat": 59.857294, "lng": 17.637814},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "stocken",
     "name": "Stockholms Nation",
     "description": "Stockholms sudentnation",
     "position": {"lat": 59.8566468, "lng": 17.6339372},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "uplands",
     "name": "Uplands Nation",
     "description": "sudentnation",
     "position": {"lat": 59.8598535, "lng": 17.6292037},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "gh",
     "name": "Gästrike-Hälsinge Nation",
     "description": "Gästrike-Hälsinge sudentnation",
     "position": {"lat": 59.8560993, "lng": 17.635896},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "ög",
     "name": "Östgöta Nation",
     "description": "Östgöta sudentnation",
     "position": {"lat": 59.8551616, "lng": 17.6357765},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "vg",
     "name": "Västgöta Nation",
     "description": "Västgöta sudentnation",
     "position": {"lat": 59.8567371, "lng": 17.6362652},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "snerkes",
     "name": "Södermanlands-Nerikes Nation",
     "description": "Södermanlands-Nerikes sudentnation",
     "position": {"lat": 59.8589595, "lng": 17.6292821},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "vdala",
     "name": "Västmanlands-Dala Nation",
     "description": "Västmanlands-Dala sudentnation",
     "position": {"lat": 59.8600819, "lng": 17.6264853},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "smålands",
     "name": "Smålands Nation",
     "description": "Smålands sudentnation",
     "position": {"lat": 59.8592369, "lng": 17.6284965},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "göteborgs",
     "name": "Göteborgs Nation",
     "description": "Göteborgs sudentnation",
     "position": {"lat": 59.8595116, "lng": 7.6279988},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "kalmars",
     "name": "Kalmar Nation",
     "description": "Kalmar sudentnation",
     "position": {"lat": 59.8590084, "lng": 17.6249643},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "värmlands",
     "name": "Värmlands Nation",
     "description": "Värmlands sudentnation",
     "position": {"lat": 59.8570647, "lng": 17.6316581},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "gotlands",
     "name": "Gotlands Nation",
     "description": "Gotlands sudentnation",
     "position": {"lat": 59.8597507, "lng": 17.632274},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "flogsta",
     "name": "Flogsta Höghus",
     "description": "Studenternas hjärta",
     "position": {"lat": 59.850178, "lng": 17.592342},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "mosken",
     "name": "Uppsala Moskén",
     "description": "Uppsala Moskén",
     "position": {"lat": 59.873779, "lng": 17.638482},
-    "radius": 50
+    "radius": 50,
+    "exp": 2
   },
   {
     "identifier": "gränbycentrum",
     "name": "Gränbycentrum",
     "description": "Gränbycentrum",
     "position": {"lat": 59.877189, "lng": 17.673957},
-    "radius": 100
+    "radius": 100,
+    "exp": 1
   },
   {
     "identifier": "ikea",
     "name": "IKEA",
     "description": "Köp något när du ändå är här",
     "position": {"lat": 59.847123, "lng": 17.694677},
-    "radius": 100
+    "radius": 100,
+    "exp": 2
   },
   {
     "identifier": "stensture",
     "name": "Sten Sture Monumentet",
     "description": "Sten Sture Monumentet",
     "position": {"lat": 59.845929, "lng": 17.644905},
-    "radius": 50
+    "radius": 50,
+    "exp": 1
   },
   {
     "identifier": "gamlauppsala",
     "name": "Gamla Uppsala",
     "description": "Stora högar för stora kungar",
     "position": {"lat": 59.898187, "lng": 17.630294},
-    "radius": 100
+    "radius": 100,
+    "exp": 1
   }
 ]
