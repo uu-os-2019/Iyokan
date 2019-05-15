@@ -13,11 +13,11 @@ class SegueFromTop: UIStoryboardSegue {
             let src = self.source as UIViewController
             let dst = self.destination as UIViewController
             
-            src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
-            dst.view.transform = CGAffineTransform(translationX: 0, y: -src.view.frame.size.height)
+            dst.view.superview?.sendSubview(toBack: src.view)
+            src.view.transform = CGAffineTransform(translationX: 0, y: src.view.frame.size.height)
             
             UIView.animate(withDuration: 0.75, animations: {
-                dst.view.transform = CGAffineTransform(translationX: 0, y: 0)
+                src.view.transform = CGAffineTransform(translationX: 0, y: 0)
                 
             }) { (Finished) in
                 src.present(dst, animated: false, completion: nil)

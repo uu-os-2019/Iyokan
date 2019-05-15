@@ -17,12 +17,17 @@ class QuizPageViewController: UIViewController {
     @IBOutlet weak var alternative4: UIButton!
     @IBOutlet weak var nextQuestion: UIButton!
     @IBOutlet var answerButtons: [UIButton]!
+    @IBOutlet weak var progressView: UIProgressView!
     
     let quiz = geoCap.server.getQuiz(for: geoCap.currentLocation!)
     var quizAnswer: QuizAnswer!
     var lastQuizAnswer: LastQuizAnswer!
     var counter = 0
     var alternatives = [alternative1, alternative2, alternative3, alternative4]
+    var timer: Timer?
+    var totalTime = 10
+    var timeRemaining = 10
+    var timerIsOn: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,8 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
+        
+        
         
 
     }
@@ -207,6 +214,7 @@ class QuizPageViewController: UIViewController {
         self.alternative3.setTitle(quizAnswer?.newAlternatives![2], for: .normal)
         self.alternative4.setTitle(quizAnswer?.newAlternatives![3], for: .normal)
         self.question.text = quizAnswer?.newQuestion
+        quizTimer()
     }
     
     func disableButtons() {
@@ -264,14 +272,34 @@ class QuizPageViewController: UIViewController {
                                 sender.transform = CGAffineTransform.identity
                             })
         })
-        
+        self.timerIsOn = false
         self.nextQuestion.isHighlighted = true
         enableButtons()
         getNewQuestions(quizAnswer: quizAnswer)
         
     }
     
+    func quizTimer() {
+        while timerIsOn! {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+            Timer.tolerance = 2
+            self.timerRunning()
+        }
+      }
+        stopTimer()
+    }
     
+    func stopTimer() {
+        timeRemaining = 1500
+        timer?.invalidate()
+        self.timer = nil
+    }
+    
+    func timerRunning() {
+        timeRemaining -= 1
+        progressView.setProgress(Float(timeRemaining)/Float(totalTime), animated: true)
+    
+    }
     @IBAction func QuizToMap(_ sender: Any) {
         performSegue(withIdentifier: "QuizToMapSegue", sender: self)
     }

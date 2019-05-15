@@ -138,7 +138,7 @@
                                             <constraint firstAttribute="height" constant="36" id="q4S-dD-8Xf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Points: 34">
+                                        <state key="normal" title="Poäng:">
                                             <color key="titleColor" red="0.91558047279999999" green="0.2939646541" blue="0.26892619670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -215,7 +215,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9NL-at-r7X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9NL-at-r7X">
                                 <rect key="frame" x="16" y="67" width="343" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="SlZ-qX-1ga"/>
@@ -312,6 +312,9 @@
                                     <action selector="getNextQuestion:" destination="7MW-zh-wgF" eventType="touchUpInside" id="t1R-Z4-IHV"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-UL-6eW">
+                                <rect key="frame" x="112" y="506" width="150" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -325,9 +328,10 @@
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="Xk2-3N-hRr" secondAttribute="trailing" constant="16" id="NlI-dR-sve"/>
                             <constraint firstItem="Xk2-3N-hRr" firstAttribute="top" secondItem="9NL-at-r7X" secondAttribute="bottom" constant="8" id="agW-8M-6no"/>
                             <constraint firstItem="C51-R5-691" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" id="bBp-Ks-6Jq"/>
+                            <constraint firstItem="Wq3-oP-7So" firstAttribute="top" secondItem="DXZ-UL-6eW" secondAttribute="bottom" constant="19" id="dTL-Bj-ILd"/>
                             <constraint firstItem="hDY-Nx-KyV" firstAttribute="top" secondItem="V7U-3V-Zr8" secondAttribute="top" id="fGa-8j-kVw"/>
                             <constraint firstItem="hDY-Nx-KyV" firstAttribute="trailing" secondItem="V7U-3V-Zr8" secondAttribute="trailing" id="j9h-K2-CmS"/>
-                            <constraint firstItem="Wq3-oP-7So" firstAttribute="top" secondItem="Xk2-3N-hRr" secondAttribute="bottom" constant="48" id="ma7-2O-25J"/>
+                            <constraint firstItem="DXZ-UL-6eW" firstAttribute="top" secondItem="7ud-2k-Qgx" secondAttribute="bottom" constant="27" id="oiq-hE-gGo"/>
                             <constraint firstItem="Wq3-oP-7So" firstAttribute="leading" secondItem="V7U-3V-Zr8" secondAttribute="leading" constant="59" id="ooL-VH-PEt"/>
                             <constraint firstItem="V7U-3V-Zr8" firstAttribute="trailing" secondItem="9NL-at-r7X" secondAttribute="trailing" constant="16" id="sox-XD-epj"/>
                         </constraints>
@@ -339,6 +343,7 @@
                         <outlet property="alternative3" destination="Lco-JS-rYp" id="vje-uF-FNd"/>
                         <outlet property="alternative4" destination="7ud-2k-Qgx" id="KtK-MH-Pgy"/>
                         <outlet property="nextQuestion" destination="Wq3-oP-7So" id="04J-a6-ipG"/>
+                        <outlet property="progressView" destination="DXZ-UL-6eW" id="wf3-Nj-bXu"/>
                         <outlet property="question" destination="9NL-at-r7X" id="xiF-Eg-Hel"/>
                         <outletCollection property="answerButtons" destination="Ikb-ic-e21" collectionClass="NSMutableArray" id="O5g-Re-c0L"/>
                         <outletCollection property="answerButtons" destination="Op7-vn-dRq" collectionClass="NSMutableArray" id="7zi-Cx-JVF"/>
