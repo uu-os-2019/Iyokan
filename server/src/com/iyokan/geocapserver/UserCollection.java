@@ -74,4 +74,8 @@ public class UserCollection {
         }
     }
 
+    public User[] getUsers() {
+        return users.values().toArray(new User[0]);
+    }
+
 }
