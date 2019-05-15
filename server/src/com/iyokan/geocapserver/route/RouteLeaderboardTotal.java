@@ -43,6 +43,7 @@ public class RouteLeaderboardTotal extends Route {
             obj.put("name", user.getName());
 
             User.LevelInformation info = user.getLevelInformation();
+            obj.put("exp_rate", user.getExpRate());
             obj.put("exp", info.exp);
             obj.put("exp_to_level", info.expToLevel);
             obj.put("level", info.level);
