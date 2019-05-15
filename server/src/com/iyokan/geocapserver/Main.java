@@ -31,7 +31,8 @@ public class Main {
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),
                 new RouteQuizAnswer(quizRounds, locations, hs, users),
-                new RouteMyProfile(hs, locations, users)
+                new RouteMyProfile(hs, locations, users),
+                new RouteCurrentLeaderboard(users)
         };
 
         Server server = new Server(port, routes, sessions);
