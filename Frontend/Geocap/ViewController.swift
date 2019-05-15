@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var mapRefreshTimer: Timer?
     @IBOutlet weak var profilbutton: UIButton!
+
     
     func startMapRefreshTimer() {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
@@ -31,8 +32,9 @@ class ViewController: UIViewController {
     
     func updateProfileButtonScore() {
         if let profileInfo = geoCap.profileInfo {
-            profilbutton.setTitle("Poäng:" + String(profileInfo.totalScore), for: .normal)
+            profilbutton.setTitle("Level:" + "\(String(profileInfo.level!))", for: .normal)
         }
+        
     }
     
     func clearMap() {
@@ -77,7 +79,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         geoCap.server.fetchProfileInfo(completionHandler: updateProfileButtonScore)
         let initialLocation = CLLocation(latitude: 59.8585 , longitude: 17.646)
         centerMapOnLocation(location: initialLocation)
