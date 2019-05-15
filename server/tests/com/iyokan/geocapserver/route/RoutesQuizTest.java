@@ -1,6 +1,7 @@
-package com.iyokan.geocapserver;
+package com.iyokan.geocapserver.route;
 
 import com.iyokan.geocapserver.database.Database;
+import com.iyokan.geocapserver.*;
 import com.iyokan.geocapserver.database.JsonDatabase;
 import com.iyokan.geocapserver.route.*;
 import com.iyokan.geocapserver.testutils.DummyDatabase;
@@ -20,7 +21,6 @@ class RoutesQuizTest {
 
         UserCollection users = new UserCollection(db);
         SessionVault sessions = new SessionVault(db, users);
-        Highscore hs = new Highscore();
 
         LocationCollection locations = new LocationCollection(db);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
@@ -33,7 +33,7 @@ class RoutesQuizTest {
         users.addUser(testa);
 
         Route route = new RouteQuizStart(quizRounds, locations);
-        Route route_answer = new RouteQuizAnswer(quizRounds, locations, hs, users);
+        Route route_answer = new RouteQuizAnswer(quizRounds, locations, users);
 
         // /quiz/start without location
         JSONObject response = route.handle(data);
