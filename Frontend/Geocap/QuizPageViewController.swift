@@ -34,6 +34,7 @@ class QuizPageViewController: UIViewController {
         
         self.question.text = quiz?.question
         self.nextQuestion.isHidden = true
+        self.nextQuestion.layer.cornerRadius = 8
 
         self.alternative1.setTitle(quiz?.alternatives![0], for: .normal)
         self.alternative2.setTitle(quiz?.alternatives![1], for: .normal)
@@ -44,6 +45,11 @@ class QuizPageViewController: UIViewController {
         self.alternative2.backgroundColor = UIColor.blue
         self.alternative3.backgroundColor = UIColor.blue
         self.alternative4.backgroundColor = UIColor.blue
+        self.alternative1.layer.cornerRadius = 8
+        self.alternative2.layer.cornerRadius = 8
+        self.alternative3.layer.cornerRadius = 8
+        self.alternative4.layer.cornerRadius = 8
+
         progressView.progressTintColor = UIColor.green
         quizTimer()
         

@@ -15,10 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var mapRefreshTimer: Timer?
     @IBOutlet weak var profilbutton: UIButton!
+    var expBarTimer: Timer?
+    var timerIsOn: Bool?
+    var totalExp: Int?
+    @IBOutlet weak var progressView: UIProgressView!
 
+    @IBOutlet weak var expCount: UILabel!
     
     func startMapRefreshTimer() {
-        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
+        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
             Timer.tolerance = 3
             geoCap.server.fetchLocations(completionHandler: self.refreshLocations)
             geoCap.server.fetchProfileInfo(completionHandler: self.updateProfileButtonScore)
@@ -35,6 +40,35 @@ class ViewController: UIViewController {
             profilbutton.setTitle("Level:" + "\(String(profileInfo.level!))", for: .normal)
         }
         
+    }
+    
+    func expTimer() {
+        timerIsOn = true
+        expBarTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+            if(!self.timerIsOn!) {
+                self.stopExpTimer()
+            }
+            Timer.tolerance = 2
+            self.timerRunning()
+        }
+    }
+    
+    func stopExpTimer() {
+        progressView.progressTintColor = UIColor.green
+        expBarTimer?.invalidate()
+        self.expBarTimer = nil
+    }
+    
+    func timerRunning() {
+        if let profilInfo = geoCap.profileInfo {
+            self.progressView.setProgress(Float(profilInfo.exp!)/Float(profilInfo.exp_to_level!), animated: true)
+            print(profilInfo.exp!)
+            print(profilInfo.exp_to_level!)
+            self.expCount.text = "Exp:" + "\(String(profilInfo.exp!))"
+            if(profilInfo.exp_to_level == 0) {
+                timerIsOn = false
+            }
+        }
     }
     
     func clearMap() {
@@ -96,6 +130,7 @@ class ViewController: UIViewController {
             geoCap.server.fetchLocations(completionHandler: refreshLocations)
         }
         startMapRefreshTimer()
+        expTimer()
     }
     
     let regionRadius: CLLocationDistance = 5000

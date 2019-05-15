@@ -165,6 +165,23 @@
                                     <constraint firstItem="9pG-BD-faG" firstAttribute="width" secondItem="Fh9-hF-SPY" secondAttribute="width" id="emJ-fE-v5t"/>
                                 </constraints>
                             </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BiQ-z2-xyG">
+                                <rect key="frame" x="0.0" y="606" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="258-1G-kmz"/>
+                                </constraints>
+                                <color key="progressTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hej" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFd-38-UAb">
+                                <rect key="frame" x="0.0" y="606" width="375" height="25"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="EX7-dc-3IY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -173,21 +190,29 @@
                             <constraint firstItem="O8l-Yb-RfM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5By-0W-sYD"/>
                             <constraint firstItem="O8l-Yb-RfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Eqb-Ts-puc"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Iy8-1C-y2j"/>
+                            <constraint firstItem="BiQ-z2-xyG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JkP-Sz-iIM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sM7-df-nHk" secondAttribute="trailing" id="NZN-J2-Gy1"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OQI-vk-MwT"/>
                             <constraint firstItem="O8l-Yb-RfM" firstAttribute="top" secondItem="sM7-df-nHk" secondAttribute="bottom" id="Qyf-h2-Fgs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qFd-38-UAb" secondAttribute="trailing" id="UhH-GM-h77"/>
+                            <constraint firstItem="BiQ-z2-xyG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xxv-Gd-Xfy"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zxu-EQ-Alt"/>
+                            <constraint firstItem="ZqD-J3-TQc" firstAttribute="top" secondItem="BiQ-z2-xyG" secondAttribute="bottom" id="bEr-Td-D95"/>
+                            <constraint firstItem="qFd-38-UAb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="egt-N5-REF"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fa2-2C-zH7"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iSq-4V-Ie1"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="top" secondItem="O8l-Yb-RfM" secondAttribute="bottom" id="nKM-Wa-NPP"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="odI-mg-1cP"/>
                             <constraint firstItem="ZqD-J3-TQc" firstAttribute="top" secondItem="O8l-Yb-RfM" secondAttribute="bottom" id="qMb-Tb-FS7"/>
+                            <constraint firstItem="ZqD-J3-TQc" firstAttribute="top" secondItem="qFd-38-UAb" secondAttribute="bottom" id="vUR-qh-gax"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="expCount" destination="qFd-38-UAb" id="gu7-yZ-Sww"/>
                         <outlet property="mapView" destination="O8l-Yb-RfM" id="9Wj-n5-7OC"/>
                         <outlet property="profilbutton" destination="Fh9-hF-SPY" id="3Ue-h7-c5N"/>
+                        <outlet property="progressView" destination="BiQ-z2-xyG" id="VuR-sT-ZAy"/>
                         <segue destination="7MW-zh-wgF" kind="presentation" identifier="QuizSegue" modalTransitionStyle="coverVertical" id="IOA-cv-p5Z"/>
                     </connections>
                 </viewController>
@@ -710,7 +735,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HoE-l0-sns"/>
-        <segue reference="1c3-Ko-O0M"/>
+        <segue reference="psf-CF-BMz"/>
+        <segue reference="YAH-5w-pfT"/>
     </inferredMetricsTieBreakers>
 </document>
