@@ -32,6 +32,7 @@ public class QuizRoundCollection {
             ArrayList<QuizRoundTag> tags = getTags(jsonObject.getJSONObject("tags"), quizRound);
             for (QuizRoundTag tag: tags) {
                 QuizRoundTagList list;
+                // If the tag is unrecorded put it in the map
                 if (tagSet.containsKey(tag.tag) == false) {
                     list = new QuizRoundTagList();
                     tagSet.put(tag.tag, list);
@@ -67,6 +68,7 @@ public class QuizRoundCollection {
             total += list.getCount();
         }
 
+        // Add general tags to the sum so they can be selected
         QuizRoundTagList generalTags = tagSet.get("general");
         sum += 10*generalTags.getTotalWeight();
         total += generalTags.getCount();
@@ -92,6 +94,12 @@ public class QuizRoundCollection {
                     break;
                 }
                 value = newValue;
+            }
+
+            // If value is still not under 0, move to general questions
+            if (value > 0) {
+                list = generalTags;
+                locationTagWeight = 10;
             }
 
             QuizRound round = null;
