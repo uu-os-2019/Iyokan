@@ -73,7 +73,7 @@ public class RouteQuizAnswer extends Route {
                 if(location.hasOwner()) {
                     User oldOwner = users.getUser(location.getOwner());
                     oldOwner.removeLocation(location.getId());
-                    oldOwner.updatePointRate(-1); //add logic for weighted score
+                    oldOwner.updatePointRate(-location.getExpValue());
                     users.updateUser(oldOwner);
                 }
 
@@ -82,7 +82,7 @@ public class RouteQuizAnswer extends Route {
                 locationCollection.updateLocation(location);
 
                 me.addLocation(location.getId());
-                me.updatePointRate(1); //add logic for weighted score
+                me.updatePointRate(location.getExpValue());
                 users.updateUser(me);
 
             } else {
