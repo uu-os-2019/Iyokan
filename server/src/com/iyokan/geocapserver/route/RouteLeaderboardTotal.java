@@ -21,7 +21,7 @@ public class RouteLeaderboardTotal extends Route {
     public JSONObject handle(RequestData data) {
         JSONObject response = new JSONObject();
 
-        int startValue = Utils.getJsonDefault(data.getJSON(), "index", 1);
+        int startValue = Utils.getJsonDefault(data.getJSON(), "index", 0);
         int count = Utils.getJsonDefault(data.getJSON(), "count", 50);
 
         ArrayList<User> userClump = new ArrayList<>( Arrays.asList(users.getUsers()));
