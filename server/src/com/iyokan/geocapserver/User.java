@@ -141,6 +141,7 @@ public class User {
     public int getExpRate() { return expRate; }
 
     public void setExpRate(int pointRate) {
+        updateTotalExp();
         this.expRate = pointRate;
     }
 

@@ -47,14 +47,10 @@ struct QuizAnswer: Codable {
     let correctAnswer: String?
 }
 
-struct UserInfo: Codable {
-    let id: String
-    let name: String
-}
-
 struct Register: Codable {
+    let type: String
     let success: Bool
-    let user: UserInfo?
+    let user: ProfileInfo?
     let token: String?
     let reason: String?
 }
@@ -78,13 +74,19 @@ struct LastQuizAnswer: Codable {
     let successfulTakeover: Bool
 }
 
-struct ProfileInfo: Codable {
-    let success: Bool?
-    let reason: String?
-    let locations: [String]?
+struct MyProfile: Codable {
     let type: String
-    let currentScore: Int
-    let totalScore: Int
+    let locations: [String]?
+    let user: ProfileInfo?
+}
+struct ProfileInfo: Codable {
+    let id: String?
+    let name: String?
+    let locations_taken: [String]?
+    let level: Int?
+    let exp: Int?
+    let exp_rate: Int?
+    let exp_to_level: Int?
 }
 
 class Server {
@@ -362,7 +364,7 @@ class Server {
         var request = URLRequest(url: url)
         request.addValue(token, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
-        var profileInfo: ProfileInfo?
+        var myProfile: MyProfile?
         
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             do {
@@ -377,8 +379,8 @@ class Server {
                         return
                 }
                 
-                profileInfo = try JSONDecoder().decode(ProfileInfo.self, from: data!)
-                geoCap.profileInfo = profileInfo
+                myProfile = try JSONDecoder().decode(MyProfile.self, from: data!)
+                geoCap.profileInfo = myProfile?.user
                 
                 DispatchQueue.main.async {
                     completionHandler()
@@ -389,9 +391,11 @@ class Server {
             }
         }.resume()
         
+        /*
         if let profileInfo = profileInfo, let _ = profileInfo.success, !profileInfo.success! {
             print("getProfileInfo() failed with error: \(profileInfo.reason!)")
         }
+         */
     }
     
     func getLeaderboard() -> Leaderboard? {

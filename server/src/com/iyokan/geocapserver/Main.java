@@ -7,8 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         final int port = 80;
-        Highscore hs = new Highscore();
-
         JsonDatabase database = new JsonDatabase("database.json");
 
         LocationCollection locations = new LocationCollection(database);
@@ -17,7 +15,7 @@ public class Main {
         database.filterLocations(locations);
 
         UserCollection users = new UserCollection(database);
-        users.updatePoints(locations);
+        users.updateExps(locations);
 
         SessionVault sessions = new SessionVault(database, users);
         QuizRoundCollection quizRounds = new QuizRoundCollection();
@@ -26,12 +24,13 @@ public class Main {
 
         final Route[] routes = new Route[]{
                 new RouteTest(),
-                new RouteHighscore(hs, users),
                 new RouteLocationGetAll(locations, users),
                 new RouteRegister(users, sessions),
                 new RouteQuizStart(quizRounds, locations),
-                new RouteQuizAnswer(quizRounds, locations, hs, users),
-                new RouteMyProfile(hs, locations, users)
+                new RouteQuizAnswer(quizRounds, locations, users),
+                new RouteMyProfile(locations, users),
+                new RouteLeaderboardCurrent(users),
+                new RouteLeaderboardTotal(users)
         };
 
         Server server = new Server(port, routes, sessions);
