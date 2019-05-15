@@ -9,12 +9,10 @@ import java.util.*;
 public class RouteQuizAnswer extends Route {
     private LocationCollection locationCollection;
     QuizRoundCollection quizRoundCollection;
-    Highscore hs;
     UserCollection users;
 
-    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, Highscore hs, UserCollection users){
+    public RouteQuizAnswer(QuizRoundCollection quizRoundCollection, LocationCollection collection, UserCollection users){
         this.quizRoundCollection = quizRoundCollection;
-        this.hs = hs;
         this.locationCollection = collection;
         this.users = users;
     }
@@ -77,7 +75,6 @@ public class RouteQuizAnswer extends Route {
                     users.updateUser(oldOwner);
                 }
 
-                hs.updateHighscore(me.getID(), score);
                 location.setOwner(me.getID(), score);
                 locationCollection.updateLocation(location);
 

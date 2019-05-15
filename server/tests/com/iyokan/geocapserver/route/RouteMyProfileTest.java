@@ -18,7 +18,6 @@ class RouteMyProfileTest {
 
         UserCollection users = new UserCollection(db);
         SessionVault sessions = new SessionVault(db, users);
-        Highscore hs = new Highscore();
 
         LocationCollection locations = new LocationCollection(db);
         locations.loadLocations(FileReader.readJsonArrayFromFile("resources/locations.json"));
@@ -30,7 +29,7 @@ class RouteMyProfileTest {
         sessions.insert("OsthyvelOsthyvelOsthyvelOsthyvel", testa);
         users.addUser(testa);
 
-        Route route_myprofile = new RouteMyProfile(hs, locations, users);
+        Route route_myprofile = new RouteMyProfile(locations, users);
         JSONObject postJson = new JSONObject();
         RequestData data = new RequestData(postJson,  testa);
         JSONObject response = route_myprofile.handle(data);
@@ -43,7 +42,7 @@ class RouteMyProfileTest {
 
         //route quiz start & answer to takeover
         Route route_quizstart = new RouteQuizStart(quizRounds, locations);
-        Route route_quizanswer = new RouteQuizAnswer(quizRounds, locations, hs, users);
+        Route route_quizanswer = new RouteQuizAnswer(quizRounds, locations, users);
         postJson.put("location", "domkyrkan");
         data = new RequestData(postJson,  testa);
         response = route_quizstart.handle(data);
