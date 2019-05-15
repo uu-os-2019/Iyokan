@@ -20,6 +20,7 @@ public class Location {
         this.radius = radius;
         this.description = description;
         this.score = 0;
+        this.expValue = expValue;
     }
 
     public Location(JSONObject object) {
