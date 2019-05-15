@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class GeoCap {
     let server: Server
@@ -29,5 +30,8 @@ class GeoCap {
         }
         return false
     }
-
+    
 }
+    
+
+
