@@ -43,6 +43,7 @@ public class Location {
         json.put("description", description);
         json.put("position", position.getJson());
         json.put("radius", radius);
+        json.put("exp", expValue);
         return json;
     }
 
