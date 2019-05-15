@@ -1,29 +1,29 @@
 //
-//  LeaderboardViewController.swift
+//  LeadTotalViewController.swift
 //  Geocap
 //
-//  Created by Oscar Englöf on 2019-04-16.
+//  Created by Erik Hellström on 2019-05-15.
 //  Copyright © 2019 Oscar Englöf. All rights reserved.
 //
 
 import UIKit
 
-class LeaderboardViewController: UIViewController, UITableViewDataSource {
-    
+class LeadTotalViewController: UIViewController, UITableViewDataSource {
+
     @IBOutlet weak var tableLead: UITableView!
     
-    var leaderboard = geoCap.server.getLeaderboard()
+    var leaderboard = geoCap.server.getLeaderboardTotal()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leaderboard?.highscore.count ?? 0
+        return leaderboard?.users.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableLead.dequeueReusableCell(withIdentifier: "cellHighscore") as! LeadTableCell
         
-        cell.rank.text = "\(indexPath.row)" + "."
-        cell.name.text = leaderboard?.highscore[indexPath.row].name
-        cell.points.text = "Points: " + "\(leaderboard?.highscore[indexPath.row].points ?? 0)"
+        cell.rank.text = "\(indexPath.row + 1)" + "."
+        cell.name.text = leaderboard?.users[indexPath.row].name
+        cell.points.text = "Level: " + "\(leaderboard?.users[indexPath.row].level ?? 0)"
         
         return cell
     }
@@ -34,6 +34,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         tableLead.dataSource = self
         tableLead.tableFooterView = UIView(frame: .zero)
@@ -50,17 +52,13 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    @IBAction func LeaderboardToMap(_ sender: Any) {
-        performSegue(withIdentifier: "LeaderboardToMapSegue", sender: self)
-    }
-    
-    
+
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
+        // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     */

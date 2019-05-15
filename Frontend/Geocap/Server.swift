@@ -56,12 +56,19 @@ struct Register: Codable {
 }
 
 struct HighscoreObject: Codable {
+    let index: Int
+    let id: String
     let name: String
-    let points: Int
+    let exp_rate: Int
+    let exp: Int?
+    let exp_to_level: Int?
+    let level: Int?
 }
 
 struct Leaderboard: Codable {
-    let highscore: [HighscoreObject]
+    let type: String
+    let success: Bool
+    let users: [HighscoreObject]
 }
     
 struct LastQuizAnswer: Codable {
@@ -398,8 +405,8 @@ class Server {
          */
     }
     
-    func getLeaderboard() -> Leaderboard? {
-        let url = URL(string: "http://13.53.140.24/highscore")!
+    func getLeaderboardCurrent() -> Leaderboard? {
+        let url = URL(string: "http://13.53.140.24/leaderboard/current")!
         var leaderboard: Leaderboard?
     
         let semaphore = DispatchSemaphore(value: 0)
@@ -420,7 +427,7 @@ class Server {
                 
                 leaderboard = try JSONDecoder().decode(Leaderboard.self, from: data!)
             } catch {
-                print("Error in getLeaderboard()")
+                print("Error in getLeaderboardCurrent()")
                 print(error)
             }
             semaphore.signal()
@@ -429,5 +436,38 @@ class Server {
         semaphore.wait()
         return leaderboard
     }
+    
+    func getLeaderboardTotal() -> Leaderboard? {
+        let url = URL(string: "http://13.53.140.24/leaderboard/total")!
+        var leaderboard: Leaderboard?
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        URLSession.shared.dataTask(with: url) {(data, response, error) in
+            do {
+                if let error = error {
+                    self.handleClientError(error)
+                    semaphore.signal()
+                    return
+                }
+                
+                guard let httpResponse = response as? HTTPURLResponse,
+                    (200...299).contains(httpResponse.statusCode) else {
+                        self.handleServerError(response)
+                        semaphore.signal()
+                        return
+                }
+                
+                leaderboard = try JSONDecoder().decode(Leaderboard.self, from: data!)
+            } catch {
+                print("Error in getLeaderboardTotal()")
+                print(error)
+            }
+            semaphore.signal()
+            }.resume()
+        
+        semaphore.wait()
+        return leaderboard
+    }
 
 }
+
