@@ -58,7 +58,7 @@ class RouteMyProfileTest {
         // currentScore 1 and taken over uppsala domkyrka
         response = route_myprofile.handle(data);
         user = response.getJSONObject("user");
-        assertEquals(user.getInt("exp_rate"), 1);
+        assertEquals(user.getInt("exp_rate"), 4);
         assertEquals(response.getJSONArray("locations").get(0), "Uppsala Domkyrka");
 
     }

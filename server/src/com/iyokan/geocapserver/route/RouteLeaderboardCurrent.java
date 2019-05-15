@@ -6,10 +6,10 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class RouteCurrentLeaderboard extends Route {
+public class RouteLeaderboardCurrent extends Route {
     UserCollection users;
 
-    public RouteCurrentLeaderboard(UserCollection users) {
+    public RouteLeaderboardCurrent(UserCollection users) {
         this.users = users;
     }
 

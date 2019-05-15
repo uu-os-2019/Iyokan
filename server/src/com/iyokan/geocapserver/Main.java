@@ -29,7 +29,7 @@ public class Main {
                 new RouteQuizStart(quizRounds, locations),
                 new RouteQuizAnswer(quizRounds, locations, users),
                 new RouteMyProfile(locations, users),
-                new RouteCurrentLeaderboard(users),
+                new RouteLeaderboardCurrent(users),
                 new RouteLeaderboardTotal(users)
         };
 
