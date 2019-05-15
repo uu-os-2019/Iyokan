@@ -63,15 +63,19 @@ public class UserCollection {
         users.remove(id);
     }
 
-    public void updatePoints(LocationCollection locations) {
+    public void updateExps(LocationCollection locations) {
         for(User user : users.values()){
             int sum = 0;
             for (String locationId : user.getLocationsTaken()) {
                 Location location = locations.getLocation(locationId);
-                sum += 1; // TODO: read from locations score
+                sum += location.getExpValue();
             }
             user.setExpRate(sum);
         }
+    }
+
+    public User[] getUsers() {
+        return users.values().toArray(new User[0]);
     }
 
 }

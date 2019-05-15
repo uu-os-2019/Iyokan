@@ -50,7 +50,7 @@ class JsonDatabaseTest {
         User user = new User(uid, "kent med kniven");
 
         Location location = new Location(new Position(10, 10), "bråkgatan", "bråkmakargatan",
-                "testy", null, 50);
+                "testy", null, 50, 1);
 
         location.setOwner(user.getID(), 100);
 
