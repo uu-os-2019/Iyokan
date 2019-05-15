@@ -1,73 +1,157 @@
 [
   {
-    "question": "När invigdes domkyrkan?",
-    "alternatives": ["1400-talet", "1500-talet","1300-talet", "1600-talet" ]
-
+    "question": "När invigdes domkyrkan i Uppsala?",
+    "alternatives": ["1400-talet", "1500-talet","1300-talet", "1600-talet" ],
+    "tags": {
+      "domkyrkan": 100,
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
-    "question": "Hur hög är domkyrkan?",
-    "alternatives": ["119m", "87m", "243m", "126m" ]
+    "question": "Hur hög är domkyrkan i Uppsala?",
+    "alternatives": ["119m", "87m", "243m", "126m" ],
+    "tags": {
+      "domkyrkan": 100,
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
     "question": "När grundades Uppsala universitet?",
-    "alternatives": ["1477", "1743","1871", "1152" ]
-
+    "alternatives": ["1477", "1743","1871", "1152" ],
+    "tags": {
+      "uu": 100,
+      "uppsala": 100,
+      "sverige": 20
+    }
   },
   {
     "question": "Hur många bor i Uppsala kommun",
-    "alternatives": ["225 000", "150 000", "310 000", "565 000" ]
+    "alternatives": ["225 000", "150 000", "310 000", "565 000" ],
+    "tags": {
+      "uppsala": 100,
+      "sverige": 20
+    }
   },
   {
     "question": "Vilket påstående är sant?",
-    "alternatives": ["Uppsalas universitet är det äldsta i norden", "Uppsala är nordens äldsta stad", "Domkyrkan är nordens äldsta kyrka", "Uppsala var Sveriges första huvudstad" ]
+    "alternatives": ["Uppsalas universitet är det äldsta i norden", "Uppsala är nordens äldsta stad", "Domkyrkan är nordens äldsta kyrka", "Uppsala var Sveriges första huvudstad" ],
+    "tags": {
+      "uu": 100,
+      "uppsala": 100,
+      "sverige": 20
+    }
   },
   {
     "question": "Under 1500-talet erövrades Uppsala av danska trupper. Vilken svensk kung återerövrade Uppsala?",
-    "alternatives": ["Gustav Vasa", "Erik XIV", "Johan III", "Gustav II Adolf" ]
+    "alternatives": ["Gustav Vasa", "Erik XIV", "Johan III", "Gustav II Adolf" ],
+    "tags": {
+      "uppsala": 100,
+      "sverige": 50
+    }
   },
   {
     "question": "Vilket innebandy lag i Uppsala vann SM-guld tre år irad, mellan 2010 och 2012?",
-    "alternatives": ["Storvreta IBK", "IK Sirius IBK", "Uppsala IBK", "Team Thorengruppen SK" ]
+    "alternatives": ["Storvreta IBK", "IK Sirius IBK", "Uppsala IBK", "Team Thorengruppen SK" ],
+    "tags": {
+      "sport": 100,
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
     "question": "Vad var Uppsalas tidigaste namn?",
-    "alternatives": ["Östra Aros", "Västa Aros", "Gamla Uppsala", "Sala" ]
+    "alternatives": ["Östra Aros", "Västa Aros", "Gamla Uppsala", "Sala" ],
+    "tags": {
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
     "question": "Vilket landskap tillhör Uppsala?",
-    "alternatives": ["Uppland", "Södermanland", "Gästrikland", "Närke" ]
+    "alternatives": ["Uppland", "Södermanland", "Gästrikland", "Närke" ],
+    "tags": {
+      "uppsala": 100,
+      "sverige": 20
+    }
   },
   {
     "question": "Vilken världskänd botaniker och naturforskare avled i Uppsala år 1788?",
-    "alternatives": ["Carl von Linne", "Olof Rudbeck", "Olof Celsius", "Carl De Geer" ]
+    "alternatives": ["Carl von Linne", "Olof Rudbeck", "Olof Celsius", "Carl De Geer" ],
+    "tags": {
+      "uu": 100,
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
     "question": "Vad hette juridikstudenten i Uppsala som är den misstänkta gärningsmannen bakom von Sydowska morden?",
-    "alternatives": ["Fredrik von Sydow", "Hjalmar von Sydow", "Olof Palme", "Mijailo Mijailovic" ]
+    "alternatives": ["Fredrik von Sydow", "Hjalmar von Sydow", "Olof Palme", "Mijailo Mijailovic" ],
+    "tags": {
+      "uu": 100,
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
     "question": "Ungefär hur många invånare bor i Uppsala kommun?",
-    "alternatives": ["200 000", "300 000", "100 000", "400 000" ]
+    "alternatives": ["200 000", "300 000", "100 000", "400 000" ],
+    "tags": {
+      "uppsala": 100,
+      "sverige": 10
+    }
   },
   {
-    "question": "Vilket valår var första gången som allmän rösträtt för kvinnor praktiserades?",
-    "alternatives": ["1921", "1919", "1924", "1920" ]
+    "question": "Vilket valår var första gången som allmän rösträtt för kvinnor praktiserades i Sverige?",
+    "alternatives": ["1921", "1919", "1924", "1920" ],
+    "tags": {
+      "sverige": 100
+    }
   },
   {
     "question": "Vad heter den svenska författaren som bland annat skrivit Röda rummet?",
-    "alternatives": ["August Strindberg", "Selma Lagerlöf", "Astrid Lindgren", "Karin Boye" ]
+    "alternatives": ["August Strindberg", "Selma Lagerlöf", "Astrid Lindgren", "Karin Boye" ],
+    "tags": {
+      "sverige": 100
+    }
   },
   {
     "question": "Vilket av följande år vann Sveriges herrlandslag i fotboll brons i VM?",
-    "alternatives": ["1994", "1990", "1998", "2002" ]
+    "alternatives": ["1994", "1990", "1998", "2002" ],
+    "tags": {
+      "sport": 100,
+      "sverige": 50
+    }
   },
   {
     "question": "Vilket år påbörjades Berlinmurens fall?",
-    "alternatives": ["1989", "1991", "1990", "1992" ]
+    "alternatives": ["1989", "1991", "1990", "1992" ],
+    "tags": {
+      "general": 100
+    }
   },
   {
     "question": "Vem var första kvinnan att vinna nobelpriset i litteratur?",
-    "alternatives": ["Selma Lagerlöf", "Astrid Lindgren", "Karin Boye", "Marie Curie" ]
+    "alternatives": ["Selma Lagerlöf", "Astrid Lindgren", "Karin Boye", "Marie Curie" ],
+    "tags": {
+      "sverige": 100
+    }
+  },
+  {
+    "question": "Vilket av följande länder är störst till ytan?",
+    "alternatives": ["Sverige", "Tyskland", "Cuba", "Uruguay" ],
+    "tags": {
+      "general": 100,
+      "sverige": 10
+    }
+  },
+  {
+    "question": "Vilket av följande länder är minst tätbefolkat?",
+    "alternatives": ["Mongoliet", "Australien", "Sverige", "Sudan" ],
+    "tags": {
+      "general": 100
+    }
   }
   
 ]
