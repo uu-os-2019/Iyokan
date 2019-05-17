@@ -62,9 +62,6 @@ class ViewController: UIViewController {
         if let profilInfo = geoCap.profileInfo {
             self.progressView.setProgress(Float(profilInfo.exp!)/Float(profilInfo.exp_to_level!), animated: true)
             self.expCount.text = "Exp:" + "\(String(profilInfo.exp!))"
-            if(profilInfo.exp_to_level == 0) {
-                timerIsOn = false
-            }
         }
     }
     
@@ -155,6 +152,7 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         stopMapRefreshTimer()
+        stopExpTimer()
     }
     
 }
