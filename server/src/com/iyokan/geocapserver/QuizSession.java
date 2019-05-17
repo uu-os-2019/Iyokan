@@ -45,7 +45,7 @@ public class QuizSession {
         rounds = new QuizInstance[quizQuestionCount];
         this.location = location;
 
-        QuizRound[] quizzes = collection.getRandomQuizRounds(quizQuestionCount);
+        QuizRound[] quizzes = collection.getRandomQuizRounds(location.getTags(), quizQuestionCount);
 
         for (int i = 0; i < quizQuestionCount; i++) {
             rounds[i] = new QuizInstance(quizzes[i]);
