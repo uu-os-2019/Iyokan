@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var expCount: UILabel!
     
     func startMapRefreshTimer() {
-        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+        mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             Timer.tolerance = 3
             geoCap.server.fetchLocations(completionHandler: self.refreshLocations)
             geoCap.server.fetchProfileInfo(completionHandler: self.updateProfileButtonScore)
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     
     func expTimer() {
         timerIsOn = true
-        expBarTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+        expBarTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             if(!self.timerIsOn!) {
                 self.stopExpTimer()
             }
@@ -54,7 +54,6 @@ class ViewController: UIViewController {
     }
     
     func stopExpTimer() {
-        progressView.progressTintColor = UIColor.green
         expBarTimer?.invalidate()
         self.expBarTimer = nil
     }
@@ -62,8 +61,6 @@ class ViewController: UIViewController {
     func timerRunning() {
         if let profilInfo = geoCap.profileInfo {
             self.progressView.setProgress(Float(profilInfo.exp!)/Float(profilInfo.exp_to_level!), animated: true)
-            print(profilInfo.exp!)
-            print(profilInfo.exp_to_level!)
             self.expCount.text = "Exp:" + "\(String(profilInfo.exp!))"
             if(profilInfo.exp_to_level == 0) {
                 timerIsOn = false
