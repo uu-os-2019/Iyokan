@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     }
     
     func expTimer() {
+        timerRunning()
+        
         timerIsOn = true
         expBarTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
             if(!self.timerIsOn!) {
@@ -124,7 +126,7 @@ class ViewController: UIViewController {
             geoCap.server.fetchLocations(completionHandler: refreshLocations)
         }
         startMapRefreshTimer()
-        expTimer()
+        geoCap.server.fetchProfileInfo(completionHandler: expTimer)
     }
     
     let regionRadius: CLLocationDistance = 5000
@@ -179,26 +181,23 @@ extension ViewController: MKMapViewDelegate {
         
         let pin = view.annotation as! Pin
         
-        // distance check commented out for testing purposes
-        if geoCap.userHasLocations(location: pin.title!) {
+        if geoCap.userHasLocations(location: pin.identifier) {
             let alert = UIAlertController(title: "Du har redan " + pin.title!, message: "Ta över något annat område!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okej", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
         else {
-            if !geoCap.quizModel.quizTimeoutIsActive {
-            geoCap.currentLocation = pin.identifier
-            performSegue(withIdentifier: "QuizSegue", sender: self)
+            if !geoCap.quizModel.quizTimeoutIsActive, distance <= pin.radius {
+                geoCap.currentLocation = pin.identifier
+                performSegue(withIdentifier: "QuizSegue", sender: self)
             } else if geoCap.quizModel.quizTimeoutIsActive {
-            let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okej då...", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
-            
-        else {
-            let alert = UIAlertController(title: "Du är inte i det här området", message: "Gå till området för att ta över det", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okej", style: .default, handler: nil))
-            self.present(alert, animated: true)
+                let alert = UIAlertController(title: "Lugna ner dig!", message: "Du misslyckades nyligen med att ta över den här platsen, vänta 30 sekunder och försök igen", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okej då...", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Du är inte i det här området", message: "Gå till området för att ta över det", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okej", style: .default, handler: nil))
+                self.present(alert, animated: true)
         }
       }
     }
