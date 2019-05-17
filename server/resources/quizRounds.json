@@ -4,7 +4,7 @@
     "alternatives": ["1400-talet", "1500-talet","1300-talet", "1600-talet" ],
     "tags": {
       "domkyrkan": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 10
     }
   },
@@ -13,7 +13,7 @@
     "alternatives": ["119m", "87m", "243m", "126m" ],
     "tags": {
       "domkyrkan": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 10
     }
   },
@@ -22,7 +22,7 @@
     "alternatives": ["1477", "1743","1871", "1152" ],
     "tags": {
       "uu": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 20
     }
   },
@@ -39,7 +39,7 @@
     "alternatives": ["Uppsalas universitet är det äldsta i norden", "Uppsala är nordens äldsta stad", "Domkyrkan är nordens äldsta kyrka", "Uppsala var Sveriges första huvudstad" ],
     "tags": {
       "uu": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 20
     }
   },
@@ -56,7 +56,7 @@
     "alternatives": ["Storvreta IBK", "IK Sirius IBK", "Uppsala IBK", "Team Thorengruppen SK" ],
     "tags": {
       "sport": 100,
-      "uppsala": 100,
+      "uppsala": 40,
       "sverige": 10
     }
   },
@@ -81,7 +81,7 @@
     "alternatives": ["Carl von Linne", "Olof Rudbeck", "Olof Celsius", "Carl De Geer" ],
     "tags": {
       "uu": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 10
     }
   },
@@ -90,7 +90,7 @@
     "alternatives": ["Fredrik von Sydow", "Hjalmar von Sydow", "Olof Palme", "Mijailo Mijailovic" ],
     "tags": {
       "uu": 100,
-      "uppsala": 100,
+      "uppsala": 50,
       "sverige": 10
     }
   },
@@ -147,7 +147,7 @@
     }
   },
   {
-    "question": "Vilket av följande länder är minst tätbefolkat?",
+    "question": "Vilket av följande länder har minst invånare per kvadratkilometer?",
     "alternatives": ["Mongoliet", "Australien", "Sverige", "Sudan" ],
     "tags": {
       "general": 100
