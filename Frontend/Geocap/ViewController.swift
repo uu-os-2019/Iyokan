@@ -15,7 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var mapRefreshTimer: Timer?
     @IBOutlet weak var profilbutton: UIButton!
+    var expBarTimer: Timer?
+    var timerIsOn: Bool?
+    var totalExp: Int?
+    @IBOutlet weak var progressView: UIProgressView!
 
+    @IBOutlet weak var expCount: UILabel!
     
     func startMapRefreshTimer() {
         mapRefreshTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
@@ -35,6 +40,29 @@ class ViewController: UIViewController {
             profilbutton.setTitle("Level:" + "\(String(profileInfo.level!))", for: .normal)
         }
         
+    }
+    
+    func expTimer() {
+        timerIsOn = true
+        expBarTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { Timer in
+            if(!self.timerIsOn!) {
+                self.stopExpTimer()
+            }
+            Timer.tolerance = 2
+            self.timerRunning()
+        }
+    }
+    
+    func stopExpTimer() {
+        expBarTimer?.invalidate()
+        self.expBarTimer = nil
+    }
+    
+    func timerRunning() {
+        if let profilInfo = geoCap.profileInfo {
+            self.progressView.setProgress(Float(profilInfo.exp!)/Float(profilInfo.exp_to_level!), animated: true)
+            self.expCount.text = "Exp:" + "\(String(profilInfo.exp!))"
+        }
     }
     
     func clearMap() {
@@ -96,6 +124,7 @@ class ViewController: UIViewController {
             geoCap.server.fetchLocations(completionHandler: refreshLocations)
         }
         startMapRefreshTimer()
+        expTimer()
     }
     
     let regionRadius: CLLocationDistance = 5000
@@ -123,6 +152,7 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         stopMapRefreshTimer()
+        stopExpTimer()
     }
     
 }
