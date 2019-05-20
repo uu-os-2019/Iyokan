@@ -39,7 +39,7 @@ class Profile: UIViewController, UITableViewDataSource {
     }
     
     func updateProfileView() {
-        points.text = String(geoCap.profileInfo!.level!)
+        points.text = "Level: " + String(geoCap.profileInfo!.level!)
         locations = geoCap.profileInfo!.locations_taken!
         tableView.reloadData()
     }

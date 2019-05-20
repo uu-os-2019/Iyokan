@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     func timerRunning() {
         if let profilInfo = geoCap.profileInfo {
             self.progressView.setProgress(Float(profilInfo.exp!)/Float(profilInfo.exp_to_level!), animated: true)
-            self.expCount.text = "Exp:" + "\(String(profilInfo.exp!))"
+            self.expCount.text = "XP:" + "\(String(profilInfo.exp!))"
         }
     }
     
