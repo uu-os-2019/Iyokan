@@ -51,11 +51,13 @@ public class QuizRoundCollection {
      * @param count
      * @return
      */
-    public QuizRound[] getRandomQuizRounds(LocationTag[] tags, int count) {
+    public QuizRound[] getRandomQuizRounds(LocationTag[] locationTags, int count) {
         int sum = 0;
         int total = 0;
 
         QuizRound[] selectedRounds = new QuizRound[count];
+        ArrayList<LocationTag> tags = new ArrayList<>(Arrays.asList(locationTags));
+        tags.add(new LocationTag("general", 10));
 
         for(LocationTag tag : tags) {
             QuizRoundTagList list = tagSet.get(tag.tag);
@@ -68,10 +70,6 @@ public class QuizRoundCollection {
             total += list.getCount();
         }
 
-        // Add general tags to the sum so they can be selected
-        QuizRoundTagList generalTags = tagSet.get("general");
-        sum += 10*generalTags.getTotalWeight();
-        total += generalTags.getCount();
 
         if (total < count) {
             throw new RuntimeException("Error in selecting question, count is less than available questions");
@@ -94,12 +92,6 @@ public class QuizRoundCollection {
                     break;
                 }
                 value = newValue;
-            }
-
-            // If value is still not under 0, move to general questions
-            if (value > 0) {
-                list = generalTags;
-                locationTagWeight = 10;
             }
 
             QuizRound round = null;
