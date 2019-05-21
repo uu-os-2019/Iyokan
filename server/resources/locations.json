@@ -465,5 +465,17 @@
       "uppsala": 100,
       "sverige": 20
     }
+  },
+  {
+    "identifier": "hus1",
+    "name": "ITC hus 1",
+    "description": "Hus 1",
+    "position": {"lat": 59.8413632, "lng": 17.6480216},
+    "radius": 100,
+    "exp": 2,
+    "tags": {
+      "uppsala": 100,
+      "sverige": 20
+    }
   }
 ]
