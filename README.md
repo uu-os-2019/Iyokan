@@ -6,18 +6,30 @@ Projektarbete på kursen Datorsystem med projekt (1DT003) våren 2019, Uppsala u
 
 ## Kom igång
 
-**TODO:** Lägg till kortfattade instruktioner som beskriver hur projektet byggs
-(kompileras eller liknande), testas (automatiska tester) och startas. Lägg gärna
-till lämpliga underrubriker.
+**Appen**
+- Kör i xcode
+
+**Servern**  
+- Kör i intellij  
+
+**Server Tester**
+- Kör i intellij
 
 ## Katalogstruktur
 
-**TODO:** Lägg till en kortfattad beskrivning över katalogstrukturen.
+**Frontend**
+- Geocap appen
 
 **meta**
 
 - gruppkontrakt
 - presentation av gruppens medlemmar
+
+**server**
+- dependancies
+- källkod
+- resurser
+- tester
 
 ## Färdigställ 
 
